@@ -1,0 +1,1340 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<!--project01-->
+
+
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>The Diamond 16 Puzzle</title><meta name="description" content="The classic 15 puzzle updated for the 21st century -- New permutations and striking graphics  with surprising symmetry properties.">
+  <meta name="keywords" content="math games, math puzzles,mathematical,recreations,15 puzzle,fifteen puzzle,symmetry,geometry,diamond theory,diamond theorem,group theory">
+  <script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+  </script>
+  <script language="JAVASCRIPT" type="TEXT/JAVASCRIPT">
+   <!-- Hide script from old  browsers
+//
+// Check for images array
+     if (!document.images)  {
+   alert("Document images array used in the puzzle page is not supported by your browser.");
+     }
+//
+// Preload images
+      a0 = new Image(26,26);
+      a0.src = "Diamond16Puzzle_files/t26-0.gif";
+      a1 = new Image(26,26);
+      a1.src = "Diamond16Puzzle_files/t26-1.gif";
+      a2 = new Image(26,26);
+      a2.src = "Diamond16Puzzle_files/t26-2.gif";
+      a3 = new Image(26,26);
+      a3.src = "Diamond16Puzzle_files/t26-3.gif";
+     t1arrnew = new Array(16);
+             t1arrnew[0] = "Diamond16Puzzle_files/t26-2.gif";
+             t1arrnew[1] = "Diamond16Puzzle_files/t26-3.gif";
+             t1arrnew[2] = "Diamond16Puzzle_files/t26-2.gif";
+             t1arrnew[3] = "Diamond16Puzzle_files/t26-3.gif";
+             t1arrnew[4] = "Diamond16Puzzle_files/t26-1.gif";
+             t1arrnew[5] = "Diamond16Puzzle_files/t26-0.gif";
+             t1arrnew[6] = "Diamond16Puzzle_files/t26-1.gif";
+             t1arrnew[7] = "Diamond16Puzzle_files/t26-0.gif";
+             t1arrnew[8] = "Diamond16Puzzle_files/t26-2.gif";
+             t1arrnew[9] = "Diamond16Puzzle_files/t26-3.gif";
+             t1arrnew[10] = "Diamond16Puzzle_files/t26-2.gif";
+             t1arrnew[11] = "Diamond16Puzzle_files/t26-3.gif";
+             t1arrnew[12] = "Diamond16Puzzle_files/t26-1.gif";
+             t1arrnew[13] = "Diamond16Puzzle_files/t26-0.gif";
+             t1arrnew[14] = "Diamond16Puzzle_files/t26-1.gif";
+             t1arrnew[15] = "Diamond16Puzzle_files/t26-0.gif";
+     t2arrnew = new Array(16);
+             t2arrnew[0] = "Diamond16Puzzle_files/t26-0.gif";
+             t2arrnew[1] = "Diamond16Puzzle_files/t26-2.gif";
+             t2arrnew[2] = "Diamond16Puzzle_files/t26-3.gif";
+             t2arrnew[3] = "Diamond16Puzzle_files/t26-1.gif";
+             t2arrnew[4] = "Diamond16Puzzle_files/t26-2.gif";
+             t2arrnew[5] = "Diamond16Puzzle_files/t26-0.gif";
+             t2arrnew[6] = "Diamond16Puzzle_files/t26-1.gif";
+             t2arrnew[7] = "Diamond16Puzzle_files/t26-3.gif";
+             t2arrnew[8] = "Diamond16Puzzle_files/t26-1.gif";
+             t2arrnew[9] = "Diamond16Puzzle_files/t26-3.gif";
+             t2arrnew[10] = "Diamond16Puzzle_files/t26-2.gif";
+             t2arrnew[11] = "Diamond16Puzzle_files/t26-0.gif";
+             t2arrnew[12] = "Diamond16Puzzle_files/t26-3.gif";
+             t2arrnew[13] = "Diamond16Puzzle_files/t26-1.gif";
+             t2arrnew[14] = "Diamond16Puzzle_files/t26-0.gif";
+             t2arrnew[15] = "Diamond16Puzzle_files/t26-2.gif";
+     t1arrold = new Array(16);
+             for(i=0; i<16; i++) {
+                 t1arrold[i] = t1arrnew[i];
+                }
+     t2arrold = new Array(16);
+             for(i=0; i<16; i++) {
+                 t2arrold[i] = t2arrnew[i];
+                }
+     rowspicked = new Array(0,0,0,0,0);
+     colspicked = new Array(0,0,0,0,0);
+     quadspicked = new Array(0,0,0,0,0);
+// Reset variables
+      function resetvars() {
+             for(i=0; i<6; i++) {
+             rowspicked[i] = 0;
+             }
+             for(i=0; i<6; i++) {
+             colspicked[i] = 0;
+             }
+             for(i=0; i<6; i++) {
+             quadspicked[i] = 0;
+             }
+             for(i=0; i<16; i++) {
+             t1arrold[i] = t1arrnew[i];
+             }
+             for(i=0; i<16; i++) {
+             t2arrold[i] = t2arrnew[i];
+             }
+      }
+// Reload images array after areas have been switched
+      function showim() {
+             for(i=192; i<208; i++) {
+             document.images[i].src = t1arrnew[i - 192];
+             };
+             for(i=208; i<224; i++) {
+             document.images[i].src = t2arrnew[i - 208];
+             };
+          resetvars();
+      }
+//
+// *******************************************************
+// PERMUTATIONS OF ROWS
+//
+// Switch rows 1 and 2
+      function swrows12() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[4];
+                t1arrnew[1] = t1arrold[5];
+                t1arrnew[2] = t1arrold[6];
+                t1arrnew[3] = t1arrold[7];
+                t1arrnew[4] = t1arrold[0];
+                t1arrnew[5] = t1arrold[1];
+                t1arrnew[6] = t1arrold[2];
+                t1arrnew[7] = t1arrold[3];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[0] = t2arrold[4];
+                t2arrnew[1] = t2arrold[5];
+                t2arrnew[2] = t2arrold[6];
+                t2arrnew[3] = t2arrold[7];
+                t2arrnew[4] = t2arrold[0];
+                t2arrnew[5] = t2arrold[1];
+                t2arrnew[6] = t2arrold[2];
+                t2arrnew[7] = t2arrold[3];
+            showim();
+      }
+//
+// Switch rows 1 and 3
+      function swrows13() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[8];
+                t1arrnew[1] = t1arrold[9];
+                t1arrnew[2] = t1arrold[10];
+                t1arrnew[3] = t1arrold[11];
+                t1arrnew[8] = t1arrold[0];
+                t1arrnew[9] = t1arrold[1];
+                t1arrnew[10] = t1arrold[2];
+                t1arrnew[11] = t1arrold[3];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[0] = t2arrold[8];
+                t2arrnew[1] = t2arrold[9];
+                t2arrnew[2] = t2arrold[10];
+                t2arrnew[3] = t2arrold[11];
+                t2arrnew[8] = t2arrold[0];
+                t2arrnew[9] = t2arrold[1];
+                t2arrnew[10] = t2arrold[2];
+                t2arrnew[11] = t2arrold[3];
+            showim();
+      }
+//
+// Switch rows 1 and 4
+      function swrows14() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[12];
+                t1arrnew[1] = t1arrold[13];
+                t1arrnew[2] = t1arrold[14];
+                t1arrnew[3] = t1arrold[15];
+                t1arrnew[12] = t1arrold[0];
+                t1arrnew[13] = t1arrold[1];
+                t1arrnew[14] = t1arrold[2];
+                t1arrnew[15] = t1arrold[3];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[0] = t2arrold[12];
+                t2arrnew[1] = t2arrold[13];
+                t2arrnew[2] = t2arrold[14];
+                t2arrnew[3] = t2arrold[15];
+                t2arrnew[12] = t2arrold[0];
+                t2arrnew[13] = t2arrold[1];
+                t2arrnew[14] = t2arrold[2];
+                t2arrnew[15] = t2arrold[3];
+            showim();
+      }
+//
+// Switch rows 2 and 3
+      function swrows23() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[4] = t1arrold[8];
+                t1arrnew[5] = t1arrold[9];
+                t1arrnew[6] = t1arrold[10];
+                t1arrnew[7] = t1arrold[11];
+                t1arrnew[8] = t1arrold[4];
+                t1arrnew[9] = t1arrold[5];
+                t1arrnew[10] = t1arrold[6];
+                t1arrnew[11] = t1arrold[7];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[4] = t2arrold[8];
+                t2arrnew[5] = t2arrold[9];
+                t2arrnew[6] = t2arrold[10];
+                t2arrnew[7] = t2arrold[11];
+                t2arrnew[8] = t2arrold[4];
+                t2arrnew[9] = t2arrold[5];
+                t2arrnew[10] = t2arrold[6];
+                t2arrnew[11] = t2arrold[7];
+            showim();
+      }
+//
+// Switch rows 2 and 4
+      function swrows24() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[4] = t1arrold[12];
+                t1arrnew[5] = t1arrold[13];
+                t1arrnew[6] = t1arrold[14];
+                t1arrnew[7] = t1arrold[15];
+                t1arrnew[12] = t1arrold[4];
+                t1arrnew[13] = t1arrold[5];
+                t1arrnew[14] = t1arrold[6];
+                t1arrnew[15] = t1arrold[7];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[4] = t2arrold[12];
+                t2arrnew[5] = t2arrold[13];
+                t2arrnew[6] = t2arrold[14];
+                t2arrnew[7] = t2arrold[15];
+                t2arrnew[12] = t2arrold[4];
+                t2arrnew[13] = t2arrold[5];
+                t2arrnew[14] = t2arrold[6];
+                t2arrnew[15] = t2arrold[7];
+            showim();
+      }
+//
+// Switch rows 3 and 4
+      function swrows34() {
+             for(i=0; i<16; i++) {
+                t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[8] = t1arrold[12];
+                t1arrnew[9] = t1arrold[13];
+                t1arrnew[10] = t1arrold[14];
+                t1arrnew[11] = t1arrold[15];
+                t1arrnew[12] = t1arrold[8];
+                t1arrnew[13] = t1arrold[9];
+                t1arrnew[14] = t1arrold[10];
+                t1arrnew[15] = t1arrold[11];
+//
+             for(i=0; i<16; i++) {
+                t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[8] = t2arrold[12];
+                t2arrnew[9] = t2arrold[13];
+                t2arrnew[10] = t2arrold[14];
+                t2arrnew[11] = t2arrold[15];
+                t2arrnew[12] = t2arrold[8];
+                t2arrnew[13] = t2arrold[9];
+                t2arrnew[14] = t2arrold[10];
+                t2arrnew[15] = t2arrold[11];
+            showim();
+     }
+// *******************************************************
+//
+// PERMUTATIONS OF COLUMNS
+// Switch cols 1 and 2
+      function swcols12() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[1];
+                t1arrnew[4] = t1arrold[5];
+                t1arrnew[8] = t1arrold[9];
+                t1arrnew[12] = t1arrold[13];
+                t1arrnew[1] = t1arrold[0];
+                t1arrnew[5] = t1arrold[4];
+                t1arrnew[9] = t1arrold[8];
+                t1arrnew[13] = t1arrold[12];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[0] = t2arrold[1];
+                t2arrnew[4] = t2arrold[5];
+                t2arrnew[8] = t2arrold[9];
+                t2arrnew[12] = t2arrold[13];
+                t2arrnew[1] = t2arrold[0];
+                t2arrnew[5] = t2arrold[4];
+                t2arrnew[9] = t2arrold[8];
+                t2arrnew[13] = t2arrold[12];
+            showim();
+      }
+//
+// Switch columns 1 and 3
+      function swcols13() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[2];
+                t1arrnew[4] = t1arrold[6];
+                t1arrnew[8] = t1arrold[10];
+                t1arrnew[12] = t1arrold[14];
+                t1arrnew[2] = t1arrold[0];
+                t1arrnew[6] = t1arrold[4];
+                t1arrnew[10] = t1arrold[8];
+                t1arrnew[14] = t1arrold[12];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[0] = t2arrold[2];
+                t2arrnew[4] = t2arrold[6];
+                t2arrnew[8] = t2arrold[10];
+                t2arrnew[12] = t2arrold[14];
+                t2arrnew[2] = t2arrold[0];
+                t2arrnew[6] = t2arrold[4];
+                t2arrnew[10] = t2arrold[8];
+                t2arrnew[14] = t2arrold[12];
+            showim();
+      }
+//
+// Switch columns 1 and 4
+      function swcols14() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[3];
+                t1arrnew[4] = t1arrold[7];
+                t1arrnew[8] = t1arrold[11];
+                t1arrnew[12] = t1arrold[15];
+                t1arrnew[3] = t1arrold[0];
+                t1arrnew[7] = t1arrold[4];
+                t1arrnew[11] = t1arrold[8];
+                t1arrnew[15] = t1arrold[12];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[0] = t2arrold[3];
+                t2arrnew[4] = t2arrold[7];
+                t2arrnew[8] = t2arrold[11];
+                t2arrnew[12] = t2arrold[15];
+                t2arrnew[3] = t2arrold[0];
+                t2arrnew[7] = t2arrold[4];
+                t2arrnew[11] = t2arrold[8];
+                t2arrnew[15] = t2arrold[12];
+            showim();
+      }
+//
+// Switch columns 2 and 3
+      function swcols23() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[1] = t1arrold[2];
+                t1arrnew[5] = t1arrold[6];
+                t1arrnew[9] = t1arrold[10];
+                t1arrnew[13] = t1arrold[14];
+                t1arrnew[2] = t1arrold[1];
+                t1arrnew[6] = t1arrold[5];
+                t1arrnew[10] = t1arrold[9];
+                t1arrnew[14] = t1arrold[13];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[1] = t2arrold[2];
+                t2arrnew[5] = t2arrold[6];
+                t2arrnew[9] = t2arrold[10];
+                t2arrnew[13] = t2arrold[14];
+                t2arrnew[2] = t2arrold[1];
+                t2arrnew[6] = t2arrold[5];
+                t2arrnew[10] = t2arrold[9];
+                t2arrnew[14] = t2arrold[13];
+            showim();
+      }
+//
+// Switch columns 2 and 4
+      function swcols24() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[1] = t1arrold[3];
+                t1arrnew[5] = t1arrold[7];
+                t1arrnew[9] = t1arrold[11];
+                t1arrnew[13] = t1arrold[15];
+                t1arrnew[3] = t1arrold[1];
+                t1arrnew[7] = t1arrold[5];
+                t1arrnew[11] = t1arrold[9];
+                t1arrnew[15] = t1arrold[13];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[1] = t2arrold[3];
+                t2arrnew[5] = t2arrold[7];
+                t2arrnew[9] = t2arrold[11];
+                t2arrnew[13] = t2arrold[15];
+                t2arrnew[3] = t2arrold[1];
+                t2arrnew[7] = t2arrold[5];
+                t2arrnew[11] = t2arrold[9];
+                t2arrnew[15] = t2arrold[13];
+            showim();
+      }
+//
+// Switch columns 3 and 4
+      function swcols34() {
+             for(i=0; i<16; i++) {
+                t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[2] = t1arrold[3];
+                t1arrnew[6] = t1arrold[7];
+                t1arrnew[10] = t1arrold[11];
+                t1arrnew[14] = t1arrold[15];
+                t1arrnew[3] = t1arrold[2];
+                t1arrnew[7] = t1arrold[6];
+                t1arrnew[11] = t1arrold[10];
+                t1arrnew[15] = t1arrold[14];
+//
+             for(i=0; i<16; i++) {
+                t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[2] = t2arrold[3];
+                t2arrnew[6] = t2arrold[7];
+                t2arrnew[10] = t2arrold[11];
+                t2arrnew[14] = t2arrold[15];
+                t2arrnew[3] = t2arrold[2];
+                t2arrnew[7] = t2arrold[6];
+                t2arrnew[11] = t2arrold[10];
+                t2arrnew[15] = t2arrold[14];
+            showim();
+     }
+// *******************************************************
+//
+// PERMUTATIONS OF QUADRANTS
+// Switch quadrants 1 and 2, where quadrants are numbered
+//   1 2
+//   3 4
+//
+      function swquads12() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[2];
+                t1arrnew[1] = t1arrold[3];
+                t1arrnew[4] = t1arrold[6];
+                t1arrnew[5] = t1arrold[7];
+                t1arrnew[2] = t1arrold[0];
+                t1arrnew[3] = t1arrold[1];
+                t1arrnew[6] = t1arrold[4];
+                t1arrnew[7] = t1arrold[5];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[0] = t2arrold[2];
+                t2arrnew[1] = t2arrold[3];
+                t2arrnew[4] = t2arrold[6];
+                t2arrnew[5] = t2arrold[7];
+                t2arrnew[2] = t2arrold[0];
+                t2arrnew[3] = t2arrold[1];
+                t2arrnew[6] = t2arrold[4];
+                t2arrnew[7] = t2arrold[5];
+            showim();
+      }
+//
+// Switch quadrants 1 and 3
+      function swquads13() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[8];
+                t1arrnew[1] = t1arrold[9];
+                t1arrnew[4] = t1arrold[12];
+                t1arrnew[5] = t1arrold[13];
+                t1arrnew[8] = t1arrold[0];
+                t1arrnew[9] = t1arrold[1];
+                t1arrnew[12] = t1arrold[4];
+                t1arrnew[13] = t1arrold[5];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[0] = t2arrold[8];
+                t2arrnew[1] = t2arrold[9];
+                t2arrnew[4] = t2arrold[12];
+                t2arrnew[5] = t2arrold[13];
+                t2arrnew[8] = t2arrold[0];
+                t2arrnew[9] = t2arrold[1];
+                t2arrnew[12] = t2arrold[4];
+                t2arrnew[13] = t2arrold[5];
+            showim();
+      }
+//
+// Switch quadrants 1 and 4
+      function swquads14() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[10];
+                t1arrnew[1] = t1arrold[11];
+                t1arrnew[4] = t1arrold[14];
+                t1arrnew[5] = t1arrold[15];
+                t1arrnew[10] = t1arrold[0];
+                t1arrnew[11] = t1arrold[1];
+                t1arrnew[14] = t1arrold[4];
+                t1arrnew[15] = t1arrold[5];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[0] = t2arrold[10];
+                t2arrnew[1] = t2arrold[11];
+                t2arrnew[4] = t2arrold[14];
+                t2arrnew[5] = t2arrold[15];
+                t2arrnew[10] = t2arrold[0];
+                t2arrnew[11] = t2arrold[1];
+                t2arrnew[14] = t2arrold[4];
+                t2arrnew[15] = t2arrold[5];
+            showim();
+      }
+//
+// Switch quadrants 2 and 3
+      function swquads23() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[2] = t1arrold[8];
+                t1arrnew[3] = t1arrold[9];
+                t1arrnew[6] = t1arrold[12];
+                t1arrnew[7] = t1arrold[13];
+                t1arrnew[8] = t1arrold[2];
+                t1arrnew[9] = t1arrold[3];
+                t1arrnew[12] = t1arrold[6];
+                t1arrnew[13] = t1arrold[7];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[2] = t2arrold[8];
+                t2arrnew[3] = t2arrold[9];
+                t2arrnew[6] = t2arrold[12];
+                t2arrnew[7] = t2arrold[13];
+                t2arrnew[8] = t2arrold[2];
+                t2arrnew[9] = t2arrold[3];
+                t2arrnew[12] = t2arrold[6];
+                t2arrnew[13] = t2arrold[7];
+            showim();
+      }
+//
+// Switch quadrants 2 and 4
+      function swquads24() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[2] = t1arrold[10];
+                t1arrnew[3] = t1arrold[11];
+                t1arrnew[6] = t1arrold[14];
+                t1arrnew[7] = t1arrold[15];
+                t1arrnew[10] = t1arrold[2];
+                t1arrnew[11] = t1arrold[3];
+                t1arrnew[14] = t1arrold[6];
+                t1arrnew[15] = t1arrold[7];
+//
+             for(i=0; i<16; i++) {
+             t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[2] = t2arrold[10];
+                t2arrnew[3] = t2arrold[11];
+                t2arrnew[6] = t2arrold[14];
+                t2arrnew[7] = t2arrold[15];
+                t2arrnew[10] = t2arrold[2];
+                t2arrnew[11] = t2arrold[3];
+                t2arrnew[14] = t2arrold[6];
+                t2arrnew[15] = t2arrold[7];
+            showim();
+      }
+//
+// Switch quadrants 3 and 4
+      function swquads34() {
+             for(i=0; i<16; i++) {
+                t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[8] = t1arrold[10];
+                t1arrnew[9] = t1arrold[11];
+                t1arrnew[12] = t1arrold[14];
+                t1arrnew[13] = t1arrold[15];
+                t1arrnew[10] = t1arrold[8];
+                t1arrnew[11] = t1arrold[9];
+                t1arrnew[14] = t1arrold[12];
+                t1arrnew[15] = t1arrold[13];
+//
+             for(i=0; i<16; i++) {
+                t2arrnew[i] = t2arrold[i];
+             };
+                t2arrnew[8] = t2arrold[10];
+                t2arrnew[9] = t2arrold[11];
+                t2arrnew[12] = t2arrold[14];
+                t2arrnew[13] = t2arrold[15];
+                t2arrnew[10] = t2arrold[8];
+                t2arrnew[11] = t2arrold[9];
+                t2arrnew[14] = t2arrold[12];
+                t2arrnew[15] = t2arrold[13];
+            showim();
+     }
+// *******************************************************
+//
+// If rows have been switched ...
+     function switchrows() {
+          if (rowspicked[1] == 1 && rowspicked[2] == 1) {
+               swrows12();
+             }
+          if (rowspicked[1] == 1 && rowspicked[3] == 1) {
+               swrows13();
+             }
+          if (rowspicked[1] == 1 && rowspicked[4] == 1) {
+               swrows14();
+             }
+          if (rowspicked[2] == 1 && rowspicked[3] == 1) {
+               swrows23();
+             }
+          if (rowspicked[2] == 1 && rowspicked[4] == 1) {
+               swrows24();
+             }
+          if (rowspicked[3] == 1 && rowspicked[4] == 1) {
+               swrows34();
+             }
+     }
+// If columns have been switched ...
+     function switchcols() {
+          if (colspicked[1] == 1 && colspicked[2] == 1) {
+               swcols12();
+             }
+          if (colspicked[1] == 1 && colspicked[3] == 1) {
+               swcols13();
+             }
+          if (colspicked[1] == 1 && colspicked[4] == 1) {
+               swcols14();
+             }
+          if (colspicked[2] == 1 && colspicked[3] == 1) {
+               swcols23();
+             }
+          if (colspicked[2] == 1 && colspicked[4] == 1) {
+               swcols24();
+             }
+          if (colspicked[3] == 1 && colspicked[4] == 1) {
+               swcols34();
+             }
+     }
+// If quadrants have been switched ...
+     function switchquads() {
+          if (quadspicked[1] == 1 && quadspicked[2] == 1) {
+               swquads12();
+             }
+          if (quadspicked[1] == 1 && quadspicked[3] == 1) {
+               swquads13();
+             }
+          if (quadspicked[1] == 1 && quadspicked[4] == 1) {
+               swquads14();
+             }
+          if (quadspicked[2] == 1 && quadspicked[3] == 1) {
+               swquads23();
+             }
+          if (quadspicked[2] == 1 && quadspicked[4] == 1) {
+               swquads24();
+             }
+          if (quadspicked[3] == 1 && quadspicked[4] == 1) {
+               swquads34();
+             }
+     }
+     function row1clicked() {
+          rowspicked[1] = 1;
+          switchrows();
+     }
+     function row2clicked() {
+          rowspicked[2] = 1;
+          switchrows();
+     }
+     function row3clicked() {
+          rowspicked[3] = 1;
+          switchrows();
+     }
+     function row4clicked() {
+          rowspicked[4] = 1;
+          switchrows();
+     }
+//
+     function col1clicked() {
+          colspicked[1] = 1;
+          switchcols();
+     }
+     function col2clicked() {
+          colspicked[2] = 1;
+          switchcols();
+     }
+     function col3clicked() {
+          colspicked[3] = 1;
+          switchcols();
+     }
+     function col4clicked() {
+          colspicked[4] = 1;
+          switchcols();
+     }
+//
+     function quad1clicked() {
+          quadspicked[1] = 1;
+          switchquads();
+     }
+     function quad2clicked() {
+          quadspicked[2] = 1;
+          switchquads();
+     }
+     function quad3clicked() {
+          quadspicked[3] = 1;
+          switchquads();
+     }
+     function quad4clicked() {
+          quadspicked[4] = 1;
+          switchquads();
+     }
+// End hiding script from old browsers -->
+   </script><!-- <LINK REL=stylesheet HREF="puzzstyle.css" TYPE="text/css">-->
+  <style type="text/css">
+
+.puzz { font-size: 12px }
+
+
+  </style></head><body onload="showim();">
+<!-- <BODY onLoad="loadimages();"> --><!--Navigate-->
+<table cellpadding="12" cellspacing="0" width="100%">
+  <tbody>
+    <tr bgcolor="#000000">
+      <td bgcolor="#000000"> <strong><font color="#ffffff"> <small><small>Finite
+Geometry Notes</small></small></font><small><small></small></small></strong>
+      <small><small> <nobr> &nbsp; <font color="#ffffff">|</font> <a href="http://finitegeometry.org/sc/index.html"> <font color="#ffffff"> Home</font></a> <font color="#ffffff">|</font> <a href="http://finitegeometry.org/sc/map.html"> <font color="#ffffff">Site Map</font></a> <font color="#ffffff">|</font> <a href="http://finitegeometry.org/sc/author.html"> <font color="#ffffff"> Author</font></a> <font color="#ffffff">|</font> </nobr></small></small> </td>
+    </tr>
+  </tbody>
+</table>
+<!--EndNavigate-->
+<br>
+<!-- OVERALL BIG TABLE -------------------- ******************************* -->
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td><!-- LEFT TABLE -- 12 DIAMOND FIGURES ---- ********************** -->
+      <table border="0" cellpadding="0" cellspacing="12">
+<!--  1ST ROW OF 12-FIGURE TABLE --> <tbody>
+          <tr>
+            <td><!-- FOUR-DIAMOND FIGURE ---------- -->
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+            <td><!-- BIG-DIAMOND FIGURE --------- -->
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- END OF 1ST ROW OF 12-FIGURE TABLE --></tr>
+<!-- BEGIN 2ND ROW OF 12-FIGURE TABLE --><!-- BIG-DIAMOND FIGURE AGAIN --------- -->
+          <tr>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- SYMMETRIC-GEM FIGURE -- ************************************ --> <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- END OF 2ND ROW OF 12-FIGURE TABLE --></tr>
+<!-- BEGIN 3RD ROW OF 12-FIGURE TABLE --><!-- SYMMETRIC-GEM FIGURE AGAIN -->
+          <tr>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!--  BROKEN-LINES SYMMETRIC FIGURE --> <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- END OF 3RD ROW OF 12-FIGURE TABLE --></tr>
+<!-- BEGIN 4TH ROW OF 12-FIGURE TABLE --><!-- ARROWHEADS WITH 180 DEGREE SYMMETRY -->
+          <tr>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+              </tbody>
+            </table>
+<!-- ARROWHEADS ROTATED CLOCKWISE BY 90 DEGREES --> </td>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- END OF 4TH ROW OF 12-FIGURE TABLE --></tr>
+<!-- BEGIN 5TH ROW OF 12-FIGURE TABLE --><!-- UP-ON-LEFT, DOWN-ON-RIGHT ARROWS -->
+          <tr>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- TOP-RIGHT AND BOTTOM-LEFT ARROWS --> <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- END 5TH ROW OF 12-FIGURE TABLE --></tr>
+<!-- BEGIN 6TH ROW OF 12-FIGURE TABLE --><!--  LAZY-8 FIGURE --> <tr>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- UPRIGHT-8 FIGURE --> <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                </tr>
+                <tr>
+                  <td><img src="Diamond16Puzzle_files/t12-1.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-3.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-2.gif" height="12" width="12"></td>
+                  <td><img src="Diamond16Puzzle_files/t12-0.gif" height="12" width="12"></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- END OF 6TH ROW OF 12-FIGURE TABLE --></tr>
+<!--  END OF 12-FIGURE TABLE -->
+        </tbody>
+      </table>
+      </td>
+<!-- TEXT SUBTABLE OF SCREEN-WIDE OVERALL TABLE --> <td>
+      <table border="0" cellpadding="12" cellspacing="0">
+        <tbody>
+          <tr>
+            <td>
+            <h2>The Diamond 16 Puzzle</h2>
+Change the pair of patterns at right to any of the pairs at left. (The
+original pair is at top left.)
+            <p>To change the patterns, click on a row, then click on
+the row you want to move it to. Do the same for other rows and/or
+columns and/or quadrants.<br>
+            </p>
+            <p>You can make 322,560 pairs of patterns. Each pair
+pictures a
+different symmetry of the underlying 16-point space.&nbsp;<!-- END OF TEXT SUBTABLE --></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+<!-- BEGINNING OF PUZZLE PROPER -- A TABLE WITH 3 SUBTABLES --> <td>
+      <table align="center" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr>
+            <td><!-- PUZZLE'S IMAGE PAIR -->
+            <table align="center" border="1" cellpadding="0" cellspacing="20">
+              <tbody>
+                <tr>
+                  <td><!-- FOUR-DIAMOND FIGURE ---------- -->
+                  <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td><img src="Diamond16Puzzle_files/t26-0.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-1.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-2.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-3.gif" height="26" width="26"></td>
+                      </tr>
+                      <tr>
+                        <td><img src="Diamond16Puzzle_files/t26-0.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-1.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-2.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-3.gif" height="26" width="26"></td>
+                      </tr>
+                      <tr>
+                        <td><img src="Diamond16Puzzle_files/t26-3.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-2.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-1.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-0.gif" height="26" width="26"></td>
+                      </tr>
+                      <tr>
+                        <td><img src="Diamond16Puzzle_files/t26-3.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-2.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-1.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-0.gif" height="26" width="26"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                  <td><!-- BIG-DIAMOND FIGURE --------- -->
+                  <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td><img src="Diamond16Puzzle_files/t26-2.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-3.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-3.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-2.gif" height="26" width="26"></td>
+                      </tr>
+                      <tr>
+                        <td><img src="Diamond16Puzzle_files/t26-0.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-1.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-1.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-0.gif" height="26" width="26"></td>
+                      </tr>
+                      <tr>
+                        <td><img src="Diamond16Puzzle_files/t26-1.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-0.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-0.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-1.gif" height="26" width="26"></td>
+                      </tr>
+                      <tr>
+                        <td><img src="Diamond16Puzzle_files/t26-3.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-2.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-2.gif" height="26" width="26"></td>
+                        <td><img src="Diamond16Puzzle_files/t26-3.gif" height="26" width="26"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+<!-- ****************************************************************** --></td>
+          </tr>
+          <tr>
+            <td><!-- SUBTABLE CONTAINING ROWS-, QUADRANTS-, AND COLUMNS-SUBTABLES -->
+            <table align="center" border="0" cellpadding="0" cellspacing="16">
+<!-- ROWS TABLE --> <tbody>
+                <tr>
+                  <td>
+                  <table border="1" bordercolor="black" cellpadding="0" cellspacing="0">
+<!--<CAPTION ALIGN=BOTTOM><font size=1 class=captions>Rows</font></CAPTION>-->
+                    <tbody>
+                      <tr>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="row1clicked(); return false" href="#"><font class="puzz" size="4"><img src="Diamond16Puzzle_files/row15x78.gif" border="0" height="17" width="78"> </font></a></td>
+                      </tr>
+                      <tr>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="row2clicked(); return false" href="#"><font class="puzz" size="4"><img src="Diamond16Puzzle_files/row15x78.gif" border="0" height="17" width="78"> </font></a></td>
+                      </tr>
+                      <tr>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="row3clicked(); return false" href="#"><font class="puzz" size="4"><img src="Diamond16Puzzle_files/row15x78.gif" border="0" height="17" width="78"> </font></a></td>
+                      </tr>
+                      <tr>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="row4clicked(); return false" href="#"><font class="puzz" size="4"><img src="Diamond16Puzzle_files/row15x78.gif" border="0" height="17" width="78"> </font></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <center><img src="Diamond16Puzzle_files/puzzcapR.gif"></center>
+<!-- END OF ROWS TABLE --></td>
+                  <td><!-- QUADRANTS TABLE -->
+                  <table border="1" bordercolor="black" cellpadding="0" cellspacing="0">
+<!--<CAPTION ALIGN=BOTTOM><font size=1 class=captions>Quadrants</font></CAPTION>-->
+                    <tbody>
+                      <tr valign="bottom">
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" align="left" bgcolor="#ffffff" valign="bottom"><a onclick="quad1clicked(); return false" href="#"><img src="Diamond16Puzzle_files/quad36x39.gif" border="0" height="36" width="39"></a> </td>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" align="right" bgcolor="#ffffff" valign="bottom"><a onclick="quad2clicked(); return false" href="#"><img src="Diamond16Puzzle_files/quad36x39.gif" border="0" height="36" width="39"></a> </td>
+                      </tr>
+                      <tr valign="top">
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" align="left" bgcolor="#ffffff" valign="top"><a onclick="quad3clicked(); return false" href="#"><img src="Diamond16Puzzle_files/quad36x39.gif" border="0" height="36" width="39"></a> </td>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" align="right" bgcolor="#ffffff" valign="top"><a onclick="quad4clicked(); return false" href="#"><img src="Diamond16Puzzle_files/quad36x39.gif" border="0" height="36" width="39"></a> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <center><img src="Diamond16Puzzle_files/puzzcapQ.gif"></center>
+                  </td>
+                  <td><!-- COLUMNS TABLE -->
+                  <table border="1" bordercolor="black" cellpadding="0" cellspacing="0">
+<!--<CAPTION ALIGN=BOTTOM><font size=1 class=captions>Columns</font></CAPTION>-->
+                    <tbody>
+                      <tr>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="col1clicked(); return false" href="#"><img src="Diamond16Puzzle_files/col80x16.gif" border="0" height="78" width="18"></a> </td>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="col2clicked(); return false" href="#"><img src="Diamond16Puzzle_files/col80x16.gif" border="0" height="78" width="18"></a> </td>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="col3clicked(); return false" href="#"><img src="Diamond16Puzzle_files/col80x16.gif" border="0" height="78" width="18"></a> </td>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="col4clicked(); return false" href="#"><img src="Diamond16Puzzle_files/col80x16.gif" border="0" height="78" width="18"></a> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <center><img src="Diamond16Puzzle_files/puzzcapC.gif"></center>
+<!-- END OF RQC SUBTABLE --> </td>
+                </tr>
+              </tbody>
+            </table>
+<!-- END OF PUZZLE-PROPER SUBTABLE --> </td>
+          </tr>
+        </tbody>
+      </table>
+<!-- END OF SCREEN-WIDE OVERALL TABLE --> </td>
+    </tr>
+  </tbody>
+</table>
+<p> </p>
+<center>Copyright © 2002 by Steven H. Cullinane. All rights reserved. <br>
+Page created Feb. 12, 2002.<br><br>Copying for&nbsp;non-profit personal use by an individual is authorized.<br>(In Firefox, click on "File" menu option, then on "Save Page As," then enter the file name<br> "Diamond16Puzzle.html" (this name must be used) and select save-as type "Web page, complete.")</center>
+
+<hr>
+<blockquote>
+  <p><strong><font size="4">Related Web Pages</font></strong></p>
+  <blockquote style="margin-right: 0px;" dir="ltr">
+    <p><a href="http://diamondtheorem.com/">The Diamond Theorem</a>,</p>
+    <p><a href="http://finitegeometry.org/sc/gen/dth/DiamondTheory.html">Diamond Theory</a>,</p>
+    <p><a href="http://finitegeometry.org/sc/16/geometry.html">Geometry of the 4x4 Square</a>,</p>
+    <p><a href="http://finitegeometry.org/sc/4/dd/index.html">Theme and Variations</a>,</p>
+    <p><a href="http://finitegeometry.org/sc/gen/bdes/index.html">Block Designs</a>,</p>
+    <p><a href="http://finitegeometry.org/sc/gen/GalG.html">Galois Geometry</a>,</p>
+    <p><a href="http://finitegeometry.org/sc/gen/ortho.html">Latin-Square Geometry</a>,</p>
+    <p><a href="http://finitegeometry.org/sc/gen/walsh.html">Walsh Functions</a>,</p>
+    <p><a href="http://finitegeometry.org/sc/16/quiltgeometry.html">Quilt Geometry</a>.<br>
+<!--footer--> </p>
+  </blockquote>
+</blockquote>
+<hr>
+<p>Last updated August 23, 2010. </p>
+</body></html>
