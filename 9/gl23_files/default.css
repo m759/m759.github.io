@@ -1,0 +1,24 @@
+    span.ab { font-size: larger; vertical-align: sub; white-space: nowrap; }
+    
+    sub { font-size: x-small; }
+    sub.o { font-weight: medium; position: relative; left: -0.6em; top: 0.1em; }
+    sup.lefted { position: relative; left: -0.45em; }
+
+    span.ova { position: absolute; left: auto; top: auto; }
+    span.ovr { position: relative; left: -0.65em; top: -0.0em;  }
+
+    ul { margin: -1em 0 0; }
+    body { background-color: #E0E0D0; }
+    table.floatright { float: right; background-color: rgb(223,216,181); margin: 0.5em 0 0.5em 0.5em; border: 1px solid black; }
+    table.floatleft { float: left; background-color: rgb(223,216,181); margin: 0.5em 0.5em 0.5em 0; border: 1px solid black; }
+    table.floatleft th, table.floatright th { padding: 2px; }
+    table.floatleft td, table.floatright td { padding: 0 4px 4px 4px; }
+
+    p.right { float:right; margin: 0 0 0 2em; }
+    span.proof { font-size: small; }
+    
+    pre { font-size: small; line-height: 80%; }
+    span.invisgrey { color: #E0E0D0; }
+
+    
+    

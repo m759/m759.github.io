@@ -1,0 +1,1616 @@
+<html>
+<head>
+<!-- Original URL: http://finitegeometry.org/sc/8/view/index.html
+Date Downloaded: 1/9/2016 12:17:05 AM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Design Cube 2x2x2</title>
+<meta name="description" content="A JavaScript demonstration of how graphic designs on a cube retain their symmetry under a group of 1344 permutations." />
+<meta name="keywords" content="symmetry,finite,geometry,diamond theory,diamond theorem,group theory,permutations,cullinane,4x4x4" />
+
+<!-- Software copyright 2006 by Steven H. Cullinane.  All rights reserved. -->
+
+<script language="JAVASCRIPT" type="TEXT/JAVASCRIPT">
+
+   <!-- Hide script from old  browsers
+
+//    alert("cube8 view javascript has started");
+
+// Preload images
+
+	a1 = new Image(26,26);
+	a1.src = "empty26x26.gif";
+	a2 = new Image(24,50);
+	a2.src = "row24x50.gif";
+	a3 = new Image(50,24);
+	a3.src = "col50x24.gif";
+	a4 = new Image(23,23);
+	a4.src = "quad23x23.gif";
+	a5 = new Image(63,63);
+	a5.src = "grid63x63.gif";
+	a20 = new Image(26,26);
+	a20.src = "t26-0.gif";
+	a21 = new Image(26,26);
+	a21.src = "t26-1.gif";
+	a22 = new Image(26,26);
+	a22.src = "t26-2.gif";
+	a23 = new Image(26,26);
+	a23.src = "t26-3.gif";
+	a31 = new Image(55,63);
+	a31.src = "rotTopCC.jpg";
+	a32 = new Image(55,63);
+	a32.src = "rotTopCW.jpg";
+	a33 = new Image(55,63);
+	a33.src = "rotLFCC.jpg";
+	a34 = new Image(55,63);
+	a34.src = "rotLFCW.jpg";
+	a35 = new Image(55,63);
+	a35.src = "rotRFCC.jpg";
+	a36 = new Image(55,63);
+	a36.src = "rotRFCWjpg";
+
+
+// 
+// Define array of numbers
+// with index representing POSITIONS of numbers
+// according to the scheme
+// top layer --
+//    1 2
+//    3 4 
+// bottom layer --
+//    5 6
+//    7 8
+//
+
+    num = new Array(0,1,2,3,4,5,6,7,8);    
+
+//Define temp array for permuting num array
+//
+
+	tempnum = new Array(0,1,2,3,4,5,6,7,8);	
+
+// For each of the 6 face-positions, define an array
+// to hold the face-graphics info for
+// each of the 8 subcubes
+// NOTE: in these 6 arrays, the INDEX indicates 
+// which SUBCUBE is in question, not which
+// subcube-POSITION.
+// 
+// For typeslr, for instance, the face-types
+// are listed as seen with, so to speak,
+// x-ray vision, looking from the left front
+// layer of the 8-cube assembly.  The array
+// indices always refer to the individual subcubes
+// by the names of their ORIGINAL positions
+// in the 8-cube subassembly, even after
+// permutations of subcubes have been done.
+//  
+//
+// When the 8 subcubes are permuted, the 
+// types** arrays are constant, since the index
+// refers to subcubes, not subcube-positions
+// But when the entire 8-subcube assembly is
+// rotated, so is each subcube, and so the 
+// types** arrays must be changed accordingly.
+//
+
+	typestp = new Array("x",2,3,1,0,0,1,3,2);	
+	typeslr = new Array("x",3,1,2,0,0,2,1,3);
+	typesrr = new Array("x",2,3,0,1,1,0,3,2);
+	typeslf = new Array("x",0,1,2,3,3,2,1,0);
+	typesrf = new Array("x",1,3,0,2,2,0,3,1);
+	typesbt = new Array("x",0,1,3,2,2,3,1,0);
+    
+//Define arrays to hold images of displayed layers
+	tp = new Array(4);
+		tp[0] = "t26-2.gif";
+		tp[01] = "t26-3.gif";
+		tp[2] = "t26-1.gif";
+		tp[3] = "t26-0.gif";
+	lr = new Array(4);
+		lr[0] = "t26-2.gif";
+		lr[1] = "t26-3.gif";
+		lr[2] = "t26-1.gif";
+		lr[3] = "t26-0.gif";
+	rr = new Array(4);
+		rr[0] = "t26-2.gif";
+		rr[1] = "t26-3.gif";
+		rr[2] = "t26-1.gif";
+		rr[3] = "t26-0.gif";
+	lf = new Array(4);
+		lf[0] = "t26-2.gif";
+		lf[1] = "t26-3.gif";
+		lf[2] = "t26-1.gif";
+		lf[3] = "t26-0.gif";
+	rf = new Array(4);
+		rf[0] = "t26-2.gif";
+		rf[1] = "t26-3.gif";
+		rf[2] = "t26-1.gif";
+		rf[3] = "t26-0.gif";
+	bt = new Array(4);
+		bt[0] = "t26-2.gif";
+		bt[1] = "t26-3.gif";
+		bt[2] = "t26-1.gif";
+		bt[3] = "t26-0.gif";
+
+// Define arrays to control permutation entries 
+     rowspicked = new Array(0,0,0);
+     colspicked = new Array(0,0,0);
+     quadspicked = new Array(0,0,0,0,0);
+
+// Define an array for use in permuting face-graphics types
+// when overall cube assembly is rotated
+
+	typestemp = new Array("x",2,3,1,0,0,1,3,2);
+		
+// End of initializing arrays
+//
+
+
+// Reset variables
+
+	function resetvars() {
+	
+		for(i=0; i<3; i++) {
+		rowspicked[i] = 0;
+		};
+		for(i=0; i<3; i++) {
+		colspicked[i] = 0;
+		};
+		for(i=0; i<5; i++) {
+		quadspicked[i] = 0;
+		};
+	};
+	
+	// Show images
+	function showim() {
+
+		loadlayers();
+		for(i=0; i<4; i++) {
+		document.images[i].src = tp[i];
+		};
+		for(i=4; i<8; i++) {
+		document.images[i].src = lr[i - 4];
+		};
+		for(i=8; i<12; i++) {
+		document.images[i].src = rr[i - 8];
+		};
+		for(i=12; i<16; i++) {
+		document.images[i].src = lf[i - 12];
+		};
+		for(i=16; i<20; i++) {
+		document.images[i].src = rf[i - 16];
+		};
+		for(i=20; i<24; i++) {
+		document.images[i].src = bt[i - 20];
+		};
+		
+	resetvars();
+	};
+
+// Start javascript with function
+// called by "onload" in HTML "body" tag
+
+	function startup() {
+	
+// alert("startup is running");
+
+		showim();
+	};
+	
+// Form each GRAPHIC IMAGE layer to be displayed
+	function loadlayers() {
+			loadtp();
+			loadlr();
+			loadrr();
+			loadlf();
+			loadrf();
+			loadbt();
+	};
+	
+	
+// Load top graphics display.
+		function loadtp() {
+		
+		tp[0] = "t26-" + typestp[num[1]] + ".gif";
+		tp[1] = "t26-" + typestp[num[2]] + ".gif";
+		tp[2] = "t26-" + typestp[num[3]] + ".gif";
+		tp[3] = "t26-" + typestp[num[4]] + ".gif";		
+		};
+
+// Load left rear graphics display.
+		function loadlr() {
+		
+		lr[0] = "t26-" + typeslr[num[3]] + ".gif";
+		lr[1] = "t26-" + typeslr[num[1]] + ".gif";
+		lr[2] = "t26-" + typeslr[num[7]] + ".gif";
+		lr[3] = "t26-" + typeslr[num[5]] + ".gif";		
+		};
+		
+// Load right rear graphics display.
+		function loadrr() {
+		
+		rr[0] = "t26-" + typesrr[num[1]] + ".gif";
+		rr[1] = "t26-" + typesrr[num[2]] + ".gif";
+		rr[2] = "t26-" + typesrr[num[5]] + ".gif";
+		rr[3] = "t26-" + typesrr[num[6]] + ".gif";		
+		};
+		
+// Load left front graphics display.
+		function loadlf() {
+		
+		lf[0] = "t26-" + typeslf[num[3]] + ".gif";
+		lf[1] = "t26-" + typeslf[num[4]] + ".gif";
+		lf[2] = "t26-" + typeslf[num[7]] + ".gif";
+		lf[3] = "t26-" + typeslf[num[8]] + ".gif";		
+		};
+		
+// Load right front graphics display.
+		function loadrf() {
+		
+		rf[0] = "t26-" + typesrf[num[4]] + ".gif";
+		rf[1] = "t26-" + typesrf[num[2]] + ".gif";
+		rf[2] = "t26-" + typesrf[num[8]] + ".gif";
+		rf[3] = "t26-" + typesrf[num[6]] + ".gif";		
+		};
+
+// Load bottom graphics display.
+		function loadbt() {
+		
+		bt[0] = "t26-" + typesbt[num[5]] + ".gif";
+		bt[1] = "t26-" + typesbt[num[6]] + ".gif";
+		bt[2] = "t26-" + typesbt[num[7]] + ".gif";
+		bt[3] = "t26-" + typesbt[num[8]] + ".gif";		
+		};
+		
+		
+
+
+// *******************************************************
+// PERMUTATIONS OF ROWS
+//
+// Switch rows 1 and 2
+		function swrows12() {
+		for(i=0; i<9; i++) {
+		tempnum[i] = num[i];
+		};
+		tempnum[1] = num[3];
+		tempnum[2] = num[4];
+		tempnum[3] = num[1];
+		tempnum[4] = num[2];
+		tempnum[5] = num[7];
+		tempnum[6] = num[8];
+		tempnum[7] = num[5];
+		tempnum[8] = num[6];
+			for(i=0; i<9; i++) {
+			num[i] = tempnum[i];
+			};
+			
+		showim();
+	};
+
+// *******************************************************
+// PERMUTING PARTS..........
+//
+// NOTE: THE FOLLOWING PERMUTATIONS ASSUME
+// WE ARE WORKING ON TOP LAYER 
+// and applying the same permutations to all parallel layers 
+//
+// *******************************************************
+
+// PERMUTATIONS OF COLUMNS
+
+// Switch cols 1 and 2
+
+	function swcols12() {
+		for(i=0; i<9; i++) {
+		tempnum[i] = num[i];
+		};
+		tempnum[1] = num[2];
+		tempnum[2] = num[1];
+		tempnum[3] = num[4];
+		tempnum[4] = num[3];
+		tempnum[5] = num[6];
+		tempnum[6] = num[5];
+		tempnum[7] = num[8];
+		tempnum[8] = num[7];
+			for(i=0; i<9; i++) {
+			num[i] = tempnum[i];
+			};
+		showim();
+	};
+//
+// *******************************************************
+//
+// PERMUTATIONS OF QUADRANTS
+// Switch quadrants 1 and 2, where quadrants are numbered
+//   1 2
+//   3 4
+//
+	function swquads12() {
+		for(i=0; i<9; i++) {
+		tempnum[i] = num[i];
+		};
+		tempnum[1] = num[2];
+		tempnum[2] = num[1];
+		tempnum[5] = num[6];
+		tempnum[6] = num[5];
+			for(i=0; i<9; i++) {
+			num[i] = tempnum[i];
+			};
+		showim();
+	};
+//
+// Switch quadrants 1 and 3
+	function swquads13() {
+		for(i=0; i<9; i++) {
+		tempnum[i] = num[i];
+		};
+		tempnum[1] = num[3];
+		tempnum[3] = num[1];
+		tempnum[5] = num[7];
+		tempnum[7] = num[5];
+			for(i=0; i<9; i++) {
+			num[i] = tempnum[i];
+			}
+		showim();
+	};
+//
+// Switch quadrants 1 and 4
+	function swquads14() {
+		for(i=0; i<9; i++) {
+		tempnum[i] = num[i];
+		};
+		tempnum[1] = num[4];
+		tempnum[4] = num[1];
+		tempnum[5] = num[8];
+		tempnum[8] = num[5];
+			for(i=0; i<9; i++) {
+			num[i] = tempnum[i];
+			};
+		showim();
+	};
+//
+// Switch quadrants 2 and 3
+	function swquads23() {
+		for(i=0; i<9; i++) {
+		tempnum[i] = num[i];
+		};
+		tempnum[2] = num[3];
+		tempnum[3] = num[2];
+		tempnum[6] = num[7];
+		tempnum[7] = num[6];
+			for(i=0; i<9; i++) {
+			num[i] = tempnum[i];
+			};
+		showim();
+	};
+//
+// Switch quadrants 2 and 4
+	function swquads24() {
+		for(i=0; i<9; i++) {
+		tempnum[i] = num[i];
+		};
+		tempnum[2] = num[4];
+		tempnum[4] = num[2];
+		tempnum[6] = num[8];
+		tempnum[8] = num[6];
+			for(i=0; i<9; i++) {
+			num[i] = tempnum[i];
+			};
+		showim();
+	};
+//
+// Switch quadrants 3 and 4
+	function swquads34() {
+		for(i=0; i<9; i++) {
+		tempnum[i] = num[i];
+		};
+		tempnum[3] = num[4];
+		tempnum[4] = num[3];
+		tempnum[7] = num[8];
+		tempnum[8] = num[7];
+			for(i=0; i<9; i++) {
+			num[i] = tempnum[i];
+			};
+		showim();
+     };
+     
+// *******************************************************
+//
+// If rows have been switched ...
+     function switchrows() {
+	if (rowspicked[1] == 1 && rowspicked[2] == 1) {
+		swrows12();
+		}
+    }
+// If columns have been switched ...
+     function switchcols() {
+	if (colspicked[1] == 1 && colspicked[2] == 1) {
+		swcols12();
+		}
+     }
+// If quadrants have been switched ...
+     function switchquads() {
+	if (quadspicked[1] == 1 && quadspicked[2] == 1) {
+		swquads12();
+		}
+	if (quadspicked[1] == 1 && quadspicked[3] == 1) {
+		swquads13();
+		}
+	if (quadspicked[1] == 1 && quadspicked[4] == 1) {
+		swquads14();
+		}
+	if (quadspicked[2] == 1 && quadspicked[3] == 1) {
+		swquads23();
+		}
+	if (quadspicked[2] == 1 && quadspicked[4] == 1) {
+		swquads24();
+		}
+	if (quadspicked[3] == 1 && quadspicked[4] == 1) {
+		swquads34();
+		}
+     }
+     function row1clicked() {
+	rowspicked[1] = 1;
+	switchrows();
+     }
+     function row2clicked() {
+	rowspicked[2] = 1;
+	switchrows();
+     }
+//
+     function col1clicked() {
+	colspicked[1] = 1;
+	switchcols();
+     }
+     function col2clicked() {
+	colspicked[2] = 1;
+	switchcols();
+     }
+//
+     function quad1clicked() {
+	quadspicked[1] = 1;
+	switchquads();
+     }
+     function quad2clicked() {
+	quadspicked[2] = 1;
+	switchquads();
+     }
+     function quad3clicked() {
+	quadspicked[3] = 1;
+	switchquads();
+     }
+     function quad4clicked() {
+	quadspicked[4] = 1;
+	switchquads();
+     }
+     
+ 
+// If User has clicked icon for clockwise rotation
+// of cube from top face...
+
+	function rotateTopCW() {
+		
+		tempnum[1] = num[3];
+		tempnum[2] = num[1];
+		tempnum[3] = num[4];
+		tempnum[4] = num[2];
+		tempnum[5] = num[7];
+		tempnum[6] = num[5];
+		tempnum[7] = num[8];
+		tempnum[8] = num[6];
+		
+		for(i=1; i<9; i++) {
+		num[i] = tempnum[i];
+		};
+		
+		rotfacesTopCW();
+		
+	};
+	
+	function rotfacesTopCW() {
+	
+//		alert("typestp = " + typestp[0] + typestp[1] + 
+//		typestp[2] + typestp[3]+ typestp[4] + 
+//		typestp[5]+ typestp[6] + typestp[7] + typestp[8])
+		
+		for(i=1; i<9; i++) {
+	
+			if (typestp[i]==0){
+			typestemp[i]=1;
+			};
+			if (typestp[i]==1){
+			typestemp[i]=2;
+			};
+			if (typestp[i]==2){
+			typestemp[i]=3;
+			};
+			if (typestp[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typestp[i] = typestemp[i];
+			};
+		
+		for(i=1; i<9; i++) {
+	
+			if (typeslr[i]==0){
+			typestemp[i]=2;
+			};
+			if (typeslr[i]==1){
+			typestemp[i]=0;
+			};
+			if (typeslr[i]==2){
+			typestemp[i]=3;
+			};
+			if (typeslr[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typeslr[i] = typestemp[i];
+			};			
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesrr[i]==0){
+			typestemp[i]=2;
+			};
+			if (typesrr[i]==1){
+			typestemp[i]=0;
+			};
+			if (typesrr[i]==2){
+			typestemp[i]=3;
+			};
+			if (typesrr[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesrr[i] = typestemp[i];
+			};					
+			
+		for(i=1; i<9; i++) {
+	
+			if (typeslf[i]==0){
+			typestemp[i]=1;
+			};
+			if (typeslf[i]==1){
+			typestemp[i]=3;
+			};
+			if (typeslf[i]==2){
+			typestemp[i]=0;
+			};
+			if (typeslf[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typeslf[i] = typestemp[i];
+			};
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesrf[i]==0){
+			typestemp[i]=1;
+			};
+			if (typesrf[i]==1){
+			typestemp[i]=3;
+			};
+			if (typesrf[i]==2){
+			typestemp[i]=0;
+			};
+			if (typesrf[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesrf[i] = typestemp[i];
+			};
+			
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesbt[i]==0){
+			typestemp[i]=1;
+			};
+			if (typesbt[i]==1){
+			typestemp[i]=2;
+			};
+			if (typesbt[i]==2){
+			typestemp[i]=3;
+			};
+			if (typesbt[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesbt[i] = typestemp[i];
+			};
+				
+		showim();
+	};
+
+// End of top CW rotation
+
+// If User has clicked icon for counter-clockwise rotation
+// of cube from top face...
+
+	function rotateTopCC() {
+		
+		tempnum[1] = num[2];
+		tempnum[2] = num[4];
+		tempnum[3] = num[1];
+		tempnum[4] = num[3];
+		tempnum[5] = num[6];
+		tempnum[6] = num[8];
+		tempnum[7] = num[5];
+		tempnum[8] = num[7];
+		
+		for(i=1; i<9; i++) {
+		num[i] = tempnum[i];
+		};
+		
+		rotfacesTopCC();
+		
+	};
+	
+	function rotfacesTopCC() {
+		
+		for(i=1; i<9; i++) {
+	
+			if (typestp[i]==0){
+			typestemp[i]=3;
+			};
+			if (typestp[i]==1){
+			typestemp[i]=0;
+			};
+			if (typestp[i]==2){
+			typestemp[i]=1;
+			};
+			if (typestp[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typestp[i] = typestemp[i];
+			};
+		
+		for(i=1; i<9; i++) {
+	
+			if (typeslr[i]==0){
+			typestemp[i]=1;
+			};
+			if (typeslr[i]==1){
+			typestemp[i]=3;
+			};
+			if (typeslr[i]==2){
+			typestemp[i]=0;
+			};
+			if (typeslr[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typeslr[i] = typestemp[i];
+			};			
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesrr[i]==0){
+			typestemp[i]=1;
+			};
+			if (typesrr[i]==1){
+			typestemp[i]=3;
+			};
+			if (typesrr[i]==2){
+			typestemp[i]=0;
+			};
+			if (typesrr[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesrr[i] = typestemp[i];
+			};					
+			
+		for(i=1; i<9; i++) {
+	
+			if (typeslf[i]==0){
+			typestemp[i]=2;
+			};
+			if (typeslf[i]==1){
+			typestemp[i]=0;
+			};
+			if (typeslf[i]==2){
+			typestemp[i]=3;
+			};
+			if (typeslf[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typeslf[i] = typestemp[i];
+			};
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesrf[i]==0){
+			typestemp[i]=2;
+			};
+			if (typesrf[i]==1){
+			typestemp[i]=0;
+			};
+			if (typesrf[i]==2){
+			typestemp[i]=3;
+			};
+			if (typesrf[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesrf[i] = typestemp[i];
+			};
+			
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesbt[i]==0){
+			typestemp[i]=3;
+			};
+			if (typesbt[i]==1){
+			typestemp[i]=0;
+			};
+			if (typesbt[i]==2){
+			typestemp[i]=1;
+			};
+			if (typesbt[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesbt[i] = typestemp[i];
+			};
+				
+		showim();
+	};
+
+// End of top CC rotation
+    
+
+// If User has clicked icon for clockwise rotation
+// of cube from left front face...
+
+	function rotateLFCW() {
+		
+		tempnum[1] = num[5];
+		tempnum[2] = num[1];
+		tempnum[3] = num[7];
+		tempnum[4] = num[3];
+		tempnum[5] = num[6];
+		tempnum[6] = num[2];
+		tempnum[7] = num[8];
+		tempnum[8] = num[4];
+		
+		for(i=1; i<9; i++) {
+		num[i] = tempnum[i];
+		};
+		
+		rotfacesLFCW();
+		
+	};
+	
+	function rotfacesLFCW() {
+		
+		for(i=1; i<9; i++) {
+	
+			if (typestp[i]==0){
+			typestemp[i]=2;
+			};
+			if (typestp[i]==1){
+			typestemp[i]=0;
+			};
+			if (typestp[i]==2){
+			typestemp[i]=3;
+			};
+			if (typestp[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typestp[i] = typestemp[i];
+			};
+		
+		for(i=1; i<9; i++) {
+	
+			if (typeslr[i]==0){
+			typestemp[i]=3;
+			};
+			if (typeslr[i]==1){
+			typestemp[i]=2;
+			};
+			if (typeslr[i]==2){
+			typestemp[i]=0;
+			};
+			if (typeslr[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typeslr[i] = typestemp[i];
+			};			
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesrr[i]==0){
+			typestemp[i]=1;
+			};
+			if (typesrr[i]==1){
+			typestemp[i]=2;
+			};
+			if (typesrr[i]==2){
+			typestemp[i]=3;
+			};
+			if (typesrr[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesrr[i] = typestemp[i];
+			};					
+			
+		for(i=1; i<9; i++) {
+	
+			if (typeslf[i]==0){
+			typestemp[i]=1;
+			};
+			if (typeslf[i]==1){
+			typestemp[i]=2;
+			};
+			if (typeslf[i]==2){
+			typestemp[i]=3;
+			};
+			if (typeslf[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typeslf[i] = typestemp[i];
+			};
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesrf[i]==0){
+			typestemp[i]=2;
+			};
+			if (typesrf[i]==1){
+			typestemp[i]=3;
+			};
+			if (typesrf[i]==2){
+			typestemp[i]=1;
+			};
+			if (typesrf[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesrf[i] = typestemp[i];
+			};
+			
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesbt[i]==0){
+			typestemp[i]=1;
+			};
+			if (typesbt[i]==1){
+			typestemp[i]=3;
+			};
+			if (typesbt[i]==2){
+			typestemp[i]=0;
+			};
+			if (typesbt[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesbt[i] = typestemp[i];
+			};
+				
+		showim();
+	};
+
+// End of left front CW rotation
+    
+// If User has clicked icon for counter-clockwise rotation
+// of cube from left front face...
+
+	function rotateLFCC() {
+		
+		tempnum[1] = num[2];
+		tempnum[2] = num[6];
+		tempnum[3] = num[4];
+		tempnum[4] = num[8];
+		tempnum[5] = num[1];
+		tempnum[6] = num[5];
+		tempnum[7] = num[3];
+		tempnum[8] = num[7];
+		
+		for(i=1; i<9; i++) {
+		num[i] = tempnum[i];
+		};
+		
+		rotfacesLFCC();
+		
+	};
+	
+	function rotfacesLFCC() {
+		
+		for(i=1; i<9; i++) {
+	
+			if (typestp[i]==0){
+			typestemp[i]=1;
+			};
+			if (typestp[i]==1){
+			typestemp[i]=3;
+			};
+			if (typestp[i]==2){
+			typestemp[i]=0;
+			};
+			if (typestp[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typestp[i] = typestemp[i];
+			};
+		
+		for(i=1; i<9; i++) {
+	
+			if (typeslr[i]==0){
+			typestemp[i]=2;
+			};
+			if (typeslr[i]==1){
+			typestemp[i]=3;
+			};
+			if (typeslr[i]==2){
+			typestemp[i]=1;
+			};
+			if (typeslr[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typeslr[i] = typestemp[i];
+			};			
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesrr[i]==0){
+			typestemp[i]=3;
+			};
+			if (typesrr[i]==1){
+			typestemp[i]=0;
+			};
+			if (typesrr[i]==2){
+			typestemp[i]=1;
+			};
+			if (typesrr[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesrr[i] = typestemp[i];
+			};					
+			
+		for(i=1; i<9; i++) {
+	
+			if (typeslf[i]==0){
+			typestemp[i]=3;
+			};
+			if (typeslf[i]==1){
+			typestemp[i]=0;
+			};
+			if (typeslf[i]==2){
+			typestemp[i]=1;
+			};
+			if (typeslf[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typeslf[i] = typestemp[i];
+			};
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesrf[i]==0){
+			typestemp[i]=3;
+			};
+			if (typesrf[i]==1){
+			typestemp[i]=2;
+			};
+			if (typesrf[i]==2){
+			typestemp[i]=0;
+			};
+			if (typesrf[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesrf[i] = typestemp[i];
+			};
+			
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesbt[i]==0){
+			typestemp[i]=2;
+			};
+			if (typesbt[i]==1){
+			typestemp[i]=0;
+			};
+			if (typesbt[i]==2){
+			typestemp[i]=3;
+			};
+			if (typesbt[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesbt[i] = typestemp[i];
+			};
+				
+		showim();
+	};
+
+// End of left front CC rotation
+    
+    
+// If User has clicked icon for clockwise rotation
+// of cube from right front face...
+
+	function rotateRFCW() {
+		
+		tempnum[1] = num[3];
+		tempnum[2] = num[4];
+		tempnum[3] = num[7];
+		tempnum[4] = num[8];
+		tempnum[5] = num[1];
+		tempnum[6] = num[2];
+		tempnum[7] = num[5];
+		tempnum[8] = num[6];
+		
+		for(i=1; i<9; i++) {
+		num[i] = tempnum[i];
+		};
+		
+		rotfacesRFCW();
+		
+	};
+	
+	function rotfacesRFCW() {
+		
+		for(i=1; i<9; i++) {
+	
+			if (typestp[i]==0){
+			typestemp[i]=3;
+			};
+			if (typestp[i]==1){
+			typestemp[i]=2;
+			};
+			if (typestp[i]==2){
+			typestemp[i]=0;
+			};
+			if (typestp[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typestp[i] = typestemp[i];
+			};
+		
+		for(i=1; i<9; i++) {
+	
+			if (typeslr[i]==0){
+			typestemp[i]=1;
+			};
+			if (typeslr[i]==1){
+			typestemp[i]=2;
+			};
+			if (typeslr[i]==2){
+			typestemp[i]=3;
+			};
+			if (typeslr[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typeslr[i] = typestemp[i];
+			};			
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesrr[i]==0){
+			typestemp[i]=2;
+			};
+			if (typesrr[i]==1){
+			typestemp[i]=3;
+			};
+			if (typesrr[i]==2){
+			typestemp[i]=1;
+			};
+			if (typesrr[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesrr[i] = typestemp[i];
+			};					
+			
+		for(i=1; i<9; i++) {
+	
+			if (typeslf[i]==0){
+			typestemp[i]=3;
+			};
+			if (typeslf[i]==1){
+			typestemp[i]=2;
+			};
+			if (typeslf[i]==2){
+			typestemp[i]=0;
+			};
+			if (typeslf[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typeslf[i] = typestemp[i];
+			};
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesrf[i]==0){
+			typestemp[i]=1;
+			};
+			if (typesrf[i]==1){
+			typestemp[i]=2;
+			};
+			if (typesrf[i]==2){
+			typestemp[i]=3;
+			};
+			if (typesrf[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesrf[i] = typestemp[i];
+			};
+			
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesbt[i]==0){
+			typestemp[i]=2;
+			};
+			if (typesbt[i]==1){
+			typestemp[i]=3;
+			};
+			if (typesbt[i]==2){
+			typestemp[i]=1;
+			};
+			if (typesbt[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesbt[i] = typestemp[i];
+			};
+				
+		showim();
+	};
+
+// End of right front CW rotation
+
+
+// If User has clicked icon for counter-clockwise rotation
+// of cube from right front face...
+
+	function rotateRFCC() {
+		
+		tempnum[1] = num[5];
+		tempnum[2] = num[6];
+		tempnum[3] = num[1];
+		tempnum[4] = num[2];
+		tempnum[5] = num[7];
+		tempnum[6] = num[8];
+		tempnum[7] = num[3];
+		tempnum[8] = num[4];
+		
+		for(i=1; i<9; i++) {
+		num[i] = tempnum[i];
+		};
+		
+		rotfacesRFCC();
+		
+	};
+	
+	function rotfacesRFCC() {
+		
+		for(i=1; i<9; i++) {
+	
+			if (typestp[i]==0){
+			typestemp[i]=2;
+			};
+			if (typestp[i]==1){
+			typestemp[i]=3;
+			};
+			if (typestp[i]==2){
+			typestemp[i]=1;
+			};
+			if (typestp[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typestp[i] = typestemp[i];
+			};
+		
+		for(i=1; i<9; i++) {
+	
+			if (typeslr[i]==0){
+			typestemp[i]=3;
+			};
+			if (typeslr[i]==1){
+			typestemp[i]=0;
+			};
+			if (typeslr[i]==2){
+			typestemp[i]=1;
+			};
+			if (typeslr[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typeslr[i] = typestemp[i];
+			};			
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesrr[i]==0){
+			typestemp[i]=3;
+			};
+			if (typesrr[i]==1){
+			typestemp[i]=2;
+			};
+			if (typesrr[i]==2){
+			typestemp[i]=0;
+			};
+			if (typesrr[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesrr[i] = typestemp[i];
+			};					
+			
+		for(i=1; i<9; i++) {
+	
+			if (typeslf[i]==0){
+			typestemp[i]=2;
+			};
+			if (typeslf[i]==1){
+			typestemp[i]=3;
+			};
+			if (typeslf[i]==2){
+			typestemp[i]=1;
+			};
+			if (typeslf[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typeslf[i] = typestemp[i];
+			};
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesrf[i]==0){
+			typestemp[i]=3;
+			};
+			if (typesrf[i]==1){
+			typestemp[i]=0;
+			};
+			if (typesrf[i]==2){
+			typestemp[i]=1;
+			};
+			if (typesrf[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesrf[i] = typestemp[i];
+			};
+			
+			
+		for(i=1; i<9; i++) {
+	
+			if (typesbt[i]==0){
+			typestemp[i]=3;
+			};
+			if (typesbt[i]==1){
+			typestemp[i]=2;
+			};
+			if (typesbt[i]==2){
+			typestemp[i]=0;
+			};
+			if (typesbt[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<9; i++) {
+			typesbt[i] = typestemp[i];
+			};
+				
+		showim();
+	};
+
+// End of right front CC rotation
+
+
+// End  hiding script from old browsers -->
+//
+  
+</script>
+
+	<style type="text/css">
+	.top   {position:absolute;
+			top:20;
+			left:115;  
+			margin: 0}
+	.bot   {position:absolute;
+			top:200;
+			left:115;  
+			margin: 0}
+	.ctr   {position:absolute;
+			top:100;
+			left:95;  
+			margin: 0}
+	.lr   {position:absolute;
+			top:70;
+			left:35;  
+			margin: 0}
+	.rr   {position:absolute;
+			top:70;
+			left:195;  
+			margin: 0}
+	.lf   {position:absolute;
+			top:170;
+			left:35;  
+			margin: 0}
+	.rf   {position:absolute;
+			top:170;
+			left:195;  
+			margin: 0}
+	.footer   {position:absolute;
+		            top:290;
+		            left:25;  
+ 		           margin: 0}
+	.permute   {position:absolute;
+ 		           top:20;
+		            left:300;  
+		            margin: 0}
+	.rotsel      {position:absolute;
+ 		           top:260;
+ 		           left:355;  
+		           margin: 0}	
+	.belowall   {position:absolute;
+			top:620;
+			left:355;  
+			margin: 0}
+	</style>
+
+</head>
+
+<body onload="startup();">
+
+<!-- CUBE FACE DISPLAYS -->
+
+<!-- TOP-face table -->
+<table class="top" border="0" bgcolor="aqua" cellpadding="0" cellspacing="0">
+<caption align="bottom"><font size="1"><b><small>Top</small></b></font></caption>
+<tr>
+<td><img src="empty26x26.gif" /></td>
+<td><img src="empty26x26.gif" /></td>
+</tr>
+<tr>
+<td><img src="empty26x26.gif" /></td>
+<td><img src="empty26x26.gif" /></td>
+</tr>
+</table>
+<!-- LR (left-rear)-face table -->
+<table class="lr" border="0" bgcolor="aqua" cellpadding="0" cellspacing="0">
+<caption align="bottom"><font size="1"><b><small>Left
+Rear</small></b></font></caption>
+<tr>
+<td><img src="empty26x26.gif" /></td>
+<td><img src="empty26x26.gif" /></td>
+</tr>
+<tr>
+<td><img src="empty26x26.gif" /></td>
+<td><img src="empty26x26.gif" /></td>
+</tr>
+</table>
+<!-- RR (right-rear)-face table -->
+<table class="rr" border="0" bgcolor="aqua" cellpadding="0" cellspacing="0">
+<caption align="bottom"><font size="1"><b><small>Right
+Rear</small></b></font></caption>
+<tr>
+<td><img src="empty26x26.gif" /></td>
+<td><img src="empty26x26.gif" /></td>
+</tr>
+<tr>
+<td><img src="empty26x26.gif" /></td>
+<td><img src="empty26x26.gif" /></td>
+</tr>
+</table>
+<!-- LF (left-front)-face table -->
+<table class="lf" border="0" bgcolor="aqua" cellpadding="0" cellspacing="0">
+<caption align="bottom"><font size="1"><b><small>Left
+Front</small></b></font></caption>
+<tr>
+<td><img src="empty26x26.gif" /></td>
+<td><img src="empty26x26.gif" /></td>
+</tr>
+<tr>
+<td><img src="empty26x26.gif" /></td>
+<td><img src="empty26x26.gif" /></td>
+</tr>
+</table>
+<!-- RF (right-front)-face table -->
+<table class="rf" border="0" bgcolor="aqua" cellpadding="0" cellspacing="0">
+<caption align="bottom"><font size="1"><b><small>Right
+Front</small></b></font></caption>
+<tr>
+<td><img src="empty26x26.gif" /></td>
+<td><img src="empty26x26.gif" /></td>
+</tr>
+<tr>
+<td><img src="empty26x26.gif" /></td>
+<td><img src="empty26x26.gif" /></td>
+</tr>
+</table>
+<!-- BOT-face table ======== -->
+<table class="bot" border="0" bgcolor="aqua" cellpadding="0" cellspacing="0">
+<caption align="bottom"><font size="1&quot;"><b><small>Bottom</small></b></font></caption>
+<tr>
+<td><img src="empty26x26.gif" /></td>
+<td><img src="empty26x26.gif" /></td>
+</tr>
+<tr>
+<td><img src="empty26x26.gif" /></td>
+<td><img src="empty26x26.gif" /></td>
+</tr>
+</table>
+
+<!--  ROTATION SELECTION table  -->
+
+
+<table class="rotsel" cellpadding="12" cellspacing="0" border="1" rules="all">
+<caption align="bottom"><font size="1"><b>Rotate cube.</b></font></caption>
+<tr>
+
+<td align="center" valign="middle" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" onclick="rotateTopCW(); return false">
+<img src="rotTopCW.jpg" border="0" /></td>
+
+<td align="center" valign="middle" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" onclick="rotateTopCC(); return false">
+<img src="rotTopCC.jpg" border="0" /></td>
+
+</tr>
+<tr>
+
+<td align="center" valign="middle" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" onclick="rotateLFCW(); return false">
+<img src="rotLFCW.jpg" border="0" /></td>
+
+<td align="center" valign="middle" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" onclick="rotateLFCC(); return false">
+<img src="rotLFCC.jpg" border="0" /></td>
+
+</tr>
+<tr>
+
+<td align="center" valign="middle" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" onclick="rotateRFCW(); return false">
+<img src="rotRFCW.jpg" border="0" /></td>
+
+<td align="center" valign="middle" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" onclick="rotateRFCC(); return false">
+<img src="rotRFCC.jpg" border="0" /></td>
+
+</tr>
+</table>
+
+
+<!-- PERMUTATIONS 4-TABLE SUBTABLE ================= -->
+<table class="permute" width="220" border="1" cellpadding="4" cellspacing="0" rules="none">
+<caption align="bottom"><font size="1"><b>Permute parts of
+cube<br />(in top view).</b></font></caption>
+
+<tr>
+<td align="center" valign="bottom">
+<table>
+  <tr>
+  <td align="center" valign="bottom">
+  <!-- PICTURE OF GRID  -->
+  <img src="Grid63x63.gif" />
+  </td>
+  </tr>
+</table>
+</td>
+
+<!-- ROWS TABLE -->
+<td align="left" valign="bottom">
+<table rules="all" border="1" cellpadding="1" cellspacing="0">
+<caption align="top"><font size="1"><b><small>Rows</small></b></font></caption>
+<tr>
+<td bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';"><a href="#" onclick="row1clicked(); return false"><img src="row24x50.gif" /></a></td>
+</tr>
+<tr>
+<td bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';"><a href="#" onclick="row2clicked(); return false"><img src="row24x50.gif" /></a></td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr align="center" valign="top">
+<td><!-- COLUMNS TABLE -->
+<table rules="all" border="1" cellpadding="3" cellspacing="0" valign="top" align="center">
+<caption align="bottom"><font size="1"><b><small>Columns</small></b></font></caption>
+<tr>
+<td bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';"><a href="#" onclick="col1clicked(); return false"><img src="col50x24.gif" /></a></td>
+<td bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';"><a href="#" onclick="col2clicked(); return false"><img src="col50x24.gif" /></a></td>
+</tr>
+</table>
+</td>
+
+<td align="left" valign="top"><!-- QUADRANTS TABLE -->
+<table rules="all" border="1" cellpadding="0" cellspacing="3">
+<caption align="bottom"><font size="1"><b><small>Quadrants</small></b></font></caption>
+<tr valign="bottom">
+<td align="right" valign="bottom" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="quad1clicked(); return false"><img src="quad23x23.gif" /></a></td>
+<td align="left" valign="bottom" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="quad2clicked(); return false"><img src="quad23x23.gif" /></a></td>
+</tr>
+<tr valign="top">
+<td align="right" valign="top" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="quad3clicked(); return false"><img src="quad23x23.gif" /></a></td>
+<td align="left" valign="top" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="quad4clicked(); return false"><img src="quad23x23.gif" /></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- END OF PERMUTATIONS 4-TABLE SUBTABLE -->
+
+<img class="ctr" width="90" height="90" src="cubearrows90x90.jpg" />
+
+<p align="center" class="footer">
+
+<font size="3"><b>Design Cube</b></font><br />
+<font size="2"><b>2x2x2</b></font><br /><br />
+
+<font size="1">
+Copyright &#169; 2006 by<br />
+Steven H. Cullinane.<br />
+All rights reserved.<br />
+Page created March 7, 2006.</font>
+<br /><br />
+<a href="../index.html">
+<b>Up (Menu)</b>
+</a> <br />
+
+<a href="../../downloading.html">
+<b><small>Help  Download</small></b>
+</a>
+</p>
+</body>
+</html>

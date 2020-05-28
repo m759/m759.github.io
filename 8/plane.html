@@ -1,0 +1,469 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- Original URL: http://finitegeometry.org/sc/8/plane.html
+Date Downloaded: 1/9/2016 12:17:04 AM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!--project01-->
+  <title>The Fano Plane Revisualized</title>
+
+
+  
+
+  <meta content="Steven h. Cullinane" name="author" />
+
+  <meta content="MSHTML 6.00.2900.2802" name="GENERATOR" />
+
+</head>
+
+<body leftmargin="100" rightmargin="100">
+
+<!--Navigate-->
+<table cellpadding="12" cellspacing="0" width="100%">
+
+  <tbody>
+
+    <tr bgcolor="#000000">
+
+      <td bgcolor="#000000"> <strong><font color="#ffffff"> <small><small>Finite
+Geometry Notes</small></small></font></strong> <small><small>
+      <nobr>
+&nbsp; <font color="#ffffff">|</font> <a href="../index.html"> <font color="#ffffff"> Home</font></a> <font color="#ffffff">|</font> <a href="../map.html"> <font color="#ffffff">Site
+Map</font></a> <font color="#ffffff">|</font>
+      <a href="../author.html"> <font color="#ffffff"> Author</font></a> <font color="#ffffff">|</font> </nobr></small></small>
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<!--EndNavigate-->
+<br />
+
+<div align="center"><span>
+<div align="center"><font size="5"><b>The
+Fano Plane</b></font> <font size="5"><b>Revisualized:</b></font><b>
+<br />
+
+<br />
+
+<img alt="The Eightfold Cube" src="plane_files/cube2x2x2.gif" align="middle" /><br />
+
+<br />
+
+</b><span>Fig. 1</span><b><br />
+
+<br />
+
+<font size="4">or, The Eightfold Cube </font></b><br />
+
+<br />
+
+<font size="3"><b>by Steven H. Cullinane<br />
+
+May 4, 2005 </b>-<b> July 30, 2011<br />
+
+</b></font>
+<p>"&#8230; the best way to understand a group is to<br />
+
+see it as the group of symmetries of something."</p>
+
+<p>&#8212; John Baez, <a href="http://www.ams.org/journals/bull/2005-42-02/S0273-0979-05-01043-8/home.html">book review</a>, p. 239,<br />
+ <em>Bulletin of the American Mathematical Society</em>, April 2005<br />
+</p>
+
+</div>
+
+<div align="left">Here is the usual model of the seven
+points and seven
+lines (including the circle) of the smallest finite projective plane
+(the <a href="http://mathworld.wolfram.com/FanoPlane.html"><i>Fano
+plane</i></a>):</div>
+
+<br />
+
+<div align="center"><img alt="The Fano plane" src="plane_files/Fano.gif" /><br />
+
+<br />
+
+Fig. 2<br />
+
+</div>
+
+<br />
+
+</span><span>
+<div align="left"><span>Every permutation of the
+plane's </span><span>points
+that
+preserves </span><span>collinearity is a <i>symmetry
+</i>of
+the&nbsp; plane.&nbsp; </span><span><a href="http://en.wikipedia.org/wiki/PSL%282,7%29">The group
+of
+symmetries </a></span><span>of the Fano plane is of
+order 168 </span><span>and
+is isomorphic to the group&nbsp; </span><span><a href="http://web.mat.bham.ac.uk/atlas/v2.0/lin/L32/">PSL(2,7)
+=
+PSL(3,2) = GL(3,2)</a>. </span><span>(See <a href="http://www.ipm.ac.ir/IPM/homepage/cameron5.pdf">Cameron
+on
+linear groups</a> (pdf) and <a href="knight.html">Knight
+Moves:
+Geometry of the Eightfold Cube</a>.) </span><br />
+
+<br />
+
+The above model indicates with great clarity six symmetries of the
+plane-- those it shares with the equilateral triangle.&nbsp; It
+does
+not, however, indicate where the other 162 symmetries come from.
+&nbsp;
+<br />
+
+<br />
+
+Shown below is a new model of this same projective plane, using
+partitions of cubes to represent points:</div>
+
+<br />
+
+<div align="center"><img alt="Fano plane with cubes as points" src="plane_files/CubesPlane1.gif" /><br />
+
+<br />
+
+Fig. 3<br />
+
+</div>
+
+<br />
+
+</span><span>
+<div align="center">
+<div align="left">The cubes' partitioning planes are added
+in binary (<a href="http://www.maths.sussex.ac.uk/Staff/JWPH/PROF/index.html">1+1=0</a>)
+fashion.&nbsp; Three partitioned cubes are collinear if and only if
+their partitioning planes' binary sum equals zero.<br />
+
+<br />
+
+The second model is useful because it lets us generate naturally all
+168 symmetries of the Fano plane by splitting a cube into a set of four
+parallel 1x1x2 slices in the three ways possible, then arbitrarily
+permuting the slices in each of the three sets of four. See examples
+below.<br />
+
+</div>
+
+<br />
+
+<img alt="Fano plane group - generating permutations" src="plane_files/CubesPlane2.gif" /><br />
+
+<br />
+
+Fig. 4<br />
+
+<br />
+
+<div align="left">For a proof that such permutations
+generate the 168
+symmetries, see <a href="../gen/coord.html">Binary
+Coordinate Systems</a>
+(July 1984). For a check of the proof, see a <a href="MAGMAcalc.html">MAGMA
+calculation</a>. For some
+illustrations from 1984, see <span></span><a href="../pg/dt/diandwh.html">Diamonds
+and Whirls</a>.<br />
+
+<br />
+
+For a popular presentation of such permutations (with no
+acknowledgement of sources) see "<a href="CubeSpace.html">The
+Cube Space</a>,"
+by <a href="http://en.wikipedia.org/wiki/L%C3%A1szl%C3%B3_Lov%C3%A1sz">Laszlo
+Lovasz</a> <i>et al</i>., pp. 215-216 in <i>Discrete
+Mathematics:
+Elementary and Beyond</i>, published by Springer on Jan. 27, 2003.<br />
+
+<br />
+
+<span>(Note that this procedure, if regarded as acting on the set
+of
+eight individual subcubes of each cube in the diagram, actually
+generates a group of 168*8 = 1,344 permutations.&nbsp; But the
+group's
+action on the diagram's seven partitions of the subcubes yields only
+168 distinct results.&nbsp; This illustrates the difference between
+affine and projective spaces over the binary field GF(2).&nbsp; In
+a
+related 2x2x2 cubic model of the <i>affine 3-space</i>
+over GF(2)
+whose "points" are individual subcubes, the group of eight translations
+is generated by interchanges of parallel 2x2x1 cube-slices.&nbsp;
+This
+is clearly a subgroup of the group generated by permuting 1x1x2
+cube-slices.&nbsp; Such translations in the <i>affine 3-space</i>
+have
+no effect on the <i>projective plane</i>, since they leave
+each of the
+plane model's seven partitions-- the "points" of the plane--
+invariant.) <br />
+
+<br />
+
+The above arrangement of the seven cube-partitions is that of the
+traditional picture of the Fano plane, with points as dots replaced by
+points as cube-partitions.&nbsp; The following is another view of
+this
+replacement.<br />
+
+<br />
+
+</span>
+<div align="center"><img alt="Projective plane's lines as 3-space planes through origin and as partitions of 3-space" src="plane_files/Fanocube645.gif" height="471" width="645" /><br />
+
+<span></span></div>
+
+</div>
+
+<br />
+
+<div align="center">
+<div align="center">Fig. 5<br />
+
+<br />
+
+This construction is somewhat less trivial when<br />
+
+picturing points of projective 3- or 5-spaces<br />
+
+over the two-element field as partitions<br />
+
+&nbsp;of linear 4- or 6-spaces over that field.<br />
+
+<br />
+
+An earlier presentation<br />
+
+of the above seven partitions<br />
+
+of the eightfold cube:<br />
+
+<br />
+
+</div>
+
+<table align="center" border="2" bordercolor="black" cellpadding="24" cellspacing="0" width="450">
+
+  <tbody>
+
+    <tr>
+
+      <td valign="top">
+      <div align="center"><img src="plane_files/ThirdGift.jpg" alt="Seven partitions of the 2x2x2 cube in a book from 1906" /></div>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</div>
+
+<br />
+
+Fig. 6<br />
+
+<br />
+
+<table border="2" bordercolor="black" cellpadding="24" cellspacing="0" width="600">
+
+  <tbody>
+
+    <tr>
+
+      <td valign="top">
+      <div align="center"><font size="4"><b><small>Update
+of Oct. 22,
+2008:</small><br />
+
+      <br />
+
+Concepts of Space:<br />
+
+Euclid vs. Galois</b></font><br />
+
+      </div>
+
+      <br />
+
+      <div align="center">From <a href="http://www.maths.gla.ac.uk/%7Etl/rankin/">the Rankin
+Lectures</a><br />
+
+by John Baez at<br />
+
+&nbsp;
+the University of Glasgow,<br />
+
+September 15-19, 2008:<br />
+
+      <br />
+
+      </div>
+
+      <div align="center"><font size="1">(<a href="plane_files/Baez8Fano.jpg">Click
+to enlarge</a>)</font><br />
+
+      </div>
+
+      <div align="center"><br />
+
+      <a href="http://www.log24.com/log/pix08A/Baez8Fano.jpg"><img alt="John Baez, drawing of seven vertices of a cube corresponding to Fano-plane points" src="plane_files/Baez8FanoSm.jpg" /></a><br />
+
+      </div>
+
+      <div align="center"><br />
+
+Fig. 7<br />
+
+      <br />
+
+      </div>
+
+      <b> </b>
+      <div align="left">Baez's statement that "lines in
+the Fano
+plane correspond to planes through the origin [the vertex labeled '1']
+in this cube" might be
+taken literally by some viewers of the Baez slides, with the planes
+regarded as cutting a cube in Euclidean 3-space. So
+interpreted, the statement would be false. But this is not what he
+meant.<br />
+
+      <br />
+
+Baez took the pictures in Fig. 7 from his article "The Octonions" in
+the <a href="http://www.ams.org/bull/2002-39-02/home.html">AMS
+Bulletin of April 2002</a>. As that article shows, Baez's "planes
+through the origin" are not to be regarded as planes in Euclidean
+3-space, but rather as planes in the linear 3-space over the
+two-element Galois field GF(2).&nbsp; For another picture of this
+3-space, with coordinates from GF(2), see Fig. 5 above. (See also the
+cubes in <a href="../pg/dt/diandwh.html">Diamonds
+and Whirls</a>,
+1984.)<br />
+
+      <br />
+
+That projective-plane lines correspond to planes through the origin in
+linear 3-space-- a standard definition of lines in projective
+geometry-- is trivially true both of the Baez cube and of the eightfold
+cube (Fig. 5 above).<br />
+
+      <br />
+
+Lest viewers of the Baez lectures confuse his remarks on the Fano plane
+and the cube model with my own remarks on the same subject, it should
+be emphasized that the point of the eightfold-cube model is-- <i>unlike</i>
+the
+Baez cube-- to exhibit the seven
+projective lines <i>not</i> as planes through the origin,
+but rather
+as
+sets of partitions of the eight subcubes
+(Fig. 3 above). This allows group actions on the space to be visualized
+as
+generated by simple permutations of 1x1x2 cube sections (Fig. 4 above
+and <span><a href="../pg/dt/diandwh.html">Diamonds
+and Whirls</a></span>).<br />
+
+      <br />
+
+Although it is not a figure from Euclidean geometry, the eightfold cube
+(a <span></span><a href="../gen/GalG.html"><i>Galois</i>
+geometry</a>) may be modeled by a&nbsp; concrete, palpable
+(Fig. 6
+above)
+physical structure whose natural transformations are, unlike those of
+Euclidean geometry, non-continuous. As such, it may eventually,
+as Euclidean
+geometry has in the past,
+throw some light on the structure of the space we live in.</div>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<div align="left"><span><br />
+
+To view the cubes model in a wider context, see
+<a href="../gen/GalG.html">Galois
+Geometry</a>, <a href="../gen/bdes/index.html">Block
+Designs</a>, and <a href="../gen/Polster.html">Finite-Geometry
+Models</a>. <br />
+
+<br />
+
+For another application of the points-as-partitions technique, see <a href="http://diamondtheorem.com/">The Diamond Theorem</a>
+and <a href="../gen/ortho.html">Latin-Square
+Geometry: Orthogonal Latin
+Squares as Skew Lines</a>. </span><br />
+
+<br />
+
+For more on the plane's symmetry group in another guise, see John Baez
+on <a href="http://math.ucr.edu/home/baez/klein.html">Klein's
+Quartic
+Curve </a>and the online book <a href="http://www.msri.org/publications/books/Book35/contents.html">
+<i>The Eightfold Way</i></a>.&nbsp; For more on
+the mathematics of
+cubic models, see <a href="knight.html">Knight
+Moves</a> and <a href="../64/solcube.html">
+Solomon's Cube</a>.<br />
+
+</div>
+
+<br />
+
+</div>
+
+</span>
+<hr size="2" width="100%" />
+<div align="left">Page created May 4, 2005.&nbsp; Last
+modified July 30, 2011.<br />
+
+</div>
+
+</div>
+
+<!--footer-->
+</body>
+</html>
+ons/books/Book35/contents.html">
+<i>The Eightfold Way</i></a>.&nbsp; For more on
+the mathematics of
+cubic models, see <a href="http://finitegeometry.org/sc/8/knight.html">Knight
+Moves</a> and <a href="http://finitegeometry.org/sc/64/solcube.html">
+Solomon's Cube</a>.<br />
+
+</div>
+
+<br />
+
+</div>
+
+</span>
+<hr size="2" width="100%" />
+<div align="left">Page created May 4, 2005.&nbsp; Last
+modified July 30, 2011.<br />
+
+</div>
+
+</div>
+
+<!--footer-->
+</body>
+</html>
