@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<!-- Original URL: http://finitegeometry.org/sc/16/overlay.html
+Date Downloaded: 1/9/2016 12:17:10 AM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+  
+  
+  <title>Half-Circle Patterns</title><style type="text/css">
+
+.drag{
+position:relative;
+cursor:hand;
+z-index: 100;
+}
+
+  </style>
+  <script type="text/javascript">
+
+/***********************************************
+* Drag and Drop Script: &copy; Dynamic Drive (http://www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit http://www.dynamicdrive.com/ for this script and 100s more.
+***********************************************/
+
+var dragobject={
+z: 0, x: 0, y: 0, offsetx : null, offsety : null, targetobj : null, dragapproved : 0,
+initialize:function(){
+document.onmousedown=this.drag
+document.onmouseup=function(){this.dragapproved=0}
+},
+drag:function(e){
+var evtobj=window.event? window.event : e
+this.targetobj=window.event? event.srcElement : e.target
+if (this.targetobj.className=="drag"){
+this.dragapproved=1
+if (isNaN(parseInt(this.targetobj.style.left))){this.targetobj.style.left=0}
+if (isNaN(parseInt(this.targetobj.style.top))){this.targetobj.style.top=0}
+this.offsetx=parseInt(this.targetobj.style.left)
+this.offsety=parseInt(this.targetobj.style.top)
+this.x=evtobj.clientX
+this.y=evtobj.clientY
+if (evtobj.preventDefault)
+evtobj.preventDefault()
+document.onmousemove=dragobject.moveit
+}
+},
+moveit:function(e){
+var evtobj=window.event? window.event : e
+if (this.dragapproved==1){
+this.targetobj.style.left=this.offsetx+evtobj.clientX-this.x+"px"
+this.targetobj.style.top=this.offsety+evtobj.clientY-this.y+"px"
+return false
+}
+}
+}
+
+dragobject.initialize()
+
+  </script></head>
+<body leftmargin="100" rightmargin="100">
+<table align="center" cellpadding="12" cellspacing="0" width="100%">
+  <tbody>
+    <tr bgcolor="#000000">
+      <td bgcolor="#000000"> <strong><font color="#ffffff"> <small><small>Finite
+Geometry
+Notes</small></small></font></strong> <small><small> <nobr> &nbsp; <font color="#ffffff">|</font> <a href="../index.html"> <font color="#ffffff"> Home</font></a> <font color="#ffffff">|</font> <a href="../map.html"> <font color="#ffffff">Site
+Map</font></a> <font color="#ffffff">|</font> <a href="../author.html">
+      <font color="#ffffff"> Author</font></a> <font color="#ffffff">|</font>
+      </nobr></small></small> </td>
+    </tr>
+  </tbody>
+</table>
+<!--EndNavigate-->
+<h2 align="center">Half-Circle Patterns</h2>
+<p align="center">Drag any 4x4 image to overlay it on any other.<br />
+A variety of interesting patterns results.</p>
+<p align="center">
+<img src="overlay_files/halfc-A4132.gif" class="drag" />&nbsp;
+<img src="overlay_files/halfc-B4312.gif" class="drag" />&nbsp;
+<img src="overlay_files/halfc-C2431.gif" class="drag" />&nbsp;
+<img src="overlay_files/halfc-D1342.gif" class="drag" />&nbsp;
+<img src="overlay_files/halfc-E3214.gif" class="drag" />&nbsp;
+<br />
+<img src="overlay_files/halfc-A4312.gif" class="drag" />
+&nbsp;
+<img src="overlay_files/halfc-B1342.gif" class="drag" />&nbsp;
+<img src="overlay_files/halfc-CR4321.gif" class="drag" />&nbsp;
+<img src="overlay_files/halfc-D4231.gif" class="drag" />&nbsp;
+<img src="overlay_files/halfc-E1234.gif" class="drag" />&nbsp;
+</p>
+<p align="center">The images are a few of the many Latin squares that<br />
+can be formed using half-circles as entries. They are the<br />
+original form of the images in <a href="dtheorem.html">the
+diamond theorem</a> that use<br />
+not half-circles, but triangular half-squares, as array entries.<br /><br />
+<small>© 2009 Steven H. Cullinane</small></p><p style="font-weight: bold;" align="center"><small>Update of March 15, 2010--</small></p><p align="center"><small>The above patterns were suggested by an artwork from<br />the Albright-Knox museum shop I received as a gift<br />in 1975. This was&nbsp;a&nbsp;square box with 16 rotatable spheres,<br />each half black and half white, embedded in the box's top.</small></p><p align="center"><small>The artwork may have been based on the work of<br />Paul Talman. A reconstruction, below,&nbsp;indicates<br />how this may have been done by picturing&nbsp;a detail<br />of Talman's <a href="overlay_files/Kugelbild.jpg"><span style="font-style: italic;">Kugelbild</span></a>, a kinetic sculpture<br />that he probably did&nbsp;around 1968.</small></p><p align="center"><small><img style="width: 306px; height: 327px;" alt="Artwork based on detail from Talman's 'Kuglebild'" src="overlay_files/artwork.jpg" /></small></p><hr />&nbsp;&nbsp;Page created December 22, 2009.
+
+</body></html>="overlay_files/artwork.jpg" /></small></p><hr />&nbsp;&nbsp;Page created December 22, 2009.
+
+</body></html>

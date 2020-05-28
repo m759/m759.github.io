@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<!-- Original URL: http://www.finitegeometry.org/sc/gen/ortho.html
+Date Downloaded: 1/9/2016 12:17:45 AM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--project01-->
+  
+  <title>Latin-Square Geometry: Orthogonal Latin Squares as Skew Lines</title>
+</head>
+<body leftmargin="100" rightmargin="100">
+
+
+<!--Navigate-->
+<table width="100%" cellpadding="12" cellspacing="0">
+
+   <tr bgcolor="#000000">
+      <td bgcolor="#000000">
+
+          <strong><font color="#FFFFFF">
+          <small><small>
+          Finite Geometry Notes</small></small></font></strong>
+
+          <nobr>
+           &nbsp;
+
+          <font color="#FFFFFF">|</font>
+
+   
+          <a href="../index.html">
+          <font color="#FFFFFF">
+          Home</font></a>
+			
+          <font color="#FFFFFF">|</font>
+
+          <a href="../map.html">
+
+          <font color="#FFFFFF">Site Map</font></a>
+
+
+          <font color="#FFFFFF">|</font>
+
+          <a href="../author.html">
+          <font color="#FFFFFF">
+           Author</font></a>
+ 
+           <font color="#FFFFFF">|</font>
+
+           
+
+           </nobr>
+
+          </td>
+      </tr>
+</table>
+<!--EndNavigate-->
+
+
+<center>
+<p> <big><big><b>Latin-Square Geometry:<br />
+</b></big></big> <b>Orthogonal Latin Squares as Skew Lines</b> </p>
+<h4> by Steven H. Cullinane </h4>
+</center>
+<div align="center"> "While the reader may draw many a moral from our
+tale,<br />
+I hope that the story is of interest for its own sake.<br />
+Moreover, I hope that it may inspire others, participants<br />
+or observers, to preserve the true and complete record of<br />
+our mathematical times." </div>
+<p align="center"> -- <i>From Error-Correcting Codes<br />
+Through Sphere Packings<br />
+To Simple Groups</i>,<br />
+by Thomas M. Thompson,<br />
+Mathematical Association of America, 1983 </p>
+<blockquote>
+  <p> "Packing finite projective spaces with disjoint subspaces has for
+many years been a topic of considerable interest in Galois Geometry. In
+particular, one studies <i>partial spreads</i> in a space <i>PG</i>(3,<i>q</i>),
+that is, collections of pairwise disjoint lines in <i>PG</i>(3,<i>q</i>):
+see Hirschfeld [8] for background. A set of <i>r</i> mutually skew
+lines for which any other line meets at least one line of the set will
+be referred to as a <i>maximal</i> partial spread (MPS) of size <i>r</i>.
+  </p>
+  <p> An interesting combinatorial problem <font style="background-color: rgb(255, 255, 128);"><b>(which seems at first
+sight not at all related to partial spreads)</b></font> is the
+determination of the pairs (<i>s</i>,<i>t</i>) for which a maximal set
+of t mutually orthogonal Latin squares of order s exist...." </p>
+  <p> -- <a href="http://journals.kluweronline.com/article.asp?PIPS=5122121"> Some
+new maximal sets of mutually orthogonal Latin squares</a>,<br />
+&nbsp;&nbsp; by P. Govaerts, D. Jungnickel, L. Storme, and J. A. Thas,<br />
+&nbsp;&nbsp; <i>Designs, Codes, and Cryptography</i><br />
+&nbsp;&nbsp; 29 (1-3), May-June-July 2003, pp. 141-147 </p>
+  <b>Keywords:</b> latin squares, MAXMOLS, partial spread, projective
+space, polar space
+  <p> <b>Mathematics Subject Classification:</b> 05B15, 05B25, 05B40 </p>
+</blockquote>
+<p> These authors said, in early 2003, that spreads and orthogonal
+Latin squares seem "at first sight" unrelated. They of course did not
+mention my note (shown below) that pointed out such a relationship in
+December 1978. The earliest sources they cited for such a relationship
+are Jungnickel in 1984 and 1993. </p>
+<p> Here are the details of my 1978 note. </p>
+<table align="center" border="2" bordercolor="black" cellpadding="24" cellspacing="0">
+  <tbody>
+    <tr>
+      <td> We present two results -- one old, one new -- on the
+geometry of Latin squares.
+      <h3> Result A (old): </h3>
+There exist n-1 mutually orthogonal nxn Latin squares if and only if
+there exists a finite projective plane with n<sup>2</sup> + n + 1 lines
+(or, equivalently, an affine plane with n<sup>2</sup> + n lines).
+      <p> Result A is well known. See, for instance, chapter 8 of <i>Discrete
+Mathematics Using Latin Squares</i>, C. F. Laywine and G. L. Mullen,
+Wiley Interscience, 1998, or <a href="http://www.mcs.vuw.ac.nz/courses/MATH314/2003T2/Notes/314_notes_2003_16.pdf">
+Bose's [1938] Theorem</a> (pdf). </p>
+      <h3> Result B (new): </h3>
+The six 4x4 Latin squares that have orthogonal Latin mates can be
+embedded in a set of thirty-five 4x4 arrays so that orthogonality in
+the set of arrays corresponds to skewness in the set of 35 lines of the
+finite projective space PG(3,2).
+      <p> Result B is apparently new, and should not be confused with
+result A. The closest thing to the diagrams of result B in the refereed
+literature seems to be the use of diagrams on page 774 of <i>Design
+Theory, Volume 2</i>, by T. Beth, D. Jungnickel, and H. Lenz, Cambridge
+U. Press, 1999, in proving Tarry's theorem on the nonexistence of two
+mutually orthogonal 6x6 Latin squares. </p>
+      <p> The research note below shows how result B works. Note
+particularly that the 35-line projective <i>space</i> of result B
+differs from the 21-line projective <i>plane</i> of result A. </p>
+      <p> Result B is, of course, highly special, being limited to 4x4
+squares. This limitation should not prevent its use as an example in
+popular introductions to discrete mathematics. Indeed, the 4x4 case
+figured prominently (and exclusively) on the cover and in <a href="http://ww2.lafayette.edu/%7Emath/Gary/Doors.pdf">a two-page
+article</a> in the August/September 2001 issue of the Mathematical
+Association of America's "Focus" newsletter. </p>
+      <p> Naturally, a more general result than B is desirable; hence
+the problem stated in the 1978 research note below. </p>
+<!--xxx
+-->
+      <hr /><br />
+      <div>Steven H. Cullinane</div>
+      <div><b>Orthogonality of Latin squares viewed as skewness of
+lines.</b>&nbsp; Dec. 1978.</div>
+      <div>&nbsp;</div>
+      <div>Shown below is a way to embed the six order-4 Latin squares
+that have orthogonal Latin mates in a set of 35 arrays so that&nbsp;
+orthogonality in the set of arrays corresponds to skewness in the set
+of 35 lines of PG(3,2).&nbsp; Each array yields a 3-set of diagrams
+that show the lines separating complementary 2-subsets of
+{0,1,2,3}; each diagram is the symmetric difference of the other
+two.&nbsp; The 3-sets of diagrams correspond to the lines of
+PG(3,2).&nbsp; Two arrays
+are orthogonal iff their 3-sets of diagrams are disjoint, i.e. iff the
+corresponding lines
+of PG(3,2) are skew. &nbsp;</div>
+      <div>&nbsp;</div>
+      <div>This is a new way of viewing orthogonality of
+Latin squares, quite different from their relationship to projective
+planes.</div>
+      <div>&nbsp;</div>
+      <div>PROBLEM:&nbsp; To what extent can this result be
+generalized? &nbsp;</div>
+      <div>&nbsp;</div>
+      <div align="center"> <img src="ortho_files/ortho2-fig01.gif" alt="Orthogonal Latin squares in the proper setting" height="674" width="760" /><br />
+      <br />
+      <a href="../pg/dt/ortholatin.html">View original 1978 note.</a><br />
+      <br />
+      </div>
+      <hr /><!--xxx
+-->
+      <p align="center"> For related material, see the web pages<br />
+      <a href="../16/geometry.html">Geometry of the 4x4 Square</a> and <a href="dth/DiamondTheory.html">Diamond Theory</a>. </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p> The apparent conflict between the 2003 paper by Jungnickel <i>et
+al.</i> and my 1978 note can be resolved as follows: </p>
+<p> "The [1954-1964] Andr&#233;/Bruck-Bose construction yields a one-to-one
+correspondence between spreads of projective space and translation
+planes (special affine planes). If one feeds a partial spread into this
+construction, a net results. A net is a point-line geometry which is a
+natural weakening of an affine plane." </p>
+<p> -- <a href="http://www.maths.uwa.edu.au/%7Ejohn.bam/">John Bamberg</a>,
+<a href="http://www.maths.uwa.edu.au/%7Ejohn.bam/research/msystems.html">
+Symplectic spreads</a> </p>
+<p> And it has long been known that affine planes are, as noted above,
+closely related to orthogonal Latin squares. </p>
+<p> In other words, the 1954-1964 Andr&#233;/Bruck-Bose construction is the
+missing (missing, that is, according to Jungnickel, Thas, <i>et al.</i>)
+link between Latin-square orthogonality and projective-space skewness.
+Such an orthogonality-skewness link is shown rather more directly and
+clearly in my 1978 note. </p>
+<p> (For details of the Andr&#233;/Bruck-Bose construction, see </p>
+<blockquote>
+  <p> Johannes Andr&#233;, &#220;ber nicht-Dessarguessche Ebenen mit transitiver
+Translationsgruppe, <i>Math Z.</i> 60, pp. 156-186, 1954, and </p>
+R. H. Bruck and R. C. Bose, The construction of translation planes from
+projective spaces, <i>J. Algebra</i> 1, pp. 85-102, 1964.
+  <p> The following may also be helpful: </p>
+  <p> <img src="ortho_files/Bruck-Bose.jpg" /><br />
+&nbsp; -- From <a href="http://www.maths.uwa.edu.au/research/reports/2000/rr15.ps">
+Flocks, ovals, and generalized quadrangles</a> (ps), (Four lectures in
+Napoli, June 2000), by Maska Law and Tim Penttila) </p>
+</blockquote>
+<p> For further background, here is material on finite geometry from
+the paper <a href="http://www-ma4.upc.es/%7Esimeon/bblpsympspread.pdf">Symplectic
+spreads</a> (pdf), 15 Sept. 2003, by <a href="http://www-ma4.upc.es/%7Esimeon/">Simeon Ball</a>, <a href="http://www.maths.uwa.edu.au/%7Ejohn.bam/">John Bamberg</a>, <a href="http://www.google.com/search?hl=en&amp;ie=UTF-8&amp;q=%22michel+lavrauw%22&amp;btnG=Google+Search">
+Michel Lavrauw</a>, and <a href="http://www.maths.uwa.edu.au/%7Epenttila/">Tim Penttila</a>: </p>
+<table align="center" border="2" bordercolor="black" cellpadding="24" cellspacing="0">
+  <tbody>
+    <tr>
+      <td>
+      <h3> From <a href="http://www-ma4.upc.es/%7Esimeon/bblpsympspread.pdf"> Symplectic
+spreads</a> (pdf): </h3>
+      <p> "First we give an overview of some definitions and theory of
+finite geometry, together with some results of the past which provide
+the context and background for our construction. </p>
+      <p> A <i>projective plane</i> is an incidence structure of
+points and lines such that: </p>
+      <p> (PP1) for every pair of distinct points there is a unique
+line which is incident with both of them; </p>
+      <p> (PP2) every pair of distinct lines meet in a unique point; </p>
+      <p> (PP3) there exist four distinct points with no three
+collinear (no three are incident with a common line). </p>
+      <p> An <i>affine plane</i> is an incidence structure of points
+and lines such that: </p>
+      <p> (AP1) for every pair of distinct points there is a unique
+line which is incident with both of them; </p>
+      <p> (AP2) for any non-incident point-line pair <i>p</i>, <i>L</i>,
+there exists a unique line through <i>p</i> which has no point in
+common with <i>L</i>; </p>
+      <p> (AP3) there exist three non-collinear points. </p>
+      <p> In a projective or affine plane, a point P is a <i>centre</i>
+for a collineation <i>phi</i> if <i>phi</i> fixes every line incident
+with P. </p>
+A line <i>l</i> is an <i>axis</i> of <i>phi</i> if <i>phi</i> fixes
+every point on <i>l</i>. It is standard knowledge that every
+non-identity collineation has at most one axis and at most one centre,
+and it has an axis if and only if it has a centre (see [7, Section
+3.1.4]). A collineation which has a centre and axis which are incident
+with one another, is called an <i>elation</i>. A group of
+collineations <i>H</i> is called (<i>P</i>, <i>l</i>)-<i>transitive</i>
+if the subgroup of <i>H</i> consisting of those elements which have
+centre <i>P</i> and axis <i>l</i>, acts transitively on the non-fixed
+points of any line through P which is not equal to <i>l</i>. For two
+lines <i>m</i> and <i>l</i>, we say that <i>H</i> is (<i>m</i>, <i>l</i>)-<i>transitive</i>
+if <i>H</i> is (<i>P</i>, <i>l</i>)-transitive for all <i>P</i> on <i>m</i>.
+Dually, if <i>P</i> and <i>Q</i> are points, then we say that <i>H</i>
+is (<i>P</i>, <i>Q</i>)-<i>transitive</i> if <i>H</i> is (<i>P</i>, <i>l</i>)-transitive
+for every line <i>l</i> incident with <i>Q</i>. Let <i>Gamma</i> be
+a projective plane and suppose that <i>Delta</i> is an affine plane
+obtained by removing the line <i>l<sub>infinity</sub></i> from <i>Gamma</i>.
+Then <i>Delta</i> is a <i>translation plane</i> if there exists a <nobr>(<i>l<sub>infinity</sub></i>,
+      <i>l<sub>infinity</sub></i>)-transitive</nobr> group of elations
+of <i>Delta</i>. We call <i>l<sub>infinity</sub></i> the <i>translation
+line</i> of <i>Delta</i>. The dual of a translation plane is a <i>shears
+plane</i>, the corresponding point being a <i>shears point</i>.
+      <p> <img src="ortho_files/Spreads.jpg" /> </p>
+      <center> <b>.........</b> </center>
+      <p> R. H. Bruck in 1951 [4] introduced finite nets. A <i>net</i>
+is a system of points and lines satisfying:<br />
+(AP2) as before;<br />
+(N1) every two points lie on at most one line;<br />
+(N2) every point lies on at least two distinct lines.<br />
+Note that the definition of a net is the natural weakening of the
+axioms of an affine plane. Parallelism is an equivalence relation, and
+in the finite case, the number of parallel classes <i>k</i> is called
+the <i>degree</i> of the net, and the common number <i>n</i> of
+points on each line is called the <i>order</i> of the net. A net is
+thus equivalent to <i>k</i> - 2 mutually orthogonal <i>n</i> &#215; <i>n</i>
+Latin squares, as shown by Bruck in 1951. See also Bruck's 1963 paper
+[5] for more on nets. There is an analogue here with the
+Andr&#233;/Bruck-Bose <nobr>construction --</nobr> given a partial spread <i><b>S</b></i>,
+one can construct a net <i>nu</i>(<i><b>S</b></i>), but this time the
+converse fails." </p>
+      <p align="center"> <b>References for <a href="http://www-ma4.upc.es/%7Esimeon/bblpsympspread.pdf"> Symplectic
+spreads</a> (pdf):</b> </p>
+[1] A. A. Albert. On the collineation groups associated with twisted
+fields. In <i>Calcutta Math. Soc. Golden Jubilee Commemoration Vol.
+(1958/ 59), Part II</i>, pages 485-497. Calcutta Math. Soc., Calcutta,
+1958/1959.<br />
+      <br />
+[2] Johannes Andr&#233;. &#220;ber nicht-Desarguessche Ebenen mit transitiver
+Translationsgruppe. <i>Math. Z.</i>, 60: 156-186, 1954.<br />
+      <br />
+[3] L. Bader, W. M. Kantor, and G. Lunardon. Symplectic spreads from
+twisted fields. <i>Boll. Un. Mat. Ital. A</i>(7), 8(3): 383-389, 1994.<br />
+      <br />
+[4] R. H. Bruck. Finite nets. I. Numerical invariants. <i>Canadian J.
+Math.</i>, 3: 94-107, 1951.<br />
+      <br />
+[5] R. H. Bruck. Finite nets. II. Uniqueness and imbedding. <i>Pacific
+J. Math.</i>, 13: 421-457, 1963.<br />
+      <br />
+[6] R. H. Bruck and R. C. Bose. The construction of translation planes
+from projective spaces. <i>J. Algebra</i>, 1: 85-102, 1964.<br />
+      <br />
+[7] P. Dembowski. <i>Finite geometries</i>. Ergebnisse der Mathematik
+und ihrer Grenzgebiete, Band 44. Springer-Verlag, Berlin, 1968.<br />
+      <br />
+[8] U. Dempwolff. Translation planes of order 27. <i>Des. Codes
+Cryptogr.</i>, 4(2): 105-121, 1994.<br />
+      <br />
+[9] Christoph Hering. Eine nicht-desarguessche zweifach transitive
+affine Ebene der Ordnung 27. <i>Abh. Math. Sem. Univ. Hamburg</i>, 34:
+203-208, 1969/ 1970.<br />
+      <br />
+[10] William M. Kantor. Commutative semifields and symplectic spreads.
+To appear in <i>J. Algebra</i>.<br />
+      <br />
+[11] William M. Kantor. Strongly regular graphs defined by spreads. <i>Israel
+J. Math.</i>, 41(4): 298-312, 1982.<br />
+      <br />
+[12] T. G. Ostrom. Replaceable nets, net collineations, and net
+extensions. <i>Canad. J. Math.</i>, 18: 666-672, 1966.<br />
+      <br />
+[13] Chihiro Suetake. A new class of translation planes of order <nobr><i>q</i><sup>3</sup></nobr>.
+      <i>Osaka J. Math.</i>, 22(4): 773-786, 1985.<br />
+      <br />
+[14] Fam Khyu T'ep. Irreducible J-decompositions of the Lie algebras <nobr><i>A<sub>p<sup>n</sup></sub></i><sub><sup>-
+1</sup></sub>. <i>Mat. Zametki</i>,</nobr> 49(5): 128-134, 159, 1991.<br />
+      <br />
+[15] J. A. Thas. Ovoids and spreads of finite classical polar spaces. <i>Geom.
+Dedicata</i>, 10(1-4): 135-143, 1981.<br />
+      <br />
+[16] J. A. Thas. Old and new results on spreads and ovoids of finite
+classical polar spaces. In <i>Combinatorics '90 (Gaeta, 1990)</i>,
+volume 52 of <i>Ann. Discrete Math.</i>, pages 529-544. North-Holland,
+Amsterdam, 1992.<br />
+      <br />
+[17] J. A. Thas. Ovoids, spreads and m-systems of finite classical
+polar spaces. In <i>Surveys in combinatorics</i>, 2001 (Sussex),
+volume 288 of <i>London Math. Soc. Lecture Note Ser.</i>, pages
+241-267. Cambridge Univ. Press, Cambridge, 2001.<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p> See also further details from the paper cited in the epigraph-- </p>
+<table align="center" border="2" bordercolor="black" cellpadding="24" cellspacing="0">
+  <tbody>
+    <tr>
+      <td>
+      <p align="center"> <b>From <a href="http://journals.kluweronline.com/article.asp?PIPS=5122121"> Some
+new maximal sets of<br />
+mutually orthogonal Latin squares</a>:</b> </p>
+      <p> "Let us briefly sketch the connection between partial spreads
+in <i>PG</i>(3,<i>q</i>) and sets of mutually orthogonal Latin squares
+of order <i>q</i><sup>2</sup>. Any <i>r</i> mutually skew lines in <i>PG</i>(3,<i>q</i>)
+may be viewed as a collection of <i>r pairwise disjoint</i> subgroups
+of order <i>q</i><sup>2</sup> in the additive group of the vector
+space <i>V</i> = <i>V</i>(4,<i>q</i>) (meaning, of course, that any
+two of these subgroups intersect trivially).&nbsp; This is a particular
+example of a so-called <i>partial congruence partition</i> (PCP) and
+therefore leads to a (translation) net of order <i>s</i> = <i>q</i><sup>2</sup>
+and degree <i>r</i> by taking the vectors in <i>V</i> as points and
+all the translates of the specified <i>r</i> subgroups as lines, cf.
+[9] or [2]. If the given partial spread is actually maximal, one may
+hope that the associated net is likewise maximal, resulting in <i>t</i>
+= <i>r</i> - 2 MAXMOLS(<i>s</i>), <i>s</i> = <i>q</i><sup>2</sup>.
+&nbsp; This approach has been used successfully by Jungnickel [10,
+11].&nbsp; However, in general, the associated net may well be
+extendable; it is easily seen that this happens if and only if the net
+admits a <i>transversal</i>, i.e., a set of <i>s</i> points meeting
+every line of the net in a unique point. </p>
+      <p> In the present note, we will use maximal partial spreads of
+size <i>r</i> in <i>PG</i>(3,4)\<i>PG</i>(3,2) to construct
+transversal-free translation nets of degree <i>r</i> + 3; this
+approach will give our new examples of MAXMOLS(16)." </p>
+      <p align="center"> <b>References for<br />
+      <a href="http://journals.kluweronline.com/article.asp?PIPS=5122121"> Some
+new maximal sets of<br />
+mutually orthogonal Latin squares</a>:</b> </p>
+      <p> 1. D. Bedford and R. M. Whitaker, New and old values for
+maximal MOLS (<i>n</i>), <i>Ars Comb.</i>, Vol. 54 (2000), pp. 255-258.<br />
+      <br />
+2. T. Beth, D. Jungnickel and H. Lenz, <i>Design Theory,</i> 2nd ed.
+Cambridge University Press (1999).<br />
+      <br />
+3. C. J. Colbourn and J. H. Dinitz, <i>The CRC Handbook of
+Combinatorial Designs,</i> CRC Press, Boca Raton (1996).<br />
+      <br />
+4. E. Cornelis and H. Vernaeve, Spreads in <nobr><i>PG</i>(3,4)\<i>PG</i>(3,2).</nobr>
+Project for the computer algebra course, <i>Computational Group Theory,</i>
+Ghent University (2000).<br />
+      <br />
+5. D. A. Drake, G. H. J. van Rees and W. D. Wallis, Maximal sets of
+mutually orthogonal Latin squares, <i>Discr. Math.,</i> Vol. 194
+(1999), pp. 87-94.<br />
+      <br />
+6. R. H. Dye, Partitions and their stabilizers for line complexes and
+quadrics, <i>Ann. Mat. Pura Appl.,</i> Vol. 114, No. 4 (1977), pp.
+173-194.<br />
+      <br />
+7. The GAP Group, <i>GAP -- Groups, Algorithms, and Programming,
+Version 4.1</i> http://www-gap.dcs.st-and.ac.uk/~gap (1998).<br />
+      <br />
+8. J. W. P. Hirschfeld, <i>Finite Projective Spaces of Three
+Dimensions,</i> Oxford University Press (1985).<br />
+      <br />
+9. D. Jungnickel, Existence results for translation nets, in (P. J.
+Cameron, J. W. P. Hirschfeld and D. R. Hughes, eds.) <i>Finite
+Geometries and Designs,</i> Cambridge University Press (1981), pp.
+172-196.<br />
+      <br />
+10. D. Jungnickel, Maximal partial spreads and translation nets of
+small deficiency, <i>J. Algebra,</i> Vol. 90 (1984), pp. 119-132.<br />
+      <br />
+11. D. Jungnickel, Maximal partial spreads and transversal-free
+translation nets, <i>J. Combin. Theory Ser. A,</i> Vol. 62 (1993), pp.
+66-92.<br />
+      <br />
+12. D. Jungnickel, Maximal sets of mutually orthogonal Latin squares,
+in (S. Cohen and H. Niederreiter, eds.) <i>Finite Fields and
+Applications,</i> Cambridge University Press (1996), pp. 129-153.<br />
+      <br />
+13. D. Jungnickel and L. Storme, Maximal partial spreads in <i>PG</i>(3,4)
+and maximal sets of mutually orthogonal Latin squares of order 16, <i>Discr.
+Math.,</i> Vol. 26 (2003), pp. 361-372.<br />
+      <br />
+14. W. M. Kantor, Ovoids and translation planes, <i>Canad. J. Math.,</i>
+Vol. 34 (1982), pp. 1195-1207.<br />
+      <br />
+15. K. Mellinger, A note on line-Baer subspace partitions of <i>PG</i>(3,4).
+      <i>J. Geom.,</i> Vol. 72 (2001), pp. 128-131.<br />
+      <br />
+16. T. Penttila, Personal communication, December 14 (2001).<br />
+      <br />
+17. E. E. Shult, Nonexistence of ovoids in <nobr>Omega<sup>+</sup>(10,
+3),</nobr> <i>J. Combin. Theory Ser. A,</i> Vol. 51 (1989), pp.
+250-257.<br />
+      <br />
+18. J. A. Thas, Polar spaces, generalized hexagons and perfect codes, <i>J.
+Combin. Theory Ser. A,</i> Vol. 29 (1980), pp. 87-93.<br />
+      <br />
+19. J. A. Thas, Ovoids and spreads of finite classical polar spaces, <i>Geom.
+Dedicata,</i> Vol. 10 (1981), pp. 135-144.<br />
+      <br />
+20. J. A. Thas, Ovoids, spreads and <i>m-</i>systems of finite
+classical polar spaces, in (J. W. P. Hirschfeld, ed.), <i>Surveys in
+combinatorics, 2001,</i> Cambridge University Press (2001), pp. 241-267
+      </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p align="center"> <big><big><b>Further sources of material on<br />
+latin-square orthogonality<br />
+and projective skewness</b></big></big> </p>
+<p> <b><big>Godsil on Spreads</big></b> </p>
+<p> For the use of the term "partial spreads" to mean sets of affine
+parallel classes (as interpreted within graph theory), see<br />
+<a href="http://quoll.uwaterloo.ca/agt/supplem/spreads.ps">
+<br />
+Partial spreads</a> (ps),<br />
+a note by Chris Godsil:<br />
+<br />
+"Let <i>Z</i> be a complete graph on n<sup>2</sup> vertices. A <i>parallel
+class</i> in <i>Z</i> is a spanning subgraph isomorphic to <i>nK<sub>n</sub></i>.<br />
+We say two parallel classes <i>S</i><sub>1</sub> and <i>S</i><sub>2</sub>
+are <i>orthogonal</i> if they have no edges in common....<br />
+A <i>partial spread</i> is a set of pairwise orthogonal parallel
+classes."<br />
+<br />
+This informal note has no references.&nbsp; The way the note uses the
+terms "partial spread" and "orthogonal" is directly related to my 1978
+note.&nbsp; Historians of mathematics can determine whether Godsil is
+the first to use these terms with these meanings.<br />
+<br />
+Background for Godsil's note:<br />
+<br />
+<a href="http://www.maths.qmw.ac.uk/%7Epjc/preprints/bw_srg.ps">Strongly
+Regular Graphs</a> (ps),<br />
+by Peter J. Cameron (draft of a survey article), and<br />
+two references cited by Cameron: </p>
+<ul>
+  <li>C. D. Godsil, <i>Algebraic Combinatorics</i>, Chapman &amp;
+Hall/CRC Press, 1993, and </li>
+  <li>R. C. Bose, Strongly regular graphs, partial geometries, and
+partially balanced designs, <i>Pacific J. Math.</i> 13 (1963), 389-419.<br />
+  </li>
+</ul>
+<p> <b><big>Mellinger on Spreads</big></b> </p>
+<p> Various <a href="http://people.umw.edu/%7Ekmelling/pub.html">publications
+of Keith E. Mellinger</a> (2001-2004) detail the close relationship
+between finite translation planes and spreads. </p>
+<p> <b><big>Book on Translation Planes and Spreads</big></b> </p>
+<p> See <a href="http://www.library.tuiasi.ro/ipm/vol13no34/pure.html">Foundations
+of Translation Planes</a> (2001), by M. Biliotti, V. Jha, and N. L.
+Johnson, for an extensive treatment of how spreads and translation
+planes are related. </p>
+<hr size="2" width="100%" /> Page last maintained Feb. 6, 2005; created
+Nov. 1, 2001.<br />
+
+<br />
+<!--footer-->
+</body>
+</html>

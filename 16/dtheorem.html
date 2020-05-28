@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<!-- Original URL: http://finitegeometry.org/sc/16/dtheorem.html
+Date Downloaded: 1/9/2016 12:17:04 AM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The Diamond Theorem in Finite Geometry</title>
+  <meta name="KEYWORDS" content="Science &amp; Technology,Education,finite geometry,graphic design,geometric designs,tessellations,projective geometry,projective space,group theory,finite groups,symmetry,symmetric,invariance,mathieu group,cullinane,automorphisms,permutation groups,design theory,projective spreads,latin squares," />
+  <meta name="DESCRIPTION" content="Finite projective geometry explains why certain graphic designs retain symmetry under a group of 322,560 transformations." />
+</head>
+<body leftmargin="50" rightmargin="100">
+<table align="center" cellpadding="12" cellspacing="0" width="100%">
+  <tbody>
+    <tr bgcolor="#000000">
+      <td bgcolor="#000000"> <strong><font color="#ffffff"> <small><small>Finite
+Geometry Notes</small></small></font><small><small></small></small></strong>
+      <small><small> <nobr> &nbsp; <font color="#ffffff">|</font> <a href="../index.html"> <font color="#ffffff"> Home</font></a> <font color="#ffffff">|</font> <a href="../map.html"> <font color="#ffffff">Site
+Map</font></a> <font color="#ffffff">|</font> <a href="../author.html">
+      <font color="#ffffff"> Author</font></a> <font color="#ffffff">|</font>
+      </nobr></small></small> </td>
+    </tr>
+  </tbody>
+</table>
+<!--EndNavigate-->
+<br />
+<table border="0" cellpadding="5" cellspacing="5" width="100%">
+  <tbody>
+    <tr>
+      <td align="left" valign="middle"><!--WSN:CELL:BEGIN:INDEX=0--><img src="dtheorem_files/AbstrTitle.gif" border="0" /> <br />
+      <table width="620">
+        <tbody>
+          <tr>
+            <td>
+            <table width="540">
+              <tbody>
+                <tr>
+                  <td><font size="2">
+                  <blockquote>
+                    <div align="justify">ABSTRACT:
+Finite projective geometry explains the surprising symmetry properties
+of some simple graphic designs-- found, for instance, in quilts. Links
+are provided for applications to sporadic simple groups (via the
+"Miracle Octad Generator" of R. T. Curtis), to the connection between
+orthogonal Latin squares and projective spreads, and to symmetry of
+Walsh functions.</div>
+                  </blockquote>
+                  </font></td>
+                </tr>
+              </tbody>
+            </table>
+            <div align="justify">We regard the four-diamond figure D
+above as a 4x4 array of two-color
+diagonally-divided square tiles.<br />
+            <br />
+Let G be the group of 322,560 permutations of these 16 tiles generated
+by arbitrarily mixing random permutations of rows and of columns with
+random permutations of the four 2x2 quadrants.<br />
+            <br />
+            <b>THEOREM:</b> Every G-image of D (as at right, below) has
+some ordinary or color-interchange symmetry.<br />
+            <br />
+            <b>Example:</b></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+<!--WSN:CELL:END:INDEX=0--></td>
+    </tr>
+    <tr>
+      <td align="left" valign="middle"><!--WSN:CELL:BEGIN:INDEX=1--><img src="dtheorem_files/AbstrExample3.jpg" border="0" /> <br />
+      <font color="#000000" face="arial" size="3"> <font color="#000000" face="arial" size="3">
+      <table width="620">
+        <tbody>
+          <tr>
+            <td>
+            <div align="left">For an animated version, <a href="DTanim.html">click here</a>.<br />
+            </div>
+            <strong><br />
+Remarks:</strong><br />
+            <div align="justify"><br />
+Some of the patterns resulting from the action of G on D have been
+known for thousands of years. (See Jablan, <a href="http://www.emis.de/monographs/jablan/chap26.htm">Symmetry
+and Ornament, Ch. 2.6</a>.)
+It is perhaps surprising that the patterns' interrelationships and
+symmetries can be explained fully only by using mathematics discovered
+just recently (relative to the patterns' age)-- in particular, the
+theory of automorphism groups of finite geometries.<br />
+            <br />
+Using this
+theory, we can summarize the patterns' properties by saying that G is
+isomorphic to the affine group A on the linear 4-space over GF(2) and
+that the 35 structures of the <nobr>840 = 35 x 24</nobr> G-images of D
+are isomorphic to the 35 lines in the 3-dimensional projective space
+over GF(2).<br />
+            <br />
+This
+can be seen by viewing the 35 structures as three-sets of line
+diagrams, based on the three partitions of the four-set of square
+two-color tiles into two two-sets, and indicating the locations of
+these two-sets of tiles within the 4x4 patterns. The lines of the line
+diagrams may be added in a binary fashion (i.e., 1+1=0). Each three-set
+of line diagrams sums to zero-- i.e., each diagram in a three-set is
+the binary sum of the other two diagrams in the set. Thus, the 35
+three-sets of line diagrams correspond to the 35 three-point lines of
+the finite projective 3-space PG(3,2).<br />
+            <br />
+For example, here are the line diagrams for the figures above:</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </font></font><!--WSN:CELL:END:INDEX=1--></td>
+    </tr>
+    <tr>
+      <td align="left" valign="middle"><!--WSN:CELL:BEGIN:INDEX=2--><img src="dtheorem_files/LineDiagrams.gif" border="0" /> <br />
+      <font color="#000000" face="arial" size="3"><b> </b></font>
+      <table width="620">
+        <tbody>
+          <tr>
+            <td>
+            <div align="justify"><br />
+Shown below are the 15 possible line diagrams resulting from
+row/column/quadrant permutations. These 15 diagrams may, as noted
+above, be regarded as the 15 points of the projective 3-space PG(3,2).</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+<!--WSN:CELL:END:INDEX=2--></td>
+    </tr>
+    <tr>
+      <td align="left" valign="middle"><!--WSN:CELL:BEGIN:INDEX=3--><img src="dtheorem_files/ProjPoints.gif" border="0" /> <br />
+      <font color="#000000" face="arial" size="3">
+      <table width="620">
+        <tbody>
+          <tr>
+            <td>
+            <div align="justify"> <br />
+The symmetry of the line diagrams accounts for the symmetry of the
+two-color patterns. (A proof shows that a 2<i>n</i>x2<i>n</i>
+two-color triangular half-squares pattern with such line diagrams must
+have a 2x2 center with a symmetry, and that this symmetry must be
+shared by the entire pattern.)<br />
+            <br />
+Among the 35 structures of the 840 4x4 arrays of tiles, orthogonality
+(in the sense of Latin-square orthogonality) corresponds to skewness of
+lines in the finite projective space PG(3,2). This was stated by the
+author in a 1978 note. (The note apparently had little effect. A
+quarter-century later, P. Govaerts, D. Jungnickel, L. Storme, and J. A.
+Thas wrote that skew (i.e., nonintersecting) lines in a projective
+space seem "at first sight not at all related" to orthogonal Latin
+squares.)<br />
+            <br />
+We can define sums and products so that the G-images of D generate an
+ideal (1024 patterns characterized by all horizontal or vertical "cuts"
+being uninterrupted) of a ring of 4096 symmetric patterns. There is an
+infinite family of such "diamond" rings, isomorphic to rings of
+matrices over GF(4).<br />
+            <br />
+The proof uses a decomposition technique for functions into a finite
+field that might be of more general use.<br />
+            <br />
+The underlying geometry of the 4x4 patterns is closely related to the
+Miracle Octad Generator of R. T. Curtis-- used in the construction of
+the Steiner system S(5,8,24)-- and hence is also related to the Leech
+lattice, which, as Walter Feit has remarked, "is a blown up version of
+S(5,8,24)."<br />
+            <br />
+For movable JavaScript versions of these 4x4 patterns, see <a href="puzzle/index.html">The Diamond 16 Puzzle</a>
+and the easier <a href="kal/index.html">Kaleidoscope Puzzle</a>.<br />
+            <br />
+The above is an expanded version of Abstract 79T-A37, "Symmetry
+invariance in a diamond ring," by Steven H. Cullinane, <i>Notices of
+the American Mathematical Society</i>, February 1979, pages A-193, 194.<br />
+            <br />
+For a discussion of other cases of the theorem, <a href="../gen/dtcas.html">click here</a>.<br />
+            <br />
+For some context, see <a href="../gen/refl.html">Reflection Groups in
+Finite Geometry</a>.<br />
+            </div>
+            <br />
+            <b>Related pages:</b><br />
+            <a href="puzzle/index.html"><br />
+The Diamond 16 Puzzle</a><br />
+            <a href="Carmichael440.html"><br />
+Diamond Theory in 1937:<br />
+A Brief Historical Note</a><br />
+            <a href="../map.html"><br />
+Notes on Finite Geometry</a><br />
+            <a href="geometry.html"><br />
+Geometry of the 4x4 Square</a><br />
+            <br />
+            <a href="../gen/geoqubits.html">The
+Geometry of Qubits</a><br />
+            <a href="logic.html"><br />
+The Geometry of Logic</a><br />
+            <a href="../gen/coord.html"><br />
+Binary Coordinate Systems</a><br />
+            <a href="../15/projectivepoints.html"><br />
+The 35 Lines of PG(3,2)</a><br />
+            <a href="../gen/mapsys.html"><br />
+Map Systems:<br />
+Function Decomposition over a Finite Field<br />
+            </a><a href="../gen/dtcas.html"><br />
+The Diamond Theorem--<br />
+The 2x2, the 2x2x2, the 4x4, and the 4x4x4 Cases</a><br />
+            <a href="../gen/dth/DiamondTheory.html"><br />
+Diamond Theory</a><br />
+            <a href="../gen/ortho.html"><br />
+Latin-Square Geometry</a><br />
+            <a href="../gen/walsh.html"><br />
+Walsh Functions</a><br />
+            <a href="../15/inscapes.html"><br />
+Inscapes</a><br />
+            <a href="../ph/truth.html"><br />
+The Diamond Theory of Truth</a><br />
+            <a href="../64/iching.html"><br />
+Geometry of the I Ching</a><br />
+            <a href="../64/solcube.html"><br />
+Solomon's Cube and The Eightfold Way</a><br />
+            <a href="../gen/crystal.html"><br />
+Crystal and Dragon in Diamond Theory</a><br />
+            <a href="../ph/poetrysbones.html"><br />
+The Form, the Pattern</a><br />
+            <a href="../ph/timefold.html"><br />
+The Grid of Time</a><br />
+            <a href="../gen/bdes/index.html"><br />
+Block Designs</a><br />
+            <a href="finiterelat.html"><br />
+Finite Relativity</a><br />
+            <a href="../4/dd/index.html"><br />
+Theme and Variations</a><br />
+            <a href="../gen/Polster.html"><br />
+Models of Finite Geometries</a><br />
+            <a href="quiltgeometry.html"><br />
+Quilt Geometry</a><br />
+            <a href="../gen/patt.html"><br />
+Pattern Groups</a><br />
+            <a href="../8/plane.html"><br />
+The Fano Plane Revisualized,<br />
+or the Eightfold Cube</a><br />
+            <a href="../24/MOG.html"><br />
+The Miracle Octad Generator</a><br />
+            <a href="kal/index.html"><br />
+Kaleidoscope</a><br />
+            <a href="../9/3x3.html"><br />
+Visualizing GL(2,p)</a><br />
+            <a href="../ph/imago.html"><br />
+Jung's Imago</a><br />
+            <a href="../author.html"><br />
+Author's home page</a> <br />
+            <br />
+<!--WSN:CELL:END:INDEX=3--></td>
+          </tr>
+          <tr>
+            <td align="left" valign="middle"><!--WSN:CELL:BEGIN:INDEX=4--><font color="#000000" face="arial" size="3">
+            <p>
+            <table align="left" width="620">
+              <tbody>
+                <tr>
+                  <td>
+                  <table align="center" border="1" bordercolor="black" cellpadding="18" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td>
+                        <p><font size="1"><b>AMS Mathematics Subject
+Classification:<br />
+                        <br />
+20B25 (Group theory and generalizations :: Permutation groups :: Finite
+automorphism groups of algebraic, geometric, or combinatorial
+structures)<br />
+                        <br />
+05B25 (Combinatorics :: Designs and configurations :: Finite geometries)<br />
+                        <br />
+51E20 (Geometry :: Finite geometry and special incidence structures ::
+Combinatorial structures in finite projective spaces) </b></font></p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <hr />
+                  <center><!--Creative Commons License--> <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.5/"><img alt="Creative Commons License" src="dtheorem_files/somerights20.png" border="0" /></a><br />
+                  <font size="1">This work is licensed under a <br />
+                  <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.5/">Creative
+Commons Attribution-NonCommercial-NoDerivs 2.5 License</a></font>.
+<!--/Creative Commons License--></center>
+<!-- <rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+		<Work rdf:about="">
+			<license rdf:resource="http://creativecommons.org/licenses/by-nc-nd/2.5/" />
+	<dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+		</Work>
+		<License rdf:about="http://creativecommons.org/licenses/by-nc-nd/2.5/"><permits rdf:resource="http://web.resource.org/cc/Reproduction"/><permits rdf:resource="http://web.resource.org/cc/Distribution"/><requires rdf:resource="http://web.resource.org/cc/Notice"/><requires rdf:resource="http://web.resource.org/cc/Attribution"/><prohibits rdf:resource="http://web.res>ource.org/cc/CommercialUse"/></License></rdf:RDF> -->
+                  <hr />
+                  <center><font size="1"><b>Page created Jan. 6, 2006,
+by Steven H. Cullinane &nbsp;&nbsp;&nbsp;&nbsp; diamondtheorem.com </b></font></center>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </p>
+            </font><!--WSN:CELL:END:INDEX=4--></td>
+          </tr>
+        </tbody>
+      </table>
+<!--WSN:LAYOUT:END--> </font></td>
+    </tr>
+  </tbody>
+</table>
+<!--WSN:END_BODY:BEGIN-->
+<img src="dtheorem_files/ph.gif" height="1" /><!--WSN:END_BODY:END--><!--footer-->
+</body>
+</html>
+f:resource="http://web.resource.org/cc/Reproduction"/><permits rdf:resource="http://web.resource.org/cc/Distribution"/><requires rdf:resource="http://web.resource.org/cc/Notice"/><requires rdf:resource="http://web.resource.org/cc/Attribution"/><prohibits rdf:resource="http://web.res>ource.org/cc/CommercialUse"/></License></rdf:RDF> -->
+                  <hr />
+                  <center><font size="1"><b>Page created Jan. 6, 2006,
+by Steven H. Cullinane &nbsp;&nbsp;&nbsp;&nbsp; diamondtheorem.com </b></font></center>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </p>
+            </font><!--WSN:CELL:END:INDEX=4--></td>
+          </tr>
+        </tbody>
+      </table>
+<!--WSN:LAYOUT:END--> </font></td>
+    </tr>
+  </tbody>
+</table>
+<!--WSN:END_BODY:BEGIN-->
+<img src="dtheorem_files/ph.gif" height="1" /><!--WSN:END_BODY:END--><!--footer-->
+</body>
+</html>

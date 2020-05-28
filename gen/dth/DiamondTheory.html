@@ -1,0 +1,932 @@
+<html>
+  <head>
+<!-- Original URL: http://www.finitegeometry.org/sc/gen/dth/DiamondTheory.html
+Date Downloaded: 1/9/2016 12:17:41 AM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--project01-->
+        
+    <title>
+      Diamond Theory: Symmetry in Binary Spaces
+    </title>
+    <meta name="description" content="Plato's diamond after 24 centuries... Hidden symmetries of Plato's Meno figure throw new light on topics in finite geometry, finite group theory, and combinatorics." />
+    <meta name="keywords" content="finite, geometry, projective, group, Mathieu, golay, theory, spaces, coding, combinatorics, latin square, matrix, octad, permutation, Steiner system, symmetry, symmetric, Plato, Meno, binary" />
+    </head>
+  <body leftmargin="75" rightmargin="75">
+		
+		
+<!--Navigate-->
+<table width="100%" cellpadding="12" cellspacing="0">
+
+   <tr bgcolor="#000000">
+      <td bgcolor="#000000">
+
+          <strong><font color="#FFFFFF">
+          <small><small>
+          Finite Geometry Notes</small></small></font></strong>
+
+          <nobr>
+           &nbsp;
+
+          <font color="#FFFFFF">|</font>
+
+   
+          <a href="../../index.html">
+          <font color="#FFFFFF">
+          Home</font></a>
+			
+          <font color="#FFFFFF">|</font>
+
+          <a href="../../map.html">
+
+          <font color="#FFFFFF">Site Map</font></a>
+
+
+          <font color="#FFFFFF">|</font>
+
+          <a href="../../author.html">
+          <font color="#FFFFFF">
+           Author</font></a>
+ 
+           <font color="#FFFFFF">|</font>
+
+           
+
+           </nobr>
+
+          </td>
+      </tr>
+</table>
+<!--EndNavigate-->
+
+<br />
+    <div align="left">
+      <table align="center" bgcolor="yellow" border="1" cellpadding="15">
+        <tbody>
+          <tr>
+            <td>
+              &nbsp;&nbsp;&nbsp;&nbsp;Related sites: &nbsp;&nbsp;&nbsp; <a href="../../16/puzzle/index.html">The 16
+              Puzzle</a> &nbsp;&nbsp;&nbsp;<a href="refs.html">Bibliography</a>
+              &nbsp;&nbsp;&nbsp;<a href="../../author.html">On the author</a>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div align="left">
+      <font face="Arial, Helvetica, sans-serif"><br /></font>
+    </div>
+    <div align="left">
+      <table align="center" border="1" cellpadding="15" cellspacing="5">
+        <tbody>
+          <tr>
+            <td align="center">
+              <center>
+                <h1>
+                  Diamond<br />
+                  Theory
+                </h1>
+                <h4>
+                  by Steven H. Cullinane
+                </h4>
+              </center>
+            </td>
+            <td>
+              <p align="center">
+                <img alt="Plato's Diamond" src="DiamondTheory_files/platodiam.gif" hspace="16" /><br />
+                <font size="3"><b>Plato's Diamond</b></font>
+              </p>
+            </td>
+            <td>
+              <center>
+                <img src="DiamondTheory_files/bbgifs.gif" height="59" width="59" />
+                <p>
+                  <img src="DiamondTheory_files/motto2.jpg" />
+                </p>
+                <p>
+                  <font size="2"><i>Motto of<br />
+                  Plato's Academy</i></font>
+                </p>
+              </center>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p align="left">
+      &nbsp;
+    </p>
+    <center>
+      <h3>
+        <font face="Arial, Helvetica, sans-serif">Abstract:
+        Symmetry in Finite Geometry</font>
+      </h3>
+    </center>
+    <blockquote>
+      <font face="Arial, Helvetica, sans-serif">Symmetry is often
+      described as invariance under a group of transformations.
+      An unspoken assumption about symmetry in Euclidean 3-space
+      is that the transformations involved are continuous.</font>
+      <p>
+        <font face="Arial, Helvetica, sans-serif">Diamond theory
+        rejects this assumption, and in so doing reveals that
+        Euclidean symmetry may <i>itself</i> be invariant under
+        rather interesting groups of <i>non</i>continuous (and
+        <i>a</i>symmetric) transformations. (These might be
+        called <i>noncontinuous</i> groups, as opposed to
+        so-called <i>discontinuous</i> (or <i>discrete</i>)
+        symmetry groups. See Weyl's <i>Symmetry</i>.)</font>
+      </p>
+      <p>
+        <font face="Arial, Helvetica, sans-serif">For example,
+        the affine group A on the 4-space over the 2-element
+        field has a natural noncontinuous and asymmetric but
+        symmetry-preserving action on the elements of a 4x4
+        array. (<a href="http://diamondtheorem.com">Details</a>)</font>
+      </p>
+      <p>
+        <font face="Arial, Helvetica, sans-serif">By embedding
+        the 4x4 array in a 4x6 array, then embedding A in a
+        supergroup that acts in a natural way on the larger
+        array, one can, as R. T. Curtis discovered, construct the
+        Mathieu group M<sub>24</sub> -- which is, according to J.
+        H. Conway, the "most remarkable of all finite
+        groups."</font>
+      </p>
+      <p>
+        <font face="Arial, Helvetica, sans-serif">The proof that
+        A preserves symmetry involves the following elementary,
+        but useful and apparently new, result: Every 4-coloring
+        (i.e., every map into a 4-set) can be expressed as a sum
+        of three 2-colorings. It is conceivable that this result
+        might have applications other than to diamond theory.
+        (<a href="../mapsys.html">Details</a>)</font>
+      </p><font face="Arial, Helvetica, sans-serif">The proof
+      that A preserves symmetry also yields some insight into
+      orthogonality of Latin squares, at least in the 4x4 case.
+      In this case, orthogonality turns out to be equivalent to
+      skewness of lines in a finite projective 3-space. (<a href="../ortho.html">Details</a>)</font>
+      <p>
+        <font face="Arial, Helvetica, sans-serif">Diamond theory
+        provides simple ways to visualize</font>
+      </p>
+      <ul>
+        <li>
+          <font face="Arial, Helvetica, sans-serif">"the simplest
+          non-trivial model for harmonic
+          analysis,"<sup><b>1</b></sup> the Walsh
+          functions,
+        </font></li>
+        <li>"the smallest perfect universe,"<sup><b>2</b></sup>
+        <a href="../../15/projectivepoints.html">the
+        finite projective space PG(3,2)</a>,
+        </li>
+        <li>the "distinguished geometry," "remarkable geometric
+        individual," and "gem,"<sup><b>3</b></sup> the finite
+        projective plane PG(2,4),
+        </li>
+        <li>the "remarkable"<sup><b>4</b></sup> outer
+        automorphisms of S<sub>6</sub>, and
+        </li>
+        <li>the structural equivalence of certain
+          <ul>
+            <li>factorizations<sup><b>3</b></sup> of graphs,
+            </li>
+            <li>parallelisms<sup><b>5</b></sup> of partitions,
+            </li>
+            <li>spreads<sup><b>6</b></sup> of lines, and
+            </li>
+            <li>sets of mutually orthogonal squares (i.e.,
+            <i>n-orthogonal</i><sup><b>7</b></sup>
+            nxn matrices).
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <blockquote><small>
+        <font face="Arial, Helvetica, sans-serif"><br />
+        <b>1.</b> &nbsp;F. Schipp <i>et al.</i>, <i>Walsh Series</i>,
+        1990<br />
+        <b>2.</b> &nbsp;Burkard Polster, website<br />
+        <b>3.</b> &nbsp;A. Beutelspacher in the American Mathematical
+        Monthly, January 1986<br />
+        <b>4.</b> &nbsp;P. J. Cameron and J. H. van Lint, <i>Designs,
+        Graphs, Codes, and their Links</i>, 1991<br />
+        <b>5.</b> &nbsp;P. J. Cameron, <i>Parallelisms of Complete
+        Designs</i>, 1976<br />
+        <b>6.</b> &nbsp;J. W. P. Hirschfeld, <i>Finite Projective
+        Spaces of Three Dimensions</i>, 1985<br />
+        <b>7.</b> &nbsp;J. Denes and A. D. Keedwell, <i>Latin Squares
+        and their Applications</i>, 1974</font>
+        </small>
+      </blockquote>
+      <p>
+        <font face="Arial, Helvetica, sans-serif">As a bonus,
+        extending the action of A to a 4x4x4 array yields a
+        simple way of generating the 1.3 trillion transformations
+        natural to the 64 hexagrams of the I Ching. (<a href="../../64/iching.html">Details</a>)</font>
+      </p>
+    </blockquote>
+    <div align="left">
+      <table border="1" cellpadding="15">
+        <tbody>
+          <tr>
+            <td>
+              <a href="http://scout.cs.wisc.edu/"><img alt="The NSDL Scout Report for Math, Engineering, and Technology Selection" src="DiamondTheory_files/SRMETSelection.gif" /></a><br />
+            </td>
+            <td>
+              <h4>
+                Mathematics Subject Classification (MSC2000)
+                -<br />
+                Primary:<br />
+                20B25, Finite automorphism groups of algebraic,
+                geometric, or combinatorial structures.<br />
+                Secondary:<br />
+                05B25, Finite geometries;<br />
+                51E20, Combinatorial structures in finite
+                projective spaces.
+              </h4>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div align="left">
+      <font face="Arial, Helvetica, sans-serif">&nbsp;</font>
+    </div>
+    <div align="left">
+      <font face="Arial, Helvetica, sans-serif">The following
+      diagram is a rough sketch of how diamond theory is related
+      to some other fields of mathematics.</font>
+    </div>
+    <div align="left">
+      <font face="Arial, Helvetica, sans-serif">&nbsp;</font>
+    </div>
+    <div align="center">
+      <font face="Arial, Helvetica, sans-serif"><img src="DiamondTheory_files/Theory2.gif" height="340" width="457" /></font>
+      <hr />
+    </div>
+    <h3 align="left">
+      <font face="Arial, Helvetica, sans-serif">To Shirley</font>
+    </h3>
+    <p align="left">
+      <font face="Arial, Helvetica, sans-serif"><big>On Euclid's
+      <i>Elements</i>:</big><br />
+      "In view of... admiration the <i>Elements</i> has
+      consistently elicited over the years, and of the
+      prestigious role it concomitantly maintained until the
+      mid-19th century as scientific archetype, it is not
+      surprising that we find in the history of philosophy a
+      concept of truth sustained by the example of the
+      <i>Elements</i>, whose influence in philosophy runs
+      parallel to that of the <i>Elements</i> in science. This
+      concept I will call the 'Diamond Theory' of truth."<br />
+      -- Richard J. Trudeau in <i>The Non-Euclidean
+      Revolution</i>, 1987</font>
+    </p>
+    <div align="left">
+      <hr />
+    </div>
+    <h2 align="left">
+      <font face="Arial, Helvetica, sans-serif">Introduction:</font>
+    </h2>
+    <p align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">The image below shows the cover of a booklet I wrote in
+      1976. The booklet details the implications of what I call
+      the "diamond theorem," after the diamond figure in Plato's
+      Meno dialogue. This website, which updates the booklet, is
+      written for mathematicians and college students of
+      mathematics. For a less technical treatment of
+      philosophical and literary matters related to the diamond
+      theorem, see <a href="http://math16.com">The Diamond Theory of Truth</a>.</font></font>
+    </p>
+    <p align="center">
+      <font face="Arial, Helvetica, sans-serif"><font size="3"><img alt="Diamond Theory booklet" src="DiamondTheory_files/DTcover5.jpg" border="2" hspace="20" vspace="20" /></font></font>
+    </p>
+    
+    <h3 align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">For some historical background to the diamond theorem,
+      see</font></font>
+    </h3>
+    <div align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3"><a href="hist.html">Symmetry from Plato
+      to the Four-Color Conjecture</a></font></font>
+    </div>
+
+    <h3 align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">For material related to the diamond theorem,
+      see the <a href="../../map.html">site map</a>.</font>
+
+
+    <h3 align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">For some background on the philosophy of mathematics in
+      general, see</font></font>
+    </h3>
+    <p align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3"><a href="http://www.birkhauser.com/cgi-win/ISBN/0-8176-3311-1"><i>The
+      Non-Euclidean Revolution</i>.</a><br />
+      This 1987 book by Richard J. Trudeau, with a brief
+      introduction by H. S. M. Coxeter, traces in the recent
+      history of geometry the conflict between what Trudeau calls
+      the "<b>Diamond Theory</b> of truth" and the "<b>Story
+      Theory</b> of truth" -- known to more traditional
+      philosophers as "realism" and "nominalism."</font></font>
+    </p>
+    <p align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">For more on Trudeau's version of diamond theory, see
+      this site's companion website, <a href="http://math16.com">The Diamond Theory of Truth</a>.</font></font>
+    </p>
+    <p align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">For more on the story theory, consider the following
+      quotation:</font></font>
+    </p>
+    <p align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">"The moral of my story is: Read Euclid and ask
+      questions. Then teach a course on Euclid and later
+      developments arising out of these questions."</font></font>
+    </p>
+    <p align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">The quotation is from Robin Hartshorne, the author of
+      <i>Algebraic Geometry</i>, in "Teaching Geometry According
+      to Euclid," Notices of the American Mathematical Society,
+      April 2000.</font></font>
+    </p>
+
+    <div align="left">
+      <hr />
+    </div>
+    <h2 align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Diamond Theory</font></font>
+    </h2>
+    <p align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Plato tells how Socrates helped Meno's slave boy
+      "remember" the geometry of a diamond. Twenty-four centuries
+      later, this geometry has a new theorem.</font></font>
+    </p>
+
+    <table border="1" cellpadding="10">
+      <tbody>
+        <tr>
+          <td>
+            <table bgcolor="white" border="0" cellpadding="4" cellspacing="4">
+              <tbody>
+                <tr>
+                  <td>
+                    <h3>
+                      The Diamond Theorem:
+                    </h3>Inscribe a white diamond in a black
+                    square.<br />
+                    Split the resulting figure along its vertical
+                    and horizontal midlines into four quadrants
+                    so that each quadrant is a square divided by
+                    one of its diagonals into a black half and a
+                    white half. Call the resulting figure D.
+                  </td>
+                  <td>
+                    <table border="1" cellpadding="0" cellspacing="0">
+                      <caption align="bottom">
+                        <b><big>D</big></b>
+                      </caption>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <img src="DiamondTheory_files/t80-0.gif" height="40" width="40" />
+                          </td>
+                          <td>
+                            <img src="DiamondTheory_files/t80-1.gif" height="40" width="40" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="DiamondTheory_files/t80-3.gif" height="40" width="40" />
+                          </td>
+                          <td>
+                            <img src="DiamondTheory_files/t80-2.gif" height="40" width="40" />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <p>
+                      Let G be the group of 24 transformations of
+                      D obtained by randomly permuting (without
+                      rotating) the four quadrants of D. Let
+                      S<sub>4</sub> denote the symmetric group
+                      acting on four elements. Then
+                    </p>
+                    <p>
+                      (1) Every G-image of D has some ordinary or
+                      color-interchange symmetry (see below),
+                    </p>
+                    <p>
+                      (2) G is an affine group generated by
+                      S<sub>4</sub> actions on parts of D, and
+                    </p>
+                    <p>
+                      (3) Results (1) and (2) generalize, through
+                      intermediate stages, to symmetry invariance
+                      under a group of approximately 1.3 trillion
+                      transformations generated by S<sub>4</sub>
+                      actions on parts of a 4x4x4 cube.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table><br />
+    <br />
+
+    <table border="1" cellpadding="5" cellspacing="10">
+      <tbody>
+        <tr>
+          <td align="center" valign="center">
+            <font size="5"><b>The 2x2 case</b></font><br />
+            In the 2x2 case, D is a one-diamond figure (top left,
+            below) and G is a group of 24 permutations generated
+            by random permutations of the four 1x1 quadrants.
+            Every G-image of D (as below) has some ordinary or
+            color-interchange symmetry.
+          </td>
+        </tr>
+        <tr align="center">
+          <!-- ****************************************************** --><!-- 2x2 pattern 1 -->
+          <td>
+            <img src="DiamondTheory_files/The24.jpg" />
+          </td>
+        </tr>
+      </tbody>
+    </table><br />
+    <br />
+
+    <table border="1" cellpadding="8" cellspacing="0">
+      <tbody>
+        <tr>
+          <td colspan="3" align="center" valign="center">
+            <font size="5"><b>Example of the 4x4
+            case</b></font><br />
+            In the 4x4 case, D is a four-diamond figure (left,
+            below) and G is a group of 322,560 permutations
+            generated by arbitrarily mixing random permutations
+            of rows and of columns with random permutations of
+            the four 2x2 quadrants. Every G-image of D (as at
+            right, below) has some ordinary or color-interchange
+            symmetry.
+          </td>
+        </tr>
+        <tr align="center" valign="center">
+          <td>
+            <img src="DiamondTheory_files/FourbyfourA.jpg" /><br />
+            <b>D</b>
+          </td>
+          <td align="center" valign="center" width="50%">
+            Let <b>e</b> denote transposition of the first two
+            rows, <b>f</b> denote transposition of the last two
+            columns, <b>g</b> denote transposition of the top
+            left and bottom right quadrants, and <b>h</b> denote
+            transposition of the middle two columns. Then
+            <big><b>Defgh</b></big> is as at right. Note that
+            Defgh has rotational color-interchange symmetry like
+            that of the famed yin-yang symbol.
+          </td>
+          <td>
+            <img src="DiamondTheory_files/FourbyfourB.jpg" /><br />
+            <b>Defgh</b>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" align="center">
+            <font size="4"><b>Remarks on the 4x4
+            case:</b></font><br />
+            G is isomorphic to the affine group A on the linear
+            4-space over GF(2). The 35 structures of the 840 = 35
+            x 24 G-images of D are isomorphic to the 35 lines in
+            the 3-dimensional projective space over GF(2).
+            Orthogonality of structures corresponds to skewness
+            of lines. We can define sums and products so that the
+            G-images of D generate an ideal (1024 patterns
+            characterized by all horizontal or vertical "cuts"
+            being uninterrupted) of a ring of 4096 symmetric
+            patterns. There is an infinite family of such
+            "diamond" rings, isomorphic to rings of matrices over
+            GF(4). For a movable JavaScript version of these 4x4
+            patterns, see <a href="../../16/puzzle/index.html">The Diamond 16
+            Puzzle</a>.
+          </td>
+        </tr>
+      </tbody>
+    </table><br />
+    <br />
+    <p align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">The statement of the theorem may be clarified by a
+      research announcement written in 1978 that illustrates the
+      above 4x4 example in reverse... <a href="../../16/abstr.pdf">Research
+      Announcement, 1978</a> (pdf).</font></font>
+    </p>
+    <h3 align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Illustrations of half-square patterns:</font></font>
+    </h3>
+    <p align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">For an artist's rendering of some patterns generated as
+      described in the diamond theorem (and many <i>not</i> so
+      generated), see the following new (September 11, 2000)
+      website: <a href="http://www.mlyon.com/index.htm?personal/Tiling/tiling.htm%7EmainFrame">
+      Tiling, by Mike Lyon</a>.</font></font>
+    </p>
+    <p align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">For more illustrations and a sketch of the proof, see
+      the following</font></font>
+    </p>
+
+    <h3 align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Diamond Theory Research Notes</font></font>
+    </h3>
+    <p align="left">
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Hartshorne's principle: "Whenever one approaches a
+      subject from two different directions, there is bound to be
+      an interesting theorem expressing their relation." - Robin
+      Hartshorne, AMS Notices, April 2000, p. 464.</font></font>
+    </p>
+
+    <div align="left">
+      <dl>
+        <dt>
+          <font face="Arial, Helvetica, sans-serif"><font size="3">( 1) <a href="../../pg/dt/cover1.html">Diamond
+          theory cover page</a></font></font>
+        </dt>
+        <dd>
+          From the author's 1976 booklet. See <a href="http://math16.com">The Diamond Theory of Truth</a> for the meaning of
+          the cover illustration.
+        </dd>
+        <dt>
+          ( 2) <a href="../../pg/dt/relativprob.html">The
+          relativity problem in finite geometry</a>
+        </dt>
+        <dd>
+          "This is the relativity problem: to fix objectively a
+          class of equivalent coordinatizations and to ascertain
+          the group of transformations S mediating between
+          them."<br />
+          -- Hermann Weyl, <i>The Classical Groups</i><br />
+          For an application to analysis, see <a href="../walsh.html">Symmetry of
+          Walsh Functions</a>.
+        </dd>
+        <dt>
+          ( 3) <a href="../ortho.html">Orthogonality
+          of Latin squares viewed as skewness of lines</a>
+        </dt>
+        <dd>
+          Structural diagrams of 4x4 arrays play the role of
+          lines in PG(3,2). Orthogonality of arrays corresponds
+          to skewness of lines.
+        </dd>
+        <dt>
+          ( 3.1) <a href="../mapsys.html">Map
+          systems</a>
+        </dt>
+        <dd>
+          The algebra underlying note (3): Every 4-coloring can
+          be expressed, using GF(4), as a linear combination of
+          three 2-colorings. This elementary, but apparently new,
+          result may have applications other than to diamond
+          theory.
+        </dd>
+        <dt>
+          ( 4) <a href="../bdes/CullCubes.html">Diamonds
+          and whirls</a>
+        </dt>
+        <dd>
+          Block designs of a different sort -- graphic figures on
+          cubes. See also the <a href="http://newton.ex.ac.uk/people/goss/symmetry/O.html">University
+          of Exeter page</a> on the octahedral group O.
+        </dd>
+        <dt>
+          ( 5) <a href="../../pg/dt/affinegps.html">Affine
+          groups on small binary spaces</a>
+        </dt>
+        <dd>
+          Six ways to slice a cube, and the resulting affine
+          groups.<br />
+          For details, see the author's 1984 paper <a href="../coord.html">Binary
+          Coordinate Systems</a>.
+        </dd>
+        <dt>
+          ( 6) <a href="../../pg/dt/invar.html">An
+          invariance of symmetry</a>
+        </dt>
+        <dd>
+          The diamond theorem on a 4x4x4 cube, and a sketch of
+          the proof.
+        </dd>
+        <dt>
+          ( 7) <a href="../../24/gentheog2.html">Generating
+          the octad generator</a>
+        </dt>
+        <dd>
+          The Miracle Octad Generator (MOG) of R. T. Curtis -- A
+          correspondence between the 35 partitions of an 8-set
+          into two 4-sets and the 35 lines of PG(3,2).<br />
+          For more on the MOG, see, for instance, the preprint by
+          Marston Conder and John McKay, "Markings of the Golay
+          Code" -- either the author's <a href="http://www.math.auckland.ac.nz/%7Econder/preprints/markings.ps">
+          PostScript version</a> or the <a href="http://citeseer.nj.nec.com/cachedpage/290522/1">cached
+          version</a>. Other details on the Miracle Octad
+          Generator are given in the reference file highlighted
+          in yellow below.
+        </dd>
+        <dt>
+          ( 8) <a href="../../pg/dt/subsets.html">The
+          2-subsets of a 6-set are the points of a PG(3,2)</a>
+        </dt>
+        <dd>
+          Beutelspacher's model of the 15 points of PG(3,2)
+          compared with a 15-line complex in PG(3,2).
+        </dd>
+        <dt>
+          ( 9) <a href="../../pg/dt/projpart.html">Twenty-one
+          projective partitions</a>
+        </dt>
+        <dd>
+          The author's model of the 21-point projective plane
+          PG(2,4).<br />
+          For a general method of constructing such models, see
+          <a href="../../21/modeling.html">Modeling
+          PG(2,4)</a>.
+        </dd>
+        <dt>
+          (10) <a href="../../pg/dt/inscapes1.html">Inscapes</a>
+        </dt>
+        <dd>
+          A new combinatorial concept that illustrates symplectic
+          polarities in PG(3,2).
+        </dd>
+        <dt>
+          (11) <a href="../../pg/dt/inscapes2.html">Inscapes
+          II</a>
+        </dt>
+        <dd>
+          The concept in note (10) is generalized.
+        </dd>
+        <dt>
+          (12) <a href="../../pg/dt/inscapes3.html">Inscapes
+          III</a>
+        </dt>
+        <dd>
+          An excellent source of exercises related to note (12)
+          is <i>Introduction to the Theory of Groups of Finite
+          Order</i>, by Robert D. Carmichael (1937), reprinted by
+          Dover Books, 1956. See especially<br />
+          pp. 42-43, ex. 30 and 31;<br />
+          p. 73, ex. 32;<br />
+          p. 165, ex. 20;<br />
+          p. 304, ex. 3;<br />
+          pp. 320-321, ex. 7-12;<br />
+          pp. 336-337, ex. 4-7, 9, 10;<br />
+          p. 353, ex. 5;<br />
+          p. 392, ex. 6, part (3);<br />
+          p. 437, ex. 14-17;<br />
+          p. 439, ex. 11-12;<br />
+          pp. 440-441, ex. 20, 21.<br />
+          These exercises in Carmichael have a simplicity and
+          clarity lacking in many more recent works on finite
+          mathematics.<br />
+          See also "Generalized Steiner Systems of Type
+          3-(v,{4,6},1)," by E. F. Assmus, Jr., and J. E. Novillo
+          Sardi, in <i>Finite Geometries and Designs</i>, edited
+          by P. J. Cameron, J. W. P. Hirschfeld, and D. R.
+          Hughes, Cambridge University Press, 1981.
+        </dd>
+        <dt>
+          (13) <a href="../../pg/dt/inscapes4.html">Inscapes
+          IV</a>
+        </dt>
+        <dd>
+          An outer automorphism that is literally <i>outer</i>.
+        </dd>
+        <dt>
+          (14) <a href="../../pg/dt/portrait.html">Portrait
+          of O</a>
+        </dt>
+        <dd>
+          A table of the octahedral group O using the 24 patterns
+          from the 2x2 case of the diamond theorem.
+        </dd>
+        <dt>
+          (15) <a href="../../pg/dt/study.html">Study
+          of O</a>
+        </dt>
+        <dd>
+          A different way of looking at the octahedral group,
+          using cubes that illustrate the 2x2x2 case of the
+          diamond theorem.
+        </dd>
+        <dt>
+          (16) <a href="../../pg/dt/symminvar.html">Symmetry
+          invariance under M<sub>12</sub></a>
+        </dt>
+        <dd>
+          A generalization of the two-color plane patterns, made
+          up of all-black and all-white squares, that underlie
+          plane patterns, made up of two-color diagonally-divided
+          squares, of diamond theory.
+        </dd>
+      </dl>
+    </div>
+    <h3>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Other research notes:</font></font>
+    </h3><font face="Arial, Helvetica, sans-serif"><font size="3">The above notes are directly related to the diamond
+    theorem. For 23 other research notes less directly related
+    to, but inspired (for the most part) by the theorem, see
+    <a href="../../pg/index.html">Miscellaneous Research Notes</a>.</font></font>
+    <hr />
+    <h2>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Plato, Pythagoras, and the diamond
+      figure:</font></font>
+    </h2>
+    <p>
+      <font face="Arial, Helvetica, sans-serif"><font size="3"><a href="http://www.islas.org/drmcm/english/west_to_Dante/Readings/meno.html">
+      Plato's Diamond in the <i>Meno</i></a><br />
+      Plato as a precursor of Gerard Manley Hopkins's "immortal
+      diamond." An illustration shows the prototype of the figure
+      D discussed above.</font></font>
+    </p>
+    <p>
+      <font face="Arial, Helvetica, sans-serif"><font size="3"><a href="http://www.maa.org/mathland/mathtrek_11_27_00.html">Plato's
+      Diamond Revisited</a><br />
+      Ivars Peterson's Nov. 27, 2000 column "Square of the
+      Hypotenuse" which discusses the diamond figure as used by
+      Pythagoras (perhaps) and Plato. Other references to the use
+      of Plato's diamond in the proof of the Pythagorean
+      theorem:</font></font>
+    </p>
+    <h4>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Huxley --</font></font>
+    </h4><font face="Arial, Helvetica, sans-serif"><font size="3">"... and he proceeded to prove the theorem of Pythagoras
+    -- not in Euclid's way, but by the simpler and more
+    satisfying method which was, in all probability, employed by
+    Pythagoras himself....<br />
+    'You see,' he said, 'it seemed to me so beautiful....'<br />
+    I nodded. 'Yes, it's very beautiful,' I said -- 'it's very
+    beautiful indeed.'"<br />
+    -- Aldous Huxley, "Young Archimedes," in <i>Collected Short
+    Stories</i>, Harper, 1957, pp. 246 - 247</font></font>
+    <h4>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Heath --</font></font>
+    </h4><font face="Arial, Helvetica, sans-serif"><font size="3">Sir Thomas L. Heath, in his commentary on Euclid I.47,
+    asks how Pythagoreans discovered the Pythagorean theorem and
+    the irrationality of the diagonal of a unit square. His
+    answer? Plato's diamond.<br />
+    (See Heath, Sir Thomas Little (1861-1940),<br />
+    <i>The thirteen books of Euclid's Elements translated from
+    the text of Heiberg with introduction and commentary</i>.
+    Three volumes. University Press, Cambridge, 1908. Second
+    edition: University Press, Cambridge, 1925. Reprint: Dover
+    Publ., New York, 1956. Reviewed: Isis 10
+    (1928),60-62.)</font></font>
+    <h4>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Other sites on the alleged "diamond" proof of
+      Pythagoras --</font></font>
+    </h4><font face="Arial, Helvetica, sans-serif"><font size="3"><a href="http://www.cut-the-knot.com/pythagoras/#9">Colorful diagrams
+    at Cut-the-Knot</a><br />
+    <br />
+    <a href="http://www.anselm.edu/homepage/dbanach/pyth1.htm">Illustrated
+    legend of the diamond proof</a><br />
+    <br />
+    <a href="http://sunsite.ubc.ca/DigitalMathArchive/Euclid/java/html/babylon.html">
+    Babylonian version of the diamond proof</a></font></font>
+    <hr />
+    <h3>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Keywords to help place the diamond theorem in the
+      proper mathematical context:</font></font>
+    </h3>
+    <p>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">"We may say, roughly, that a mathematical idea is
+      'significant' if it can be connected, in a natural and
+      illuminating way, with a large complex of other
+      mathematical ideas."<br />
+      - G. H. Hardy, <i>A Mathematician's Apology</i> (1940),
+      Cambridge University Press, reprinted 1969, page
+      89</font></font>
+    </p>
+    <p>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">affine geometry, affine planes, affine spaces,
+      automorphisms, binary codes, block designs, classical
+      groups, codes, coding theory, collineations, combinatorial,
+      combinatorics, conjugacy classes, the Conwell
+      correspondence, correlations, Cullinane, R. T. Curtis,
+      design theory, the diamond theorem, diamond theory, duads,
+      duality, error correcting codes, exceptional groups, finite
+      fields, finite geometry, finite groups, finite rings,
+      Galois fields, generalized quadrangles, generators,
+      geometry, GF(2), GF(4), the (24,12) Golay code, group
+      actions, group theory, Hadamard matrices, hypercube,
+      hyperplanes, hyperspace, incidence structures, invariance,
+      Karnaugh maps, Kirkman's schoolgirls problem, Latin
+      squares, Leech lattice, linear groups, linear spaces,
+      linear transformations, Mathieu groups, matrix theory,
+      Meno, Miracle Octad Generator, MOG, multiply transitive
+      groups, octads, the octahedral group, orthogonal arrays,
+      outer automorphisms, parallelisms, partial geometries,
+      permutation groups, PG(3,2), Plato, Platonic, polarities,
+      Polya-Burnside theorem, projective geometry, projective
+      planes, projective spaces, projectivities, Reed-Muller
+      codes, the relativity problem, Singer cycle, skew lines,
+      Socrates, sporadic simple groups, Steiner systems,
+      Sylvester, symmetric, symmetry, symplectic, synthemes,
+      synthematic, tesseract, transvections, Walsh functions,
+      Witt designs</font></font>
+    </p>
+    <h3>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Search engine for use with the above
+      keywords:</font></font>
+    </h3>
+    <p>
+      <!-- Search Google -->
+    </p>
+    <center>
+      <form action="http://www.google.com/search" method="get">
+        <table bgcolor="#FFFFFF">
+          <tbody>
+            <tr>
+              <td>
+                <a href="http://www.google.com/"><img alt="Google" src="DiamondTheory_files/Logo_40wht.gif" align="middle" border="0" /></a> <input maxlength="255" size="31" name="q" /> <input value="Google Search" name="btnG" type="submit" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </center><!-- Search Google -->
+    <h3>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Other search engines:</font></font>
+    </h3><font face="Arial, Helvetica, sans-serif"><font size="3"><a href="http://directory.google.com/Top/Science/Math/Publications/Search_Engines">
+    Google Directory of Mathematics Search Engines</a> 
+    <!-- ********************* COMBIN. REFS. ************** --></font></font>
+    <h3>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Sites on combinatorics generally:</font></font>
+    </h3>
+    <p>
+      <font face="Arial, Helvetica, sans-serif"><font size="3"><a href="http://www.combinatorics.net/">The
+      Combinatorics Net</a><br />
+      <a href="http://dmoz.org/Science/Math/Combinatorics/">The
+      Open Directory list of combinatorics sites</a><br />
+      <a href="http://www.maths.qmw.ac.uk/%7Epjc/permgps/">U. of
+      London Permutation Groups Resources</a><br />
+      <a href="http://www.maths.qmw.ac.uk/%7Epjc/design/resources.html">U.
+      of London Design Resources on the Web</a></font></font>
+    </p>
+    <!-- **************** END COMBIN. REFS. ***************** -->
+    <hr />
+    
+    <!-- ******************** REFERENCES ***************** -->
+    <table bgcolor="yellow" border="1" cellpadding="20" cellspacing="0">
+      <tbody>
+        <tr>
+          <td>
+            <h3>
+              <a href="refs.html"><big><b>Diamond
+              Theory Bibliography</b></big></a>
+            </h3>
+          </td>
+        </tr>
+      </tbody>
+    </table><font face="Arial, Helvetica, sans-serif"><font size="3"><br /></font></font>
+    
+      <!-- ************ END REFERENCES SECTION *****************-->
+    
+    
+    <hr />
+    <div align="left">
+      <p>
+        <font face="Arial, Helvetica, sans-serif"><font size="3">"It is a good light, then, for those<br />
+        That know the ultimate Plato,<br />
+        Tranquillizing with this jewel<br />
+        The torments of confusion."<br />
+        - Wallace Stevens,<br />
+        <i>Collected Poetry and Prose</i>, page 21,<br />
+        The Library of America, 1997</font></font>
+      </p>
+      <p>
+        <font face="Arial, Helvetica, sans-serif"><font size="3"><a href="http://www.amazon.com/exec/obidos/ASIN/1883011450/o/qid=972498056/sr=2-1/002-3303899-6480841">
+        Ordering information for Wallace Stevens
+        book</a></font></font>
+      </p>
+    </div>
+    <hr />
+
+    <p>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Page updated July 17, 2004, and again on May 25, 2006. Created June 21, 2000.
+    </font></font>
+    </p>
+    <h4>
+      <font face="Arial, Helvetica, sans-serif"><font size="3">Copyright &copy; 2001 by Steven H. Cullinane. All
+      rights reserved.</font></font>
+    </h4>
+<!--footer-->
+</font></h3></body>
+</html>

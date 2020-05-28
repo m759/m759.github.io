@@ -1,0 +1,1293 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<!-- Original URL: http://finitegeometry.org/sc/16/kal/
+Date Downloaded: 1/9/2016 12:17:15 AM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--project01-->
+
+
+
+  
+  
+  <title>Kaleidoscope Puzzle</title><meta name="description" content="A new twist on the classic 
+15 puzzle-- Permutations create striking graphics with surprising symmetry properties." />
+  <meta name="keywords" content="math games,math puzzles,mathematical,recreations,
+15 puzzle,fifteen puzzle,symmetry,geometry,diamond theory,diamond theorem,group theory" />
+  <script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+  </script>
+  <script language="JAVASCRIPT" type="TEXT/JAVASCRIPT">
+   <!-- Hide script from old  browsers
+//
+// Check for images array
+     if (!document.images)  {
+   alert("Document images array used in the puzzle page is not supported by your browser.");
+     }
+//
+// Preload images
+      a0 = new Image(26,26);
+      a0.src = "KaleidoscopePuzzle_files/t26-0.gif";
+      a1 = new Image(26,26);
+      a1.src = "KaleidoscopePuzzle_files/t26-1.gif";
+      a2 = new Image(26,26);
+      a2.src = "KaleidoscopePuzzle_files/t26-2.gif";
+      a3 = new Image(26,26);
+      a3.src = "KaleidoscopePuzzle_files/t26-3.gif";
+     t1arrnew = new Array(16);
+             t1arrnew[0] = "KaleidoscopePuzzle_files/t26-2.gif";
+             t1arrnew[1] = "KaleidoscopePuzzle_files/t26-3.gif";
+             t1arrnew[2] = "KaleidoscopePuzzle_files/t26-2.gif";
+             t1arrnew[3] = "KaleidoscopePuzzle_files/t26-3.gif";
+             t1arrnew[4] = "KaleidoscopePuzzle_files/t26-1.gif";
+             t1arrnew[5] = "KaleidoscopePuzzle_files/t26-0.gif";
+             t1arrnew[6] = "KaleidoscopePuzzle_files/t26-1.gif";
+             t1arrnew[7] = "KaleidoscopePuzzle_files/t26-0.gif";
+             t1arrnew[8] = "KaleidoscopePuzzle_files/t26-2.gif";
+             t1arrnew[9] = "KaleidoscopePuzzle_files/t26-3.gif";
+             t1arrnew[10] = "KaleidoscopePuzzle_files/t26-2.gif";
+             t1arrnew[11] = "KaleidoscopePuzzle_files/t26-3.gif";
+             t1arrnew[12] = "KaleidoscopePuzzle_files/t26-1.gif";
+             t1arrnew[13] = "KaleidoscopePuzzle_files/t26-0.gif";
+             t1arrnew[14] = "KaleidoscopePuzzle_files/t26-1.gif";
+             t1arrnew[15] = "KaleidoscopePuzzle_files/t26-0.gif";
+     t2arrnew = new Array(16);
+             t2arrnew[0] = "KaleidoscopePuzzle_files/t26-0.gif";
+             t2arrnew[1] = "KaleidoscopePuzzle_files/t26-2.gif";
+             t2arrnew[2] = "KaleidoscopePuzzle_files/t26-3.gif";
+             t2arrnew[3] = "KaleidoscopePuzzle_files/t26-1.gif";
+             t2arrnew[4] = "KaleidoscopePuzzle_files/t26-2.gif";
+             t2arrnew[5] = "KaleidoscopePuzzle_files/t26-0.gif";
+             t2arrnew[6] = "KaleidoscopePuzzle_files/t26-1.gif";
+             t2arrnew[7] = "KaleidoscopePuzzle_files/t26-3.gif";
+             t2arrnew[8] = "KaleidoscopePuzzle_files/t26-1.gif";
+             t2arrnew[9] = "KaleidoscopePuzzle_files/t26-3.gif";
+             t2arrnew[10] = "KaleidoscopePuzzle_files/t26-2.gif";
+             t2arrnew[11] = "KaleidoscopePuzzle_files/t26-0.gif";
+             t2arrnew[12] = "KaleidoscopePuzzle_files/t26-3.gif";
+             t2arrnew[13] = "KaleidoscopePuzzle_files/t26-1.gif";
+             t2arrnew[14] = "KaleidoscopePuzzle_files/t26-0.gif";
+             t2arrnew[15] = "KaleidoscopePuzzle_files/t26-2.gif";
+     t1arrold = new Array(16);
+             for(i=0; i<16; i++) {
+                 t1arrold[i] = t1arrnew[i];
+                }
+     rowspicked = new Array(0,0,0,0,0);
+     colspicked = new Array(0,0,0,0,0);
+     quadspicked = new Array(0,0,0,0,0);
+// Reset variables
+      function resetvars() {
+             for(i=0; i<6; i++) {
+             rowspicked[i] = 0;
+             }
+             for(i=0; i<6; i++) {
+             colspicked[i] = 0;
+             }
+             for(i=0; i<6; i++) {
+             quadspicked[i] = 0;
+             }
+             for(i=0; i<16; i++) {
+             t1arrold[i] = t1arrnew[i];
+             }
+      }
+// Reload images array after areas have been switched
+      function showim() {
+             for(i=192; i<208; i++) {
+             document.images[i].src = t1arrnew[i - 192];
+             };
+          resetvars();
+      }
+//
+// *******************************************************
+// PERMUTATIONS OF ROWS
+//
+// Switch rows 1 and 2
+      function swrows12() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[4];
+                t1arrnew[1] = t1arrold[5];
+                t1arrnew[2] = t1arrold[6];
+                t1arrnew[3] = t1arrold[7];
+                t1arrnew[4] = t1arrold[0];
+                t1arrnew[5] = t1arrold[1];
+                t1arrnew[6] = t1arrold[2];
+                t1arrnew[7] = t1arrold[3];
+//
+             showim();
+      }
+//
+// Switch rows 1 and 3
+      function swrows13() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[8];
+                t1arrnew[1] = t1arrold[9];
+                t1arrnew[2] = t1arrold[10];
+                t1arrnew[3] = t1arrold[11];
+                t1arrnew[8] = t1arrold[0];
+                t1arrnew[9] = t1arrold[1];
+                t1arrnew[10] = t1arrold[2];
+                t1arrnew[11] = t1arrold[3];
+//
+            showim();
+      }
+//
+// Switch rows 1 and 4
+      function swrows14() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[12];
+                t1arrnew[1] = t1arrold[13];
+                t1arrnew[2] = t1arrold[14];
+                t1arrnew[3] = t1arrold[15];
+                t1arrnew[12] = t1arrold[0];
+                t1arrnew[13] = t1arrold[1];
+                t1arrnew[14] = t1arrold[2];
+                t1arrnew[15] = t1arrold[3];
+//
+            showim();
+      }
+//
+// Switch rows 2 and 3
+      function swrows23() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[4] = t1arrold[8];
+                t1arrnew[5] = t1arrold[9];
+                t1arrnew[6] = t1arrold[10];
+                t1arrnew[7] = t1arrold[11];
+                t1arrnew[8] = t1arrold[4];
+                t1arrnew[9] = t1arrold[5];
+                t1arrnew[10] = t1arrold[6];
+                t1arrnew[11] = t1arrold[7];
+//
+            showim();
+      }
+//
+// Switch rows 2 and 4
+      function swrows24() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[4] = t1arrold[12];
+                t1arrnew[5] = t1arrold[13];
+                t1arrnew[6] = t1arrold[14];
+                t1arrnew[7] = t1arrold[15];
+                t1arrnew[12] = t1arrold[4];
+                t1arrnew[13] = t1arrold[5];
+                t1arrnew[14] = t1arrold[6];
+                t1arrnew[15] = t1arrold[7];
+//
+             showim();
+      }
+//
+// Switch rows 3 and 4
+      function swrows34() {
+             for(i=0; i<16; i++) {
+                t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[8] = t1arrold[12];
+                t1arrnew[9] = t1arrold[13];
+                t1arrnew[10] = t1arrold[14];
+                t1arrnew[11] = t1arrold[15];
+                t1arrnew[12] = t1arrold[8];
+                t1arrnew[13] = t1arrold[9];
+                t1arrnew[14] = t1arrold[10];
+                t1arrnew[15] = t1arrold[11];
+//
+            showim();
+     }
+// *******************************************************
+//
+// PERMUTATIONS OF COLUMNS
+// Switch cols 1 and 2
+      function swcols12() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[1];
+                t1arrnew[4] = t1arrold[5];
+                t1arrnew[8] = t1arrold[9];
+                t1arrnew[12] = t1arrold[13];
+                t1arrnew[1] = t1arrold[0];
+                t1arrnew[5] = t1arrold[4];
+                t1arrnew[9] = t1arrold[8];
+                t1arrnew[13] = t1arrold[12];
+//
+            showim();
+      }
+//
+// Switch columns 1 and 3
+      function swcols13() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[2];
+                t1arrnew[4] = t1arrold[6];
+                t1arrnew[8] = t1arrold[10];
+                t1arrnew[12] = t1arrold[14];
+                t1arrnew[2] = t1arrold[0];
+                t1arrnew[6] = t1arrold[4];
+                t1arrnew[10] = t1arrold[8];
+                t1arrnew[14] = t1arrold[12];
+//
+            showim();
+      }
+//
+// Switch columns 1 and 4
+      function swcols14() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[3];
+                t1arrnew[4] = t1arrold[7];
+                t1arrnew[8] = t1arrold[11];
+                t1arrnew[12] = t1arrold[15];
+                t1arrnew[3] = t1arrold[0];
+                t1arrnew[7] = t1arrold[4];
+                t1arrnew[11] = t1arrold[8];
+                t1arrnew[15] = t1arrold[12];
+//
+            showim();
+      }
+//
+// Switch columns 2 and 3
+      function swcols23() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[1] = t1arrold[2];
+                t1arrnew[5] = t1arrold[6];
+                t1arrnew[9] = t1arrold[10];
+                t1arrnew[13] = t1arrold[14];
+                t1arrnew[2] = t1arrold[1];
+                t1arrnew[6] = t1arrold[5];
+                t1arrnew[10] = t1arrold[9];
+                t1arrnew[14] = t1arrold[13];
+//
+            showim();
+      }
+//
+// Switch columns 2 and 4
+      function swcols24() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[1] = t1arrold[3];
+                t1arrnew[5] = t1arrold[7];
+                t1arrnew[9] = t1arrold[11];
+                t1arrnew[13] = t1arrold[15];
+                t1arrnew[3] = t1arrold[1];
+                t1arrnew[7] = t1arrold[5];
+                t1arrnew[11] = t1arrold[9];
+                t1arrnew[15] = t1arrold[13];
+//
+            showim();
+      }
+//
+// Switch columns 3 and 4
+      function swcols34() {
+             for(i=0; i<16; i++) {
+                t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[2] = t1arrold[3];
+                t1arrnew[6] = t1arrold[7];
+                t1arrnew[10] = t1arrold[11];
+                t1arrnew[14] = t1arrold[15];
+                t1arrnew[3] = t1arrold[2];
+                t1arrnew[7] = t1arrold[6];
+                t1arrnew[11] = t1arrold[10];
+                t1arrnew[15] = t1arrold[14];
+//
+            showim();
+     }
+// *******************************************************
+//
+// PERMUTATIONS OF QUADRANTS
+// Switch quadrants 1 and 2, where quadrants are numbered
+//   1 2
+//   3 4
+//
+      function swquads12() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[2];
+                t1arrnew[1] = t1arrold[3];
+                t1arrnew[4] = t1arrold[6];
+                t1arrnew[5] = t1arrold[7];
+                t1arrnew[2] = t1arrold[0];
+                t1arrnew[3] = t1arrold[1];
+                t1arrnew[6] = t1arrold[4];
+                t1arrnew[7] = t1arrold[5];
+//
+            showim();
+      }
+//
+// Switch quadrants 1 and 3
+      function swquads13() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[8];
+                t1arrnew[1] = t1arrold[9];
+                t1arrnew[4] = t1arrold[12];
+                t1arrnew[5] = t1arrold[13];
+                t1arrnew[8] = t1arrold[0];
+                t1arrnew[9] = t1arrold[1];
+                t1arrnew[12] = t1arrold[4];
+                t1arrnew[13] = t1arrold[5];
+//
+            showim();
+      }
+//
+// Switch quadrants 1 and 4
+      function swquads14() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[0] = t1arrold[10];
+                t1arrnew[1] = t1arrold[11];
+                t1arrnew[4] = t1arrold[14];
+                t1arrnew[5] = t1arrold[15];
+                t1arrnew[10] = t1arrold[0];
+                t1arrnew[11] = t1arrold[1];
+                t1arrnew[14] = t1arrold[4];
+                t1arrnew[15] = t1arrold[5];
+//
+            showim();
+      }
+//
+// Switch quadrants 2 and 3
+      function swquads23() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[2] = t1arrold[8];
+                t1arrnew[3] = t1arrold[9];
+                t1arrnew[6] = t1arrold[12];
+                t1arrnew[7] = t1arrold[13];
+                t1arrnew[8] = t1arrold[2];
+                t1arrnew[9] = t1arrold[3];
+                t1arrnew[12] = t1arrold[6];
+                t1arrnew[13] = t1arrold[7];
+//
+            showim();
+      }
+//
+// Switch quadrants 2 and 4
+      function swquads24() {
+             for(i=0; i<16; i++) {
+             t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[2] = t1arrold[10];
+                t1arrnew[3] = t1arrold[11];
+                t1arrnew[6] = t1arrold[14];
+                t1arrnew[7] = t1arrold[15];
+                t1arrnew[10] = t1arrold[2];
+                t1arrnew[11] = t1arrold[3];
+                t1arrnew[14] = t1arrold[6];
+                t1arrnew[15] = t1arrold[7];
+//
+            showim();
+      }
+//
+// Switch quadrants 3 and 4
+      function swquads34() {
+             for(i=0; i<16; i++) {
+                t1arrnew[i] = t1arrold[i];
+             };
+                t1arrnew[8] = t1arrold[10];
+                t1arrnew[9] = t1arrold[11];
+                t1arrnew[12] = t1arrold[14];
+                t1arrnew[13] = t1arrold[15];
+                t1arrnew[10] = t1arrold[8];
+                t1arrnew[11] = t1arrold[9];
+                t1arrnew[14] = t1arrold[12];
+                t1arrnew[15] = t1arrold[13];
+//
+            showim();
+     }
+// *******************************************************
+//
+// If rows have been switched ...
+     function switchrows() {
+          if (rowspicked[1] == 1 && rowspicked[2] == 1) {
+               swrows12();
+             }
+          if (rowspicked[1] == 1 && rowspicked[3] == 1) {
+               swrows13();
+             }
+          if (rowspicked[1] == 1 && rowspicked[4] == 1) {
+               swrows14();
+             }
+          if (rowspicked[2] == 1 && rowspicked[3] == 1) {
+               swrows23();
+             }
+          if (rowspicked[2] == 1 && rowspicked[4] == 1) {
+               swrows24();
+             }
+          if (rowspicked[3] == 1 && rowspicked[4] == 1) {
+               swrows34();
+             }
+     }
+// If columns have been switched ...
+     function switchcols() {
+          if (colspicked[1] == 1 && colspicked[2] == 1) {
+               swcols12();
+             }
+          if (colspicked[1] == 1 && colspicked[3] == 1) {
+               swcols13();
+             }
+          if (colspicked[1] == 1 && colspicked[4] == 1) {
+               swcols14();
+             }
+          if (colspicked[2] == 1 && colspicked[3] == 1) {
+               swcols23();
+             }
+          if (colspicked[2] == 1 && colspicked[4] == 1) {
+               swcols24();
+             }
+          if (colspicked[3] == 1 && colspicked[4] == 1) {
+               swcols34();
+             }
+     }
+// If quadrants have been switched ...
+     function switchquads() {
+          if (quadspicked[1] == 1 && quadspicked[2] == 1) {
+               swquads12();
+             }
+          if (quadspicked[1] == 1 && quadspicked[3] == 1) {
+               swquads13();
+             }
+          if (quadspicked[1] == 1 && quadspicked[4] == 1) {
+               swquads14();
+             }
+          if (quadspicked[2] == 1 && quadspicked[3] == 1) {
+               swquads23();
+             }
+          if (quadspicked[2] == 1 && quadspicked[4] == 1) {
+               swquads24();
+             }
+          if (quadspicked[3] == 1 && quadspicked[4] == 1) {
+               swquads34();
+             }
+     }
+     function row1clicked() {
+          rowspicked[1] = 1;
+          switchrows();
+     }
+     function row2clicked() {
+          rowspicked[2] = 1;
+          switchrows();
+     }
+     function row3clicked() {
+          rowspicked[3] = 1;
+          switchrows();
+     }
+     function row4clicked() {
+          rowspicked[4] = 1;
+          switchrows();
+     }
+//
+     function col1clicked() {
+          colspicked[1] = 1;
+          switchcols();
+     }
+     function col2clicked() {
+          colspicked[2] = 1;
+          switchcols();
+     }
+     function col3clicked() {
+          colspicked[3] = 1;
+          switchcols();
+     }
+     function col4clicked() {
+          colspicked[4] = 1;
+          switchcols();
+     }
+//
+     function quad1clicked() {
+          quadspicked[1] = 1;
+          switchquads();
+     }
+     function quad2clicked() {
+          quadspicked[2] = 1;
+          switchquads();
+     }
+     function quad3clicked() {
+          quadspicked[3] = 1;
+          switchquads();
+     }
+     function quad4clicked() {
+          quadspicked[4] = 1;
+          switchquads();
+     }
+// End hiding script from old browsers -->
+   </script><!-- <LINK REL=stylesheet HREF="puzzstyle.css" TYPE="text/css">
+
+-->
+  <style type="text/css">
+
+.puzz { font-size: 12px }
+
+
+  </style></head>
+<body onload="showim();">
+<!-- <BODY onLoad="loadimages();"> --><!-- OVERALL BIG TABLE -------------------- ******************************* -->
+<!--Navigate-->
+<table cellpadding="12" cellspacing="0" width="100%">
+  <tbody>
+    <tr bgcolor="#000000">
+      <td bgcolor="#000000"> <strong><font color="#ffffff"> <small><small>Finite
+Geometry Notes</small></small></font><small><small></small></small></strong>
+      <small><small> <nobr> &nbsp; <font color="#ffffff">|</font> <a href="../../index.html"> <font color="#ffffff"> Home</font></a> <font color="#ffffff">|</font> <a href="../../map.html"> <font color="#ffffff">Site Map</font></a> <font color="#ffffff">|</font> <a href="../../author.html"> <font color="#ffffff"> Author</font></a> <font color="#ffffff">|</font> </nobr></small></small> </td>
+    </tr>
+  </tbody>
+</table>
+<!--EndNavigate--> <br />
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td><!-- LEFT TABLE -- 12 DIAMOND FIGURES ---- ********************** -->
+      <table border="0" cellpadding="0" cellspacing="12">
+<!--  1ST ROW OF 12-FIGURE TABLE --> <tbody>
+          <tr>
+            <td><!-- FOUR-DIAMOND FIGURE ---------- -->
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+            <td><!-- BIG-DIAMOND FIGURE --------- -->
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- END OF 1ST ROW OF 12-FIGURE TABLE --></tr>
+<!-- BEGIN 2ND ROW OF 12-FIGURE TABLE --> <tr>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- END OF 2ND ROW OF 12-FIGURE TABLE --></tr>
+<!-- BEGIN 3RD ROW OF 12-FIGURE TABLE --> <tr>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- END OF 3RD ROW OF 12-FIGURE TABLE --></tr>
+<!-- BEGIN 4TH ROW OF 12-FIGURE TABLE --> <tr>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- END OF 4TH ROW OF 12-FIGURE TABLE --></tr>
+<!-- BEGIN 5TH ROW OF 12-FIGURE TABLE --> <tr>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- END 5TH ROW OF 12-FIGURE TABLE --></tr>
+<!-- BEGIN 6TH ROW OF 12-FIGURE TABLE --> <tr>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+            <td>
+            <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                </tr>
+                <tr>
+                  <td><img src="KaleidoscopePuzzle_files/t12-1.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-2.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-3.gif" height="12" width="12" /></td>
+                  <td><img src="KaleidoscopePuzzle_files/t12-0.gif" height="12" width="12" /></td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+<!-- END OF 6TH ROW OF 12-FIGURE TABLE --></tr>
+<!--  END OF 12-FIGURE TABLE -->
+        </tbody>
+      </table>
+      </td>
+<!-- TEXT SUBTABLE OF SCREEN-WIDE OVERALL TABLE --> <td>
+      <div align="center"> </div>
+      <table border="0" cellpadding="12" cellspacing="0">
+        <tbody>
+          <tr>
+            <td>
+            <center><font size="4"><b>Kaleidoscope Puzzle</b></font></center>
+            <br />
+            <font size="2">Change the pattern at right to any of the
+patterns at left. (The
+original pattern is at top left.) </font>
+            <p><font size="2">To change the pattern, click on a row,
+then click on the row you want to move it to. Do the same for other
+rows and/or columns and/or quadrants.<br />
+            </font></p>
+            <font size="2"> </font>
+            <p><font size="2">If the pattern does not appear to change,
+you may be switching two parts of the pattern that are identical.<br />
+            </font></p>
+            <font size="2"> </font>
+            <p><font size="2">Users of Internet Explorer may want to
+page back, then forward, to speed up the action of the kaleidoscope. </font>
+            </p>
+            <p />
+            <center><font size="2">Copyright © 2005 by Steven H.
+Cullinane.<br /><br /></font><small>Copying for&nbsp;non-profit personal use by an individual is authorized.<br />(In Firefox, click on "File" menu option, then on "Save Page As," then<br /> enter the file name "KaleidoscopePuzzle.html" (this name must be used)<br /> and select save-as type "Web page, complete.")</small></center>
+            <p />
+<!-- END OF TEXT SUBTABLE -->
+            <p />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+<!-- BEGINNING OF PUZZLE PROPER -- A TABLE WITH 3 SUBTABLES --> <td>
+      <table align="center" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr>
+            <td><!-- IMAGE -->
+            <table align="center" border="1" cellpadding="0" cellspacing="20">
+              <tbody>
+                <tr>
+                  <td><!-- FOUR-DIAMOND FIGURE ---------- -->
+                  <table bgcolor="aqua" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td><img src="KaleidoscopePuzzle_files/t26-2.gif" height="26" width="26" /></td>
+                        <td><img src="KaleidoscopePuzzle_files/t26-3.gif" height="26" width="26" /></td>
+                        <td><img src="KaleidoscopePuzzle_files/t26-1.gif" height="26" width="26" /></td>
+                        <td><img src="KaleidoscopePuzzle_files/t26-0.gif" height="26" width="26" /></td>
+                      </tr>
+                      <tr>
+                        <td><img src="KaleidoscopePuzzle_files/t26-1.gif" height="26" width="26" /></td>
+                        <td><img src="KaleidoscopePuzzle_files/t26-0.gif" height="26" width="26" /></td>
+                        <td><img src="KaleidoscopePuzzle_files/t26-2.gif" height="26" width="26" /></td>
+                        <td><img src="KaleidoscopePuzzle_files/t26-3.gif" height="26" width="26" /></td>
+                      </tr>
+                      <tr>
+                        <td><img src="KaleidoscopePuzzle_files/t26-2.gif" height="26" width="26" /></td>
+                        <td><img src="KaleidoscopePuzzle_files/t26-3.gif" height="26" width="26" /></td>
+                        <td><img src="KaleidoscopePuzzle_files/t26-1.gif" height="26" width="26" /></td>
+                        <td><img src="KaleidoscopePuzzle_files/t26-0.gif" height="26" width="26" /></td>
+                      </tr>
+                      <tr>
+                        <td><img src="KaleidoscopePuzzle_files/t26-1.gif" height="26" width="26" /></td>
+                        <td><img src="KaleidoscopePuzzle_files/t26-0.gif" height="26" width="26" /></td>
+                        <td><img src="KaleidoscopePuzzle_files/t26-2.gif" height="26" width="26" /></td>
+                        <td><img src="KaleidoscopePuzzle_files/t26-3.gif" height="26" width="26" /></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+<!-- ****************************************************************** --></td>
+          </tr>
+          <tr>
+            <td><!-- SUBTABLE CONTAINING ROWS-, QUADRANTS-, AND COLUMNS-SUBTABLES -->
+            <table align="center" border="0" cellpadding="0" cellspacing="16">
+<!-- ROWS TABLE --> <tbody>
+                <tr>
+                  <td>
+                  <table border="1" bordercolor="black" cellpadding="0" cellspacing="0">
+<!--
+
+<CAPTION ALIGN=BOTTOM>
+
+<font size=1 class=captions>
+
+Rows</font></CAPTION>
+
+-->
+                    <tbody>
+                      <tr>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="row1clicked(); return false" href="#"><font class="puzz" size="4"><img src="KaleidoscopePuzzle_files/row15x78.gif" border="0" height="17" width="78" /> </font></a></td>
+                      </tr>
+                      <tr>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="row2clicked(); return false" href="#"><font class="puzz" size="4"><img src="KaleidoscopePuzzle_files/row15x78.gif" border="0" height="17" width="78" /> </font></a></td>
+                      </tr>
+                      <tr>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="row3clicked(); return false" href="#"><font class="puzz" size="4"><img src="KaleidoscopePuzzle_files/row15x78.gif" border="0" height="17" width="78" /> </font></a></td>
+                      </tr>
+                      <tr>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="row4clicked(); return false" href="#"><font class="puzz" size="4"><img src="KaleidoscopePuzzle_files/row15x78.gif" border="0" height="17" width="78" /> </font></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <center><img src="KaleidoscopePuzzle_files/puzzcapR.gif" /></center>
+<!-- END OF ROWS TABLE --></td>
+                  <td><!-- QUADRANTS TABLE -->
+                  <table border="1" bordercolor="black" cellpadding="0" cellspacing="0">
+<!--
+
+<CAPTION ALIGN=BOTTOM>
+
+<font size=1 class=captions>
+
+Quadrants</font></CAPTION>
+
+-->
+                    <tbody>
+                      <tr valign="bottom">
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" align="left" bgcolor="#ffffff" valign="bottom"><a onclick="quad1clicked(); return false" href="#"><img src="KaleidoscopePuzzle_files/quad36x39.gif" border="0" height="36" width="39" /></a> </td>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" align="right" bgcolor="#ffffff" valign="bottom"><a onclick="quad2clicked(); return false" href="#"><img src="KaleidoscopePuzzle_files/quad36x39.gif" border="0" height="36" width="39" /></a> </td>
+                      </tr>
+                      <tr valign="top">
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" align="left" bgcolor="#ffffff" valign="top"><a onclick="quad3clicked(); return false" href="#"><img src="KaleidoscopePuzzle_files/quad36x39.gif" border="0" height="36" width="39" /></a> </td>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" align="right" bgcolor="#ffffff" valign="top"><a onclick="quad4clicked(); return false" href="#"><img src="KaleidoscopePuzzle_files/quad36x39.gif" border="0" height="36" width="39" /></a> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <center><img src="KaleidoscopePuzzle_files/puzzcapQ.gif" /></center>
+                  </td>
+                  <td><!-- COLUMNS TABLE -->
+                  <table border="1" bordercolor="black" cellpadding="0" cellspacing="0">
+<!--
+
+<CAPTION ALIGN=BOTTOM>
+
+<font size=1 class=captions>
+
+Columns</font></CAPTION>
+
+-->
+                    <tbody>
+                      <tr>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="col1clicked(); return false" href="#"><img src="KaleidoscopePuzzle_files/col80x16.gif" border="0" height="78" width="18" /></a> </td>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="col2clicked(); return false" href="#"><img src="KaleidoscopePuzzle_files/col80x16.gif" border="0" height="78" width="18" /></a> </td>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="col3clicked(); return false" href="#"><img src="KaleidoscopePuzzle_files/col80x16.gif" border="0" height="78" width="18" /></a> </td>
+                        <td onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" bgcolor="#ffffff"><a onclick="col4clicked(); return false" href="#"><img src="KaleidoscopePuzzle_files/col80x16.gif" border="0" height="78" width="18" /></a> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <center><img src="KaleidoscopePuzzle_files/puzzcapC.gif" /></center>
+<!-- END OF RQC SUBTABLE --> </td>
+                </tr>
+              </tbody>
+            </table>
+<!-- END OF PUZZLE-PROPER SUBTABLE --> </td>
+          </tr>
+        </tbody>
+      </table>
+<!-- END OF SCREEN-WIDE OVERALL TABLE --> </td>
+    </tr>
+  </tbody>
+</table>
+<hr /><b>Related material:</b>
+<p>1. <a href="#background">Background</a><br />
+2. <a href="#otherpages">Other related web pages</a><br />
+3. <a href="#remarks">Related philosophical remarks</a><br />
+</p>
+<hr />
+<a name="background"></a>
+<blockquote>
+  <p><strong><font size="4">Background:<br />
+  </font></strong></p>
+  <p>For non-mathematicians...</p>
+  <p>See some selected <a href="http://www.ludism.org/gbgwiki/FortuneCookies">quotations on
+Hesse's Glass Bead Game</a>, and the way it combines music and
+mathematics.&nbsp; Then see the combination of music and mathematics in
+Timothy A. Smith's <span></span><a href="http://jan.ucc.nau.edu/%7Etas3/wtc/ii21.html" target="_new">Shockwave
+movie</a> (or his <a href="http://jan.ucc.nau.edu/%7Etas3/wtc/ii21s.pdf">pdf essay</a>)
+combining patterns like those above with an analysis of a Bach fugue. <br />
+  </p>
+  <p>For mathematicians...<br />
+  </p>
+Kaleidoscopes are, of course, intimately related to <a href="http://en.wikipedia.org/wiki/Reflection_group">reflection
+groups</a>.&nbsp; For the connection to the geometry of the above
+patterns,
+see <a href="http://diamondtheorem.com/">The Diamond Theorem</a>.&nbsp;
+Switching two rows, columns, or quadrants in the "kaleidoscope" above
+is equivalent to performing an affine reflection (an automorphism of an
+affine space fixing a hyperplane pointwise) in a 16-point finite
+geometry. For some context, see <a href="../../gen/refl.html">Reflection Groups in Finite Geometry</a>.<br />
+  <hr /> <a name="otherpages"></a>
+  <p><strong><font size="4">Other related web pages</font></strong></p>
+  <blockquote style="margin-right: 0px;" dir="ltr">
+    <p><a href="http://diamondtheorem.com/">The Diamond Theorem</a>,</p>
+    <p><a href="../../gen/dth/DiamondTheory.html">Diamond Theory</a>,</p>
+    <p><a href="../geometry.html">Geometry of the 4x4 Square</a>,</p>
+    <p><a href="../../4/dd/index.html">Theme and Variations</a>,</p>
+    <p><a href="../../gen/bdes/index.html">Block Designs</a>,</p>
+    <p><a href="../../gen/GalG.html">Galois Geometry</a>,</p>
+    <p><a href="../../gen/ortho.html">Latin-Square Geometry</a>,</p>
+    <p><a href="../../gen/walsh.html">Walsh Functions</a>,</p>
+    <p><a href="../quiltgeometry.html">Quilt Geometry</a>. </p>
+  </blockquote>
+</blockquote>
+<hr />
+<a name="remarks"></a>
+<table align="center" border="2" bordercolor="black" cellpadding="36" cellspacing="0" width="80%">
+  <tbody>
+    <tr>
+      <td>
+      <center><font size="4"><b>Related Philosophical Remarks</b></font></center>
+      <p>Clifford Geertz on Levi-Strauss, from <a href="http://www.log24.com/log/saved/BeadGame-deMarrais/Geertz.html" target="_new">The Cerebral Savage</a>:</p>
+      <p> <font face="Arial" size="2">"Savage logic works like a
+kaleidoscope whose chips can fall into a variety of patterns.... The
+patterns consist in the disposition of the chips vis-a-vis one another
+(that is, they are a function of the relationships among the chips
+rather than their individual properties considered separately).&nbsp;
+And their range of possible transformations is strictly determined by
+the construction of the kaleidoscope, the inner law which governs its
+operation.... </font></p>
+      <p><font face="Arial" size="2">... Levi-Strauss generalizes this
+permutational view of thinking to savage thought in general.&nbsp; It
+is all a matter of shuffling discrete (and concrete) images... </font></p>
+      <p><font face="Arial" size="2"> ... And the point is
+general.&nbsp; The relationship between a symbolic structure and its
+referent, the basis of its <i>meaning</i>,&nbsp; is fundamentally
+'logical,' a coincidence of form-- not affective, not historical, not
+functional.&nbsp; Savage thought is frozen reason and anthropology is,
+like music and mathematics, 'one of the few true vocations.'</font></p>
+      <p><font face="Arial" size="2">Or like linguistics."<br />
+      </font></p>
+      <p>Edward Sapir on Linguistics, Mathematics, and Music:</p>
+      <p><font face="Arial" size="2"><font face="Arial" size="2">"...
+linguistics has also that profoundly serene and satisfying quality
+which inheres in mathematics and in music and which may be described as
+the creation out of simple elements of a self-contained universe of
+forms.&nbsp; Linguistics has neither the sweep nor the instrumental
+power of mathematics, nor has it the universal aesthetic appeal of
+music.&nbsp; But under its crabbed, technical, appearance there lies
+hidden the same classical spirit, the same freedom in restraint, which
+animates mathematics and music at their purest." <br />
+      </font></font></p>
+      <p><font face="Arial" size="2"><font face="Arial" size="2">-Edward
+Sapir, "The Grammarian and his Language,"<br />
+&nbsp; American Mercury 1:149-155,1924</font></font></p>
+      <p>Robert de Marrais on Levi-Strauss and Derrida, from
+"Catastrophes, Kaleidoscopes, String Quartets: Deploying the Glass Bead
+Game," <a href="http://www.log24.com/log/saved/BeadGame-deMarrais/Part2-CanonicalCollage-oscopes.html" target="_new">Part II</a>:</p>
+      <p> <font face="Arial" size="2">"...underwriting the form
+languages of ever more domains of mathematics is a set of deep patterns
+which not only offer access to a kind of ideality that Plato claimed to
+see the universe as created with in the <i>Timaeus</i>; more than
+this, the realm of Platonic forms is itself subsumed in this new set of
+design elements-- and their most general instances are not the regular
+solids, but crystallographic reflection groups.&nbsp; You know, those
+things the non-professionals call . . . <b><i>kaleidoscopes! *&nbsp; </i></b>(In
+the next exciting episode, we'll see how Derrida claims mathematics is
+the key to freeing us from 'logocentrism'-- then ask him why, then, he
+jettisoned the deepest structures of mathematical patterning just to
+make his name...)</font></p>
+      <p><font face="Arial" size="2"> <b>*</b> H. S. M. Coxeter, <i>Regular
+Polytopes</i> (New York: Dover, 1973) is the great classic text by a
+great creative force in this beautiful area of geometry&nbsp; (A poly<i>tope</i>
+is an n-dimensional analog of a poly<i>gon</i> or poly<i>hedron</i>.&nbsp;
+Chapter V of this book is entitled 'The Kaleidoscope'....)" </font></p>
+      <p>De Marrais attacks Derrida for ignoring the "kaleidoscope"
+metaphor of
+Levi-Strauss. Here is a quotation from Derrida himself: </p>
+      <p> <font face="Arial" size="2">"The time for reflection is also
+the
+chance for turning back on the very conditions of reflection, in all
+the senses of that word, as if with the help of an optical device one
+could finally see sight, could not only view the natural landscape, the
+city, the bridge and the abyss, but could view viewing. (1983:19) </font></p>
+      <p> <font face="Arial" size="2">-- Derrida, J. (1983) 'The
+Principle
+of Reason: The University in the Eyes of its Pupils,' Diacritics 13.3:
+3-20." </font></p>
+      <p>The above quotation comes from <a href="http://culturemachine.tees.ac.uk/Cmach/Backissues/j001/articles/art_wort.htm">Simon
+Wortham</a>, who thinks the "optical device" of Derrida is a mirror.
+The same quotation appears in <a href="http://thispublicaddress.com/tPA4/archives/photo_history/hf_talbot/index.php">Desiring
+Dualisms</a> at thispublicaddress.com, where the "optical device" is
+interpreted as a kaleidoscope. </p>
+      <p>Derrida's "optical device" may be compared with Joyce's "<a href="http://www.geocities.com/hypermedia_joyce/theall4.html">collideorscape</a>."
+For a different connection with Derrida, see <a href="http://www.finneganswake.info/WallLetter/FW9_2Differance.htm">The
+'Collideorscape' as Differance</a>. </p>
+      <p>From Noel Gray, <a href="http://wwwmcc.murdoch.edu.au/ReadingRoom/6.2/Gray.html">The
+Kaleidoscope: Shake, Rattle, and Roll</a>: </p>
+      <p> <font face="Arial" size="2">"... what we will be considering
+is
+how the ongoing production of meaning can generate a tremor in the
+stability of the initial theoretical frame of this instrument; a frame
+informed by geometry's long tradition of privileging the conceptual
+ground over and above its visual manifestation. And to consider also
+how the possibility of a seemingly unproblematic correspondence between
+the ground and its extrapolation, between geometric theory and its
+applied images, is intimately dependent upon the control of the truth
+status ascribed to the image by the generative theory. This status in
+traditional geometry has been consistently understood as that of the
+graphic ancilla-- a maieutic force, in the Socratic sense of that
+term-- an ancilla to lawful principles; principles that have,
+traditionally speaking, their primary expression in the purity of
+geometric idealities.* It follows that the possibility of installing a
+tremor in this tradition by understanding the kaleidoscope's images as
+announcing more than the mere subordination to geometry's theory-- yet
+an announcement that is still in a sense able to leave in place this
+self-same tradition-- such a possibility must duly excite our attention
+and interest. </font></p>
+      <p> <font face="Arial" size="2">* I refer here to Plato's
+utilisation
+in the Meno of graphic austerity as the tool to bring to the surface,
+literally and figuratively, the inherent presence of geometry in the
+mind of the slave." </font></p>
+      <p>See also <a href="http://www.arts.usyd.edu.au/departs/arthistory/Postgraduate/PGthesesold.html">
+Noel Gray, Ph.D. thesis</a>, U. of Sydney, Dept. of Art History and
+Theory, 1994: "The Image of Geometry: Persistence qua Austerity--
+Cacography and The Truth to Space." </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<!--footer-->
+<hr />
+<p>Page created August 9, 2005. Last modified August 23, 2010. </p>
+</body></html>f Art History and
+Theory, 1994: "The Image of Geometry: Persistence qua Austerity--
+Cacography and The Truth to Space." </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<!--footer-->
+<hr />
+<p>Page created August 9, 2005. Last modified August 23, 2010. </p>
+</body></html>

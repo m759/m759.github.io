@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<!-- Original URL: http://finitegeometry.org/sc/gen/duality.html
+Date Downloaded: 1/9/2016 12:17:11 AM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--project01--><title>Duality and Symmetry: A Combinatorial Matrix Problem</title>
+
+  
+  <meta http-equiv="keywords" content="duality,symmetry,
+relations,projective plane,finite geometry,point-line,
+diamond theory, cullinane,problem" />
+  <meta http-equiv="description" content="Let M be a matrix of 0's and 1's with exactly k 1's in each row and each column.  When do there exist row-column permutations that make M symmetric?" /></head>
+<body leftmargin="75" rightmargin="75" link="blue" text="black" vlink="purple">
+
+
+<!--Navigate-->
+<table cellpadding="12" cellspacing="0" width="100%">
+
+   <tbody><tr bgcolor="#000000">
+      <td bgcolor="#000000">
+
+          <strong><font color="#ffffff">
+          <small><small>
+          Finite Geometry Notes</small></small></font><small><small></small></small></strong>
+
+<small><small>          <nobr>
+           &nbsp;
+
+          <font color="#ffffff">|</font>
+
+   
+          <a href="../index.html">
+          <font color="#ffffff">
+          Home</font></a>
+			
+          <font color="#ffffff">|</font>
+
+          <a href="../map.html">
+
+          <font color="#ffffff">Site Map</font></a>
+
+
+          <font color="#ffffff">|</font>
+
+          <a href="../author.html">
+          <font color="#ffffff">
+           Author</font></a>
+ 
+           <font color="#ffffff">|</font>
+
+           </nobr></small></small>
+
+           
+
+          </td>
+      </tr>
+</tbody></table>
+<!--EndNavigate-->
+
+<h1>Duality and Symmetry</h1>
+<h3>by Steven H. Cullinane</h3>
+The following problem was posted by the author to 
+the alt.sci.math.combinatorics forum on January 16, 2001. 
+<p>PROBLEM: Let M be an nxn square (0,1) matrix with exactly k 1's in each row 
+and exactly k 1's in each column. What conditions on n, k, and the arrangement 
+of the 1's in the matrix are necessary and sufficient for there to exist 
+permutations of rows and/or columns that make M a symmetric matrix? </p>
+<p>The problem was suggested by point-line duality in a finite projective plane. 
+The problem was also suggested by Weyl's remarks in his classic book 
+<i>Symmetry</i> and by the aesthetics of the following quotations: 
+</p>
+<center>
+<div align="left">
+<blockquote>"Contrary to John Keats's First and Second Laws of Aesthetics 
+  ('Beauty is truth, truth beauty') truth and beauty are poles apart. Keats's 
+  ode itself, while denying this by precept, bears it out by example. Truth 
+  occupies the alethic pole of the intellectual sphere and beauty the aesthetic 
+  pole. Each is admirable in its way. The alethic pole exerts the main pull on 
+  science, in the broad sense: <i>Wissenschaft</i>, comprising mathematics, 
+  history, and all the hard and soft sciences in between. The aesthetic pole is 
+  the focus of <i>belles lettres</i>, music, art for art's sake." <br />-- W. V. 
+  Quine in <i>Quiddities</i>, Harvard University Press, 1987. </blockquote>
+</div>
+
+<h2>John Keats's Laws of Aesthetics</h2>
+<blockquote>"The beauty we find is from<br />
+the comparison we make.... <br />Beauty 
+  therefore is a relation, <br />and the apprehension of it<br />
+a comparison." <br />-- 
+  Gerard Manley Hopkins,<br />
+"On the Origin of Beauty." </blockquote>
+<blockquote>"Truth, or reality, in other words,<br />
+is to be found in what 
+  James called<br />
+'the relations perceived' between facts-- <br />not in the facts 
+  themselves." <br />-- Andrew Delbanco,<br />
+New York Times Book Review,<br />
+January 29, 
+  1995. </blockquote></center>
+<p>For a more precise formulation of the problem, see the following HTML 
+transcription of a typed query sent to various mathematicians in 1986. </p>
+<hr />
+<p>
+</p>
+<h3><i>Duality and Symmetry</i>. Query. Dec. 29, 1986.</h3>
+<p>Entities are not to be needlessly multiplied. -- William of Ockham (?) 
+</p>
+Given disjoint n-sets A and B, and an integer k with 1 LE k LE n, there 
+exists at least one <i>duality</i> <br />
+relation R:A--&gt;2^B such that <br />
+(1) 
+for each x in A there are exactly k y's in B such that xRy, and <br />
+(2) for each 
+y in B there are exactly k x's in A such that xRy. 
+<p>(Example: point-line incidence in a projective plane, for certain values of n 
+and k. See also Ryser (3), and consider cyclic Latin squares.) </p>
+<p>Let C = {1, 2, ..., n} and let a:C--&gt;A, b:C--&gt;B be bijections. For c in 
+C, let </p>
+<pre> cR = {y in C: a(c)Rb(y)},<br /> Rc = {x in C: a(x)Rb(c)}.<br /></pre>
+<p>If there exist a and b such that cR = Rc for all c in C, then with respect to 
+R the sets A and B differ only nominally, and may be replaced by the single set 
+C. In this case we can say the duality R is <i>symmetric</i>. (See Coxeter (1), 
+which cites Hall (2).) </p>
+<p>
+</p>
+<h3>QUERY -- What references exist for the following problem: Which dualities 
+are symmetric? 
+<hr />
+</h3>
+<p><!--StartFragment --><strong><font size="4">Update of May 31, 
+2004:</font></strong></p>
+<p>Clearly I should have thought harder about the problem, since Douglas 
+West&nbsp;yesterday easily supplied the following example.&nbsp;&nbsp;He says, 
+&nbsp;</p>
+<p>"The matrix below is not symmetrizable, because it has two identical rows but 
+does not have two identical columns. It is easy to construct such examples, and 
+I don't think that avoiding identical rows and columns (or disjoint rows and 
+columns) is sufficient."</p>
+<div align="center"><pre>1 1 0 1 0 0<br />1 0 1 0 1 0<br />1 1 0 1 0 0<br />0 0 1 1 0 1<br />0 1 0 0 1 1<br />0 0 1 0 1 1<br /></pre></div>
+<hr />
+<strong><font size="4">Update of July 23, 2005:<br />
+</font></strong>
+<p>From <a href="http://www.math.lsa.umich.edu/%7Eidolga/">Igor V. Dolgachev</a>'s 
+"<a href="http://arxiv.org/PS_cache/math/pdf/0304/0304258.pdf">Abstract Configurations in Algebraic Geometry</a>" (pdf),<br />published in <i>Proceedings of <a href="http://www.dm.unito.it/convegniseminari/fano/programme/index.html">the Fano Conference</a></i>
+ (Torino, Italy, 29 Sept.-5 Oct. 2002), A. Conte, A. Collino, and
+ M. Marchisio, eds., Univ. Torino 2004, pp. 423-462: 
+</p>
+<p>"ABSTRACT.  An abstract (<i>v<sub>k</sub>, b<sub>r</sub></i>)-configuration is a pair of finite 
+sets of cardinalities <i>v</i> and <i>b</i> with a relation on the product of the sets such that each 
+element of the first set is related to the same number <i>k</i> of elements from the second set and, 
+conversely, each element of the second set is related to the same number <i>r</i> of elements in the 
+first set.  An example of an abstract configuration is a finite geometry.  In this paper we discuss 
+some examples of abstract configurations and, in particular, finite geometries, which one encounters in algebraic geometry."<br />
+</p>
+<p>Dolgachev discusses what he calls<i> symmetric configurations</i>, those in which <i>v</i>=<i>b</i> and <i>k</i>=<i>r</i>. <br />
+</p>
+<p>This seems to be the proper context for the above problem. <br />
+</p>
+<hr />
+<p align="center"><strong><font face="Arial" size="4">REFERENCES</font></strong></p>
+<p>
+</p>
+<dl>
+  <dt>(1) Coxeter, H.S.M., <i>Projective Geometry</i>, 
+  </dt><dd>second edition, 1974, University of Toronto Press, p. 93. 
+  </dd><dt>(2) Hall, Marshall, "Cyclic Projective Planes," 
+  </dt><dd>Duke Math. J. 14 (1947), pp. 1079 - 1090. 
+  </dd><dt>(3) Ryser, H.J., <i>Combinatorial Mathematics</i>, 
+  </dt><dd>M.A.A., 1963, pp. 57-58. 77. </dd>
+</dl>
+
+<!--footer-->
+<hr />
+Page last modified March 25, 2007. <br />
+Created January 16, 2001.
+  
+</body></html>

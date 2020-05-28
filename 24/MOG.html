@@ -1,0 +1,502 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<!-- Original URL: http://finitegeometry.org/sc/24/MOG.html
+Date Downloaded: 1/9/2016 12:17:10 AM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--project01-->
+
+  
+  <title>The Miracle Octad Generator</title>
+  <meta content="MSHTML 6.00.2900.2873" name="GENERATOR" /></head>
+
+<body leftmargin="100" rightmargin="100">
+<!--Navigate-->
+<table cellpadding="12" cellspacing="0" width="100%">
+  <tbody>
+    <tr bgcolor="#000000">
+      <td bgcolor="#000000"> <strong><font color="#ffffff"> <small><small>Finite
+Geometry Notes</small></small></font></strong> <small><small>
+      <nobr>&nbsp; <font color="#ffffff">|</font> <a href="../index.html"> <font color="#ffffff">
+Home</font></a> <font color="#ffffff">|</font>
+      <a href="../map.html"> <font color="#ffffff">Site
+Map</font></a> <font color="#ffffff">|</font>
+      <a href="../author.html"> <font color="#ffffff">Author</font></a> <font color="#ffffff">|</font>
+      </nobr></small></small> </td>
+    </tr>
+  </tbody>
+</table>
+<!--EndNavigate-->
+<br />
+<center><big>
+</big>
+<p><big><b>The Miracle Octad Generator<br />
+(MOG) of R T. Curtis</b></big></p>
+<div align="left">"By far the most important structure in
+design theory
+is the Steiner system <nobr>S(5, 8, 24).</nobr>"<br />
+</div>
+<br />
+<div align="left">-- "Block Designs," by Andries E.
+Brouwer (Ch. 14
+(pp. 693-746) of <a href="http://books.google.com/books?id=XicsNQIrC3sC" target="_new"><i>Handbook
+of Combinatorics</i></a>, Vol. I, MIT Press, 1995, edited
+by Ronald L.
+Graham, Martin Grötschel, and László Lovász,
+Section 16 (p. 716))<br />
+<br />
+The Steiner system S(5, 8, 24) is a set S of 759 eight-element subsets
+("octads") of a twenty-four-element set T such that any five-element
+subset of T is
+contained
+in exactly one of the 759 octads. Its automorphism group is the
+large Mathieu group M<sub><small>24</small></sub>.
+<br />
+<br />
+Robert A. Wilson on R. T. Curtis:<br />
+<br />
+"One of his most important contributions is surely the invention of the
+MOG (Miracle Octad Generator) for facilitating calculation in the
+Mathieu group M<sub><small>24</small></sub>.
+Before then, if you wanted
+to generate
+octads, you
+had to look up the list of all 759 of them in a paper of Todd.
+Afterwards, all the octads were drawn on a postcard (not quite a
+postage-stamp!) and calculation became immeasurably easier. The MOG was
+an essential ingredient in the constructions of J<sub><small>4</small></sub>
+and the Monster, and
+remains an indispensable tool for working in many of the sporadic
+groups."<br />
+<br />
+-- "<a href="http://www.maths.qmw.ac.uk/%7Eraw/talks_files/RTCtalk.pdf">248
+and All That</a>," talk at the R. T. Curtis 60th birthday
+conference, Sept. 21, 2007<br />
+<br />
+<div align="center"><b>The MOG:</b><br />
+</div>
+</div>
+<p><img alt="The image &#8220;MOGCurtisPlain.gif&#8221; cannot be displayed, because it contains errors." src="MOG_files/MOGCurtisPlain.gif" /> </p>
+<p>Shown above is a rearranged version of the<br />
+Miracle Octad Generator (MOG) of R. T. Curtis<br />
+("A new combinatorial approach to M<sub>24</sub>,"<br />
+Math. Proc. Camb. Phil. Soc., 79 (1976), 25-42.) </p>
+</center>
+The MOG is a pairing of the 35 partitions of an 8-set into two 4-sets
+with the 35 partitions of AG(4,2) (the affine 4-space over GF(2)) into
+4 affine planes.&nbsp; The pairing preserves certain incidence
+properties.&nbsp; It is used in studying the Steiner system S(5, 8,
+24),
+the large Mathieu group, the extended binary Golay code, the Leech
+lattice, and subgroups of the Monster. <br /><br /><span style="font-weight: bold;">Note:</span>
+The above "pairing" of two 35-member sets is Curtis's original approach
+to the MOG. Many sources now offer an alternate definition-- the MOG as
+a rectangular array of 4 rows and 6 columns-- based on Conway's <span style="font-style: italic;">hexacode</span>. &nbsp;See "<a href="mogdefs.html">Competing Definitions of the Miracle Octad Generator</a>."<br /><br />
+<center><span style="font-weight: bold;">History:</span>
+<br />
+<br />
+</center>
+This pairing, without illustrations,<small> </small>was described in
+1910 by G. M. Conwell in "The 3-space PG(3,2) and
+its group," Ann. of Math. 11 (1910) 60-76.<br />
+<br />
+The 35 square structures above apparently first appeared, without any
+reference to their role in finite geometry, in the 1974 (published
+1976) Curtis paper
+mentioned above.<br />
+<br />
+The 35 square structures above were discovered independently in 1976 by
+Steven H. Cullinane.&nbsp; The role they play in finite geometry
+was
+apparently first described by Cullinane in an AMS abstract in 1979 that
+was received for publication on Oct. 31, 1978. The connection between
+finite geometry and the square structures illustrated above was also
+pointed out by Cullinane in a note, "<a href="../pg/dt/ortholatin.html">Orthogonal
+Latin Squares as Skew Lines</a>," of December 1978.&nbsp;
+(For related
+material, see <a href="../gen/ortho.html">Latin-Square
+Geometry</a>.)&nbsp;
+The existence of the 35 combinatorially defined square structures of
+Curtis was pointed out by Curtis to Cullinane in a personal
+communication of March 1979.&nbsp; The connection between the
+finite-geometry research of Conwell and the combinatorial research of
+Curtis was apparently first pointed out in "<a href="gentheog2.html">Generating
+the
+Octad Generator</a>," a
+note by Cullinane of April 28, 1985. <br />
+<br />
+Curtis uses the MOG to construct the Steiner system S(5, 8, 24), a
+structure that goes back at least to Witt in 1938 and (Rotman,
+<a href="http://www.amazon.com/gp/product/0387942858/qid=1133379791/"><span style="font-style: italic;">An Introduction to the Theory of
+Groups</span></a>)
+to Carmichael in 1931.<br />
+<br />
+William M. Kantor gives specific references:<br />
+<div align="center"><br />
+<table border="2" bordercolor="black" cellpadding="24" cellspacing="0" width="600">
+  <tbody>
+    <tr>
+      <td valign="top">"The close relationships between
+group theory
+and structural combinatorics go back well over a century. Given a
+combinatorial
+object, it is natural to consider its automorphism group. Conversely,
+given a group,
+there may be a nice object upon which it acts. If the group is given as
+a group of
+permutations of some set, it is natural to try to regard the elements
+of that set as
+the points of some structure which can be at least partially
+visualized.
+For example, in 1861 Mathieu... discovered five multiply transitive
+permutation groups. These were constructed as groups of permutations of
+11, 12, 22, 23 or 24 points, by means of detailed calculations. In <a href="http://www.jstor.org/pss/2370885">a little-known
+1931 paper</a> of Carmichael <b>[5]</b>, they were
+first observed to
+be automorphism groups of exquisite finite geometries. This fact was
+rediscovered soon
+afterwards by Witt <b>[11]</b>, who provided direct
+constructions for
+the groups
+and then the geometries. It is now more customary to construct first
+the
+designs, and then the groups...."<br />
+      <blockquote><b>&nbsp; 5.</b>&nbsp; R.
+D. Carmichael, <i>Tactical
+configurations of rank two</i>, Amer. J. Math. <b>53</b>
+(1931),
+217-240.<br />
+        <br />
+        <b>11.</b>&nbsp; E. Witt, <i>Die 5-fach
+transitiven Gruppen
+von Mathieu</i>,
+Abh. Hamburg <b>12</b> (1938), 256-264. <br />
+      </blockquote>
+-- William M. Kantor, book review (<a href="http://www.ams.org/bull/1981-05-02/S0273-0979-1981-14944-2/S0273-0979-1981-14944-2.pdf">pdf</a>),
+      <i>Bulletin of the American Mathematical Society</i>,
+September
+1981</td>
+    </tr>
+  </tbody>
+</table>
+<br style="font-weight: bold;" />
+<big><span style="font-weight: bold;">More details on Carmichael and
+Witt<br />
+</span><br />
+<small>(Like the above, these brief excerpts from<br />
+&nbsp;copyrighted publications are quoted here<br />
+&nbsp;for personal scholarly purposes only.)</small><br />
+<span style="font-weight: bold;"><br />
+</span></big>
+<table align="center" border="2" bordercolor="black" cellpadding="24" cellspacing="0">
+  <tbody>
+    <tr>
+      <td><img style="width: 678px; height: 587px;" alt="Carmichael's 1931 Description of S(5,8,24)" src="MOG_files/Carmichael1931Steiner.gif" /><br />
+      <div style="text-align: center;"><img style="width: 481px; height: 643px;" alt="Peter M. Neumann on Carmichael and Witt" src="MOG_files/Neumann.jpg" /></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<br />
+<span style="font-weight: bold;">Some geometric background on the MOG:</span><br />
+<br />
+From Vol. II of <i>Projective Geometry</i>, a 1918 classic
+by Oswald
+Veblen, a line of thought that may help to understand the construction
+of the MOG:<br />
+<blockquote>Excerpt from Chapter III, "The Affine Group in the
+Plane"--<br />
+  <br />
+"The system of definitions and theorems which expose properties
+invariant under a given group of transformations may be called, in
+agreement with the point of view expounded in Klein's Erlangen
+Programm,* a <i>geometry</i>.&nbsp; Obviously, all the
+theorems of the
+geometry corresponding to a given group continue to be theorems in the
+geometry corresponding to any subgroup of the given group; and the more
+restricted the group, the more figures will be distinct relatively to
+it, and the more theorems will appear in the geometry.&nbsp; The
+extreme case is the group corresponding to the identity, the geometry
+of which is too large to be of consequence.<br />
+  <br />
+For our purposes we restrict attention to groups of projective
+collineations,** and in order to get a more exact classification of
+theorems we narrow the Kleinian definition by assigning to the geometry
+corresponding to a given group only the theory of those properties
+which, while invariant under this group, are <i>not invariant
+under
+any other group of projective collineations containing it</i>.&nbsp;
+This will render the question definite as to whether a given theorem
+belongs to a given geometry.<br />
+  <br />
+Perhaps the simplest example of a subgroup of the projective group in a
+plane is the set of all projective collineations which leave a line of
+the plane invariant.&nbsp; The present chapter is concerned chiefly
+with the geometry belonging to this group."&nbsp; <br />
+  <br />
+* Cf. F. Klein, Vergleichende Betractungen uber neue geometrische
+Forschungen, Erlangen 1872; also in Mathematische Annalen, Vol. XLIII
+(1893), p. 63<br />
+  <br />
+** From some points of view it would have been desirable to include
+also all projective groups containing correlations.<br />
+</blockquote>
+<p>The MOG may be regarded as summarizing a geometric structure
+featuring 759 eight-sets ("octads") in a "space" of 24
+points.&nbsp; The set of 759 octads is left invariant by the
+transformations of the large
+Mathieu group M<sub>24</sub>.&nbsp;
+A subgroup, the octad stabilizer, leaves an octad invariant (as a set,
+though not pointwise).&nbsp; It so happens that the octad
+stabilizer,
+which may be viewed as acting separately on the stabilized octad and on
+the set of the remaining 16 points of the 24, is
+isomorphic to the automorphism group of the affine 4-space over the
+2-element field.&nbsp; (In fact, the two parts of this group's
+action
+illustrate the isomorphism of the alternating group on eight elements
+with the general linear group acting on the 4-space over the 2-element
+field; the stabilized octad is left fixed pointwise by the translations
+of the affine 4-space.)&nbsp; A standard theorem of projective
+geometry
+says that we may adjoin to an affine n-space an (n-1)-dimensional
+projective "hyperplane at infinity" to obtain a projective
+n-space.&nbsp; The group of the geometry of the affine n-space is
+the
+subgroup of the group of the projective n-space leaving the "hyperplane
+at infinity" invariant (as a set, not pointwise), as in Veblen's
+discussion above.&nbsp; One might argue that a stabilized octad in
+the
+Mathieu geometry plays a role in some way analogous to that of a
+"hyperplane at infinity." </p>
+<center><big><span style="font-weight: bold;">Related
+material:</span> </big></center>
+<ol>
+  <li>Chapter 5, "Sporadic Groups," of <a href="http://www.maths.qmul.ac.uk/%7Eraw/fsgs.html"><i>Finite
+Simple
+Groups</i></a>, by <a href="http://www.maths.qmul.ac.uk/%7Eraw/">Robert
+A. Wilson</a> (in preparation as of August 15, 2007).<br />
+    <br />
+  </li>
+  <li>The Conway-Sloane book has a version of the MOG that
+differs from
+the original Curtis MOG by a mirror reflection:<br />
+    <br />
+    <center><img alt="From Conway and Sloane" src="MOG_files/ConwaySloaneMOG.jpg" /> </center>
+    <br />
+The first edition of the Conway-Sloane book was published in <a href="http://www.research.att.com/%7Enjas/doc/splag.html">1988</a>.
+Conway and Sloane supply a brief discussion of the square structures in
+the Curtis MOG as pictures of the finite geometry AG(4,2), but make no
+reference to the work, ten years earlier, of Cullinane. <br />
+    <br />
+  </li>
+  <li>Steven H. Cullinane, <a href="../16/geometry.html">Geometry
+of
+the 4x4 Square</a> and <a href="http://diamondtheorem.com/">The
+Diamond Theorem</a>. The former gives details of how the MOG
+works. The
+latter gives details, based on a Feb. 1979 <i>AMS Notices</i>
+abstract, of how the 35 4x4 structures in the MOG may be viewed as the
+35 lines in the projective 3-space over the 2-element field. <br />
+    <br />
+  </li>
+  <li>Steven H. Cullinane, <a href="gentheog2.html">Generating
+the
+Octad Generator</a>. This 1985 note is related to Curtis's
+revised view of the MOG in a 1987 article. The following
+journal note by Cullinane points this&nbsp; out: <br />
+    <br />
+    <table align="center" border="1" bordercolor="black" cellpadding="24" cellspacing="0">
+      <tbody>
+        <tr>
+          <td>
+          <div align="center">
+          <div align="left"><b><span>Monday,
+January 05, 2009<br />
+          <br />
+          </span></b></div>
+          <font size="4"><b>A Wealth of</b></font><br />
+          <font size="4"><b><a href="../16/abstr.pdf">Algebraic
+Structure</a><br />
+          <br />
+          </b></font><img alt="A 4x4 array (part of chessboard)" src="MOG_files/090105-Board.jpg" /><br />
+          </div>
+          <br />
+A 1987 article by R. T. Curtis on the geometry of his Miracle Octad
+Generator
+(MOG) as it relates to the geometry of the 4x4 square is now available
+online:<br />
+          <b><br />
+          <a href="http://journals.cambridge.org/action/displayAbstract?aid=2696820">Further
+elementary techniques using the miracle octad generator</a></b>,
+by R.
+T. Curtis. Abstract:<br />
+          <br />
+"In
+this paper we describe various techniques, some of which are already
+used by devotees of the art, which relate certain maximal subgroups of
+the Mathieu group <em>M</em><sub>24</sub>, as
+seen in the MOG, to
+matrix groups over finite fields. We hope to bring out <b style="background-color: rgb(255, 255, 0);">the wealth of
+algebraic
+structure</b><font size="3"><b>*</b></font>
+underlying the device and to enable the reader to move freely between
+these matrices and permutations. Perhaps the MOG was mis-named as
+simply an 'octad generator'; in this paper we intend to show that it is
+in reality a natural diagram of the binary Golay code."
+          <p class="Dates">(Received July 20 1987)<br />
+          </p>
+-- <i>Proceedings of the Edinburgh Mathematical Society</i>
+(Series 2)
+(1989), <b>32</b>: 345-353, doi:10.1017/S0013091500004600.<br />
+          <br />
+(Published online by Cambridge University Press 19 Dec 2008.)<br />
+          <br />
+In the above article, Curtis explains how two-thirds of his 4x6 MOG
+array may be viewed as <a href="../16/finiterelat.html">the
+4x4 model</a>
+of the four-dimensional affine space over GF(2).&nbsp; (His earlier
+1974
+paper (below) defining the MOG discussed the 4x4 structure in a purely
+combinatorial, not geometric, way.)<br />
+          <br />
+For further details, see <a href="../16/geometry.html">Geometry
+of the
+4x4 Square</a> and Curtis's original 1974 article, which is now
+also
+available online:<br />
+          <br />
+          <a href="http://journals.cambridge.org/action/displayAbstract?aid=2128220"><b>A
+new combinatorial approach to <em>M</em><sub>24</sub></b></a>,
+by R.
+T. Curtis. Abstract:<br />
+          <br />
+"In this paper, we define <em>M</em><sub>24</sub>
+from scratch as the
+subgroup of <em>S</em><sub>24</sub> preserving
+a Steiner system <em>S</em>(5,
+8, 24). The Steiner system is produced and proved to be unique and the
+group emerges naturally with many of its properties apparent."
+          <p class="Dates">(Received June 15 1974)</p>
+-- <i>Mathematical Proceedings of the Cambridge Philosophical
+Society</i>
+(1976), <b><span class="volume">79</span></b>:
+25-42,
+doi:10.1017/S0305004100052075.<br />
+          <br />
+(Published online by Cambridge University Press 24 Oct 2008.)<br />
+          <br />
+          <div align="center"><font size="3"><b>*</b></font>
+For
+instance:<br />
+          <br />
+          <a href="gentheog2.pdf"><img alt="Algebraic structure in the 4x4 square, by Cullinane (1985) and Curtis (1987)" src="MOG_files/090105-Comparison.jpg" /></a><br />
+          <br />
+Click for details. </div>
+          <br />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+  </li>
+  <li><i>Symmetric Generation of Groups</i>, by
+Robert T. Curtis, <i>Encyclopedia
+of Mathematics and Its Applications</i> Vol. 111, Cambridge
+University
+Press, 2007. This book, like the 1987 article by Curtis above, views
+the MOG in a wider context.</li>
+  <br />
+  <li>The connection of the Steiner system <nobr>S(5, 8,
+24)</nobr>
+with finite
+geometry-- in particular, with <nobr>PG(3,2)</nobr> and
+with the
+correspondence in
+Conwell's 1910 paper-- is described in Wilbur Jonsson's "On the Mathieu
+Groups <b>M</b><sub>22</sub>, <b>M</b><sub>23</sub>,
+    <b>M</b><sub>24</sub>
+and the Uniqueness of the Associated Steiner
+Systems" (<i>Math. Z.</i> <b>125</b>, 193-214
+(1972)), received on 9
+November 1970 by <i>Mathematische Zeitschrift</i>--<br />
+    <br />
+    <table align="center" border="1" cellpadding="24" cellspacing="0" width="498">
+      <tbody>
+        <tr>
+          <td valign="top">Adapted (for HTML) from the
+opening
+paragraphs of the above paper on Steiner systems by Jonsson--<br />
+          <br />
+"[A]... uniqueness proof is offered here based upon a detailed
+knowledge of the geometric aspects of the elementary abelian group of
+order 16 together with a knowledge of the geometries associated with
+certain subgroups of its automorphism group. This construction was
+motivated by a question posed by D.R. Hughes and by the discussion Edge
+[5] (see also Conwell [4]) gives of certain isomorphisms between
+classical groups, namely<br />
+          <blockquote><nobr><b>PGL</b>(4,2)~<b>PSL</b>(4,2)~<b>SL</b>(4,2)~<b>A</b><sub>8</sub>,</nobr><br />
+            <nobr><b>PSp</b>(4,2)~<b>Sp</b>(4,2)~<b>S</b><sub>6</sub>,</nobr><br />
+          </blockquote>
+where <b>A</b><sub>8</sub> is the alternating
+group on eight symbols, <b>S</b><sub>6</sub>
+the symmetric group on six symbols, <b>Sp</b>(4,2) and <b>PSp</b>(4,2)
+the symplectic and projective symplectic groups in four variables over
+the field <b>GF</b>(2) of two elements, [and] <b>PGL</b>,
+          <b>PSL</b>
+and <b>SL</b> are the projective linear, projective
+special linear and
+special linear groups (see for example [7], Kapitel II).<br />
+          <br />
+The symplectic group <b>PSp</b>(4,2) is the group of
+collineations of
+the three dimensional projective space <b>PG</b>(3,2) over
+          <b>GF</b>(2)
+which commute with a fixed null polarity <i>tau</i>...."<br />
+          <br />
+          <b>References</b><br />
+          <br />
+4. Conwell, George M.: The three space <i>PG</i>(3,2) and
+its group. <i>Ann.
+of Math.</i> (2) <b>11</b>, 60-76 (1910).<br />
+          <br />
+5. Edge, W.L.: The geometry of the linear fractional group <i>LF</i>(4,2).
+          <i>Proc. London Math. Soc.</i> (3) <b>4</b>,
+317-342 (1954).<br />
+          <br />
+7. Huppert, B.: <i>Endliche Gruppen I.</i>
+Berlin-Heidelberg-New York:
+Springer 1967.</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+  </li>
+  <li>Thomas M. Thompson, <a href="http://www.amazon.com/gp/product/0883850370/"><i>From
+Error-Correcting Codes through Sphere Packings to Simple Groups</i></a>.
+Mathematical Association of America, Washington, 1983. </li>
+</ol>
+<center>"While the reader may draw many a moral from our tale,<br />
+I hope that the story is of interest for its own sake.<br />
+Moreover, I hope that it may inspire others, participants<br />
+or observers, to preserve the true and complete record of<br />
+our mathematical times."<br />
+<br />
+-- Thomas M. Thompson, <i>op. cit.</i> <br />
+<br />
+</center>
+<!--footer-->
+<hr style="width: 100%; height: 2px;" /><br />
+Page created Nov. 30, 2005, by Steven H. Cullinane.&nbsp; Last
+modified August 1, 2010.
+</body></html>rs, participants<br />
+or observers, to preserve the true and complete record of<br />
+our mathematical times."<br />
+<br />
+-- Thomas M. Thompson, <i>op. cit.</i> <br />
+<br />
+</center>
+<!--footer-->
+<hr style="width: 100%; height: 2px;" /><br />
+Page created Nov. 30, 2005, by Steven H. Cullinane.&nbsp; Last
+modified August 1, 2010.
+</body></html>
