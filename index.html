@@ -1,10 +1,3069 @@
-<!DOCTYPE html>
-
-<meta name="robots" content="noindex, nofollow">
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-<!- comment ->
+<head>
+<!-- Original URL: http://finitegeometry.org/sc/64/view/index.html
+Date Downloaded: 1/9/2016 12:17:05 AM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Design Cube 4x4x4</title>
+
+<meta name="description" content="A JavaScript demonstration of how graphic designs on a cube retain their symmetry under a group of 1.3 trillion permutations." />
+<meta name="keywords" content="symmetry,finite,geometry,diamond theory,diamond theorem,group theory,permutations,cullinane,4x4x4" />
+
+<!-- Software copyright 2006 by Steven H. Cullinane.  All rights reserved. -->
+
+<script language="JAVASCRIPT" type="TEXT/JAVASCRIPT">
+
+   <!-- Hide script from old  browsers
+
+//    alert("cube64 viewer javascript has started");
+
+// Preload images
+
+	a1 = new Image(16,16);
+	a1.src = "empty16x16.jpg";
+	a2 = new Image(16,67);
+	a2.src = "row16x67.gif";
+	a3 = new Image(67,16);
+	a3.src = "col67x16.gif";
+	a4 = new Image(30,30);
+	a4.src = "quad30x30.gif";
+	a5 = new Image(121,121);
+	a5.src = "cubearrows121x121.jpg";
+	a6 = new Image(88,88);
+	a6.src = "grid88x88.jpg";
+	a20 = new Image(16,16);
+	a20.src = "t16-0.gif";
+	a21 = new Image(16,16);
+	a21.src = "t16-1.gif"; 
+	a22 = new Image(16,16);
+	a22.src = "t16-2.gif";
+	a23 = new Image(16,16);
+	a23.src = "t16-3.gif";
+	a31 = new Image(55,63);
+	a31.src = "rotTopCC.jpg";
+	a32 = new Image(55,63);
+	a32.src = "rotTopCW.jpg";
+	a33 = new Image(55,63);
+	a33.src = "rotLFCC.jpg";
+	a34 = new Image(55,63);
+	a34.src = "rotLFCW.jpg";
+	a35 = new Image(55,63);
+	a35.src = "rotRFCC.jpg";
+	a36 = new Image(55,63);
+	a36.src = "rotRFCWjpg";
+
+// 
+// Define array of numbers
+// with index representing POSITIONS of numbers
+// according to the scheme
+//
+// top layer --
+//    01 02 03 04
+//    05 06 07 08
+//    09 10 11 12
+//    13 14 15 16  
+// second layer --
+//    17 18 19 20
+//    21 22 23 24
+//    25 26 27 28
+//    29 30 31 32
+// third layer--
+//    33 34 35 36
+//    37 38 39 40
+//    41 42 43 44
+//    45 46 47 48
+// bottom layer --
+//    49 50 51 52
+//    53 54 55 56
+//    57 58 59 60
+//    61 62 63 64 
+// 
+	num = new Array(65);
+		for(i=0; i<65; i++) {
+		num[i] = i;
+                	};
+
+//Define temp array for permuting num array
+
+	tempnum = new Array(65);
+		for(i=0; i<65; i++) {
+		tempnum[i] = i;
+                	};
+
+// For each of the 6 face-positions, define an array
+// to hold the face-graphics info for
+// each of the 64 subcubes
+// NOTE: in these 6 arrays, the INDEX indicates 
+// which SUBCUBE is in question, not which
+// subcube-POSITION.
+// 
+// For typeslr, for instance, the face-types
+// are listed as seen with, so to speak,
+// x-ray vision, looking from the left front
+// layer of the 64-cube assembly.  The array
+// indices always refer to the individual subcubes
+// by the names of their ORIGINAL positions
+// in the 64-cube subassembly, even after
+// permutations of subcubes have been done.
+//  
+//
+// When the 64 subcubes are permuted, the 
+// types** arrays are constant, since the index
+// refers to subcubes, not subcube-positions
+// But when the entire 64-subcube assembly is
+// rotated, so is each subcube, and so the 
+// types** arrays must be changed accordingly.
+//
+
+	typestp = new Array("x",2,3,2,3,1,0,1,0,2,3,2,3,1,0,1,0,0,1,0,1,3,2,3,2,0,1,0,1,3,2,3,2,2,3,2,3,1,0,1,0,2,3,2,3,1,0,1,0,0,1,0,1,3,2,3,2,0,1,0,1,3,2,3,2);	
+	typeslr = new Array("x",3,1,3,1,2,0,2,0,3,1,3,1,2,0,2,0,0,2,0,2,1,3,1,3,0,2,0,2,1,3,1,3,3,1,3,1,2,0,2,0,3,1,3,1,2,0,2,0,0,2,0,2,1,3,1,3,0,2,0,2,1,3,1,3);
+	typesrr = new Array("x",2,3,2,3,0,1,0,1,2,3,2,3,0,1,0,1,1,0,1,0,3,2,3,2,1,0,1,0,3,2,3,2,2,3,2,3,0,1,0,1,2,3,2,3,0,1,0,1,1,0,1,0,3,2,3,2,1,0,1,0,3,2,3,2);
+	typeslf = new Array("x",0,1,0,1,2,3,2,3,0,1,0,1,2,3,2,3,3,2,3,2,1,0,1,0,3,2,3,2,1,0,1,0,0,1,0,1,2,3,2,3,0,1,0,1,2,3,2,3,3,2,3,2,1,0,1,0,3,2,3,2,1,0,1,0);
+	typesrf = new Array("x",1,3,1,3,0,2,0,2,1,3,1,3,0,2,0,2,2,0,2,0,3,1,3,1,2,0,2,0,3,1,3,1,1,3,1,3,0,2,0,2,1,3,1,3,0,2,0,2,2,0,2,0,3,1,3,1,2,0,2,0,3,1,3,1);
+	typesbt = new Array("x",0,1,0,1,3,2,3,2,0,1,0,1,3,2,3,2,2,3,2,3,1,0,1,0,2,3,2,3,1,0,1,0,0,1,0,1,3,2,3,2,0,1,0,1,3,2,3,2,2,3,2,3,1,0,1,0,2,3,2,3,1,0,1,0);
+//                                                                                                  1                      2                      3                      4                                                                             
+//                                                     1                   8                      6                      4                      2                      0                                                                                 
+//Define arrays to hold images of displayed layers
+	tp = new Array(16);
+	lr = new Array(16);
+	rr = new Array(16);
+	lf = new Array(16);
+	rf = new Array(16);
+	bt = new Array(16);
+
+// Define arrays to control permutation entries 
+
+// Define arrays to control permutation entries 
+     rowspicked = new Array(0,0,0,0,0);
+     colspicked = new Array(0,0,0,0,0);
+     quadspicked = new Array(0,0,0,0,0);
+
+// Define an array for use in permuting face-graphics types
+// when overall cube assembly is rotated
+
+	typestemp = new Array("x",2,3,2,3,1,0,1,0,2,3,2,3,1,0,1,0,0,1,0,1,3,2,3,2,0,1,0,1,3,2,3,2,2,3,2,3,1,0,1,0,2,3,2,3,1,0,1,0,0,1,0,1,3,2,3,2,0,1,0,1,3,2,3,2);	
+		
+// End of initializing arrays
+//
+
+// Reset variables
+
+	function resetvars() {
+	
+		for(i=0; i<5; i++) {
+		rowspicked[i] = 0;
+		};
+		for(i=0; i<5; i++) {
+		colspicked[i] = 0;
+		};
+		for(i=0; i<5; i++) {
+		quadspicked[i] = 0;
+		};
+	};
+	
+	// Show images
+
+	function showim() {
+
+//	alert("showim is running, tp[8] =" + tp[8]);
+
+		loadlayers();
+		for(i=0; i<16; i++) {
+		document.images[i].src = tp[i];
+		};
+		for(i=16; i<32; i++) {
+		document.images[i].src = lr[i - 16];
+		};
+		for(i=32; i<48; i++) {
+		document.images[i].src = rr[i - 32];
+		};
+		for(i=48; i<64; i++) {
+		document.images[i].src = lf[i - 48];
+		};
+		for(i=64; i<80; i++) {
+		document.images[i].src = rf[i - 64];
+		};
+		for(i=80; i<96; i++) {
+		document.images[i].src = bt[i - 80];
+		};
+		
+	resetvars();
+	};
+
+// Start javascript with function
+// called by "onload" in HTML "body" tag
+
+	function startup() {
+	
+//	alert("startup is running");
+
+		showim();
+	};
+	
+// Form each GRAPHIC IMAGE layer to be displayed
+
+	function loadlayers() {
+
+			loadtp();
+			loadlr();
+			loadrr();
+			loadlf();
+			loadrf();
+			loadbt();
+	};
+	
+	
+// Load top graphics display.
+
+		function loadtp() {
+		
+		tp[0] = "t16-" + typestp[num[1]] + ".gif";
+		tp[1] = "t16-" + typestp[num[2]] + ".gif";
+		tp[2] = "t16-" + typestp[num[3]] + ".gif";
+		tp[3] = "t16-" + typestp[num[4]] + ".gif";
+		tp[4] = "t16-" + typestp[num[5]] + ".gif";
+		tp[5] = "t16-" + typestp[num[6]] + ".gif";
+		tp[6] = "t16-" + typestp[num[7]] + ".gif";
+		tp[7] = "t16-" + typestp[num[8]] + ".gif";
+		tp[8] = "t16-" + typestp[num[9]] + ".gif";
+		tp[9] = "t16-" + typestp[num[10]] + ".gif";
+		tp[10] = "t16-" + typestp[num[11]] + ".gif";
+		tp[11] = "t16-" + typestp[num[12]] + ".gif";
+		tp[12] = "t16-" + typestp[num[13]] + ".gif";
+		tp[13] = "t16-" + typestp[num[14]] + ".gif";
+		tp[14] = "t16-" + typestp[num[15]] + ".gif";
+		tp[15] = "t16-" + typestp[num[16]] + ".gif";		
+		};
+
+// Load left rear graphics display.
+
+		function loadlr() {
+		
+		lr[0] = "t16-" + typeslr[num[13]] + ".gif";
+		lr[1] = "t16-" + typeslr[num[9]] + ".gif";
+		lr[2] = "t16-" + typeslr[num[5]] + ".gif";
+		lr[3] = "t16-" + typeslr[num[1]] + ".gif";
+		lr[4] = "t16-" + typeslr[num[29]] + ".gif";
+		lr[5] = "t16-" + typeslr[num[25]] + ".gif";
+		lr[6] = "t16-" + typeslr[num[21]] + ".gif";
+		lr[7] = "t16-" + typeslr[num[17]] + ".gif";
+		lr[8] = "t16-" + typeslr[num[45]] + ".gif";
+		lr[9] = "t16-" + typeslr[num[41]] + ".gif";
+		lr[10] = "t16-" + typeslr[num[37]] + ".gif";
+		lr[11] = "t16-" + typeslr[num[33]] + ".gif";
+		lr[12] = "t16-" + typeslr[num[61]] + ".gif";
+		lr[13] = "t16-" + typeslr[num[57]] + ".gif";
+		lr[14] = "t16-" + typeslr[num[53]] + ".gif";
+		lr[15] = "t16-" + typeslr[num[49]] + ".gif";		
+		};
+		
+// Load right rear graphics display.
+		function loadrr() {
+		
+		rr[0] = "t16-" + typesrr[num[1]] + ".gif";
+		rr[1] = "t16-" + typesrr[num[2]] + ".gif";
+		rr[2] = "t16-" + typesrr[num[3]] + ".gif";
+		rr[3] = "t16-" + typesrr[num[4]] + ".gif";
+		rr[4] = "t16-" + typesrr[num[17]] + ".gif";
+		rr[5] = "t16-" + typesrr[num[18]] + ".gif";
+		rr[6] = "t16-" + typesrr[num[19]] + ".gif";
+		rr[7] = "t16-" + typesrr[num[20]] + ".gif";
+		rr[8] = "t16-" + typesrr[num[33]] + ".gif";
+		rr[9] = "t16-" + typesrr[num[34]] + ".gif";
+		rr[10] = "t16-" + typesrr[num[35]] + ".gif";
+		rr[11] = "t16-" + typesrr[num[36]] + ".gif";
+		rr[12] = "t16-" + typesrr[num[49]] + ".gif";
+		rr[13] = "t16-" + typesrr[num[50]] + ".gif";
+		rr[14] = "t16-" + typesrr[num[51]] + ".gif";
+		rr[15] = "t16-" + typesrr[num[52]] + ".gif";		
+		};
+
+// Load left front graphics display.
+
+		function loadlf() {
+				
+		lf[0] = "t16-" + typeslf[num[13]] + ".gif";
+		lf[1] = "t16-" + typeslf[num[14]] + ".gif";
+		lf[2] = "t16-" + typeslf[num[15]] + ".gif";
+		lf[3] = "t16-" + typeslf[num[16]] + ".gif";
+		lf[4] = "t16-" + typeslf[num[29]] + ".gif";
+		lf[5] = "t16-" + typeslf[num[30]] + ".gif";
+		lf[6] = "t16-" + typeslf[num[31]] + ".gif";
+		lf[7] = "t16-" + typeslf[num[32]] + ".gif";
+		lf[8] = "t16-" + typeslf[num[45]] + ".gif";
+		lf[9] = "t16-" + typeslf[num[46]] + ".gif";
+		lf[10] = "t16-" + typeslf[num[47]] + ".gif";
+		lf[11] = "t16-" + typeslf[num[48]] + ".gif";
+		lf[12] = "t16-" + typeslf[num[61]] + ".gif";
+		lf[13] = "t16-" + typeslf[num[62]] + ".gif";
+		lf[14] = "t16-" + typeslf[num[63]] + ".gif";
+		lf[15] = "t16-" + typeslf[num[64]] + ".gif";		
+		};
+		
+// Load right front graphics display.
+		
+		function loadrf() {
+				
+		rf[0] = "t16-" + typesrf[num[16]] + ".gif";
+		rf[1] = "t16-" + typesrf[num[12]] + ".gif";
+		rf[2] = "t16-" + typesrf[num[8]] + ".gif";
+		rf[3] = "t16-" + typesrf[num[4]] + ".gif";
+		rf[4] = "t16-" + typesrf[num[32]] + ".gif";
+		rf[5] = "t16-" + typesrf[num[28]] + ".gif";
+		rf[6] = "t16-" + typesrf[num[24]] + ".gif";
+		rf[7] = "t16-" + typesrf[num[20]] + ".gif";
+		rf[8] = "t16-" + typesrf[num[48]] + ".gif";
+		rf[9] = "t16-" + typesrf[num[44]] + ".gif";
+		rf[10] = "t16-" + typesrf[num[40]] + ".gif";
+		rf[11] = "t16-" + typesrf[num[36]] + ".gif";
+		rf[12] = "t16-" + typesrf[num[64]] + ".gif";
+		rf[13] = "t16-" + typesrf[num[60]] + ".gif";
+		rf[14] = "t16-" + typesrf[num[56]] + ".gif";
+		rf[15] = "t16-" + typesrf[num[52]] + ".gif";		
+		};
+
+// Load bottom graphics display.
+
+		function loadbt() {
+
+		bt[0] = "t16-" + typesbt[num[49]] + ".gif";
+		bt[1] = "t16-" + typesbt[num[50]] + ".gif";
+		bt[2] = "t16-" + typesbt[num[51]] + ".gif";
+		bt[3] = "t16-" + typesbt[num[52]] + ".gif";
+		bt[4] = "t16-" + typesbt[num[53]] + ".gif";
+		bt[5] = "t16-" + typesbt[num[54]] + ".gif";
+		bt[6] = "t16-" + typesbt[num[55]] + ".gif";
+		bt[7] = "t16-" + typesbt[num[56]] + ".gif";
+		bt[8] = "t16-" + typesbt[num[57]] + ".gif";
+		bt[9] = "t16-" + typesbt[num[58]] + ".gif";
+		bt[10] = "t16-" + typesbt[num[59]] + ".gif";
+		bt[11] = "t16-" + typesbt[num[60]] + ".gif";
+		bt[12] = "t16-" + typesbt[num[61]] + ".gif";
+		bt[13] = "t16-" + typesbt[num[62]] + ".gif";
+		bt[14] = "t16-" + typesbt[num[63]] + ".gif";
+		bt[15] = "t16-" + typesbt[num[64]] + ".gif";		
+		};
+
+// *******************************************************
+// PERMUTING PARTS..........
+//
+// NOTE: THE FOLLOWING PERMUTATIONS ASSUME
+// WE ARE WORKING ON TOP LAYER 
+// and applying the same permutations to all parallel layers 
+//
+// *******************************************************
+
+// PERMUTATIONS OF ROWS
+//
+
+	function swrows12() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[1] = num[5];
+		tempnum[2] = num[6];
+		tempnum[3] = num[7];
+		tempnum[4] = num[8];
+		tempnum[5] = num[1];
+		tempnum[6] = num[2];
+		tempnum[7] = num[3];
+		tempnum[8] = num[4];
+
+		tempnum[17] = num[21];
+		tempnum[18] = num[22];
+		tempnum[19] = num[23];
+		tempnum[20] = num[24];
+		tempnum[21] = num[17];
+		tempnum[22] = num[18];
+		tempnum[23] = num[19];
+		tempnum[24] = num[20];
+
+		tempnum[33] = num[37];
+		tempnum[34] = num[38];
+		tempnum[35] = num[39];
+		tempnum[36] = num[40];
+		tempnum[37] = num[33];
+		tempnum[38] = num[34];
+		tempnum[39] = num[35];
+		tempnum[40] = num[36];
+
+		tempnum[49] = num[53];
+		tempnum[50] = num[54];
+		tempnum[51] = num[55];
+		tempnum[52] = num[56];
+		tempnum[53] = num[49];
+		tempnum[54] = num[50];
+		tempnum[55] = num[51];
+		tempnum[56] = num[52];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+	
+		showim();
+	};
+
+
+	function swrows13() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[1] = num[9];
+		tempnum[2] = num[10];
+		tempnum[3] = num[11];
+		tempnum[4] = num[12];
+		tempnum[9] = num[1];
+		tempnum[10] = num[2];
+		tempnum[11] = num[3];
+		tempnum[12] = num[4];
+
+		tempnum[17] = num[25];
+		tempnum[18] = num[26];
+		tempnum[19] = num[27];
+		tempnum[20] = num[28];
+		tempnum[25] = num[17];
+		tempnum[26] = num[18];
+		tempnum[27] = num[19];
+		tempnum[28] = num[20];
+
+		tempnum[33] = num[41];
+		tempnum[34] = num[42];
+		tempnum[35] = num[43];
+		tempnum[36] = num[44];
+		tempnum[41] = num[33];
+		tempnum[42] = num[34];
+		tempnum[43] = num[35];
+		tempnum[44] = num[36];
+
+		tempnum[49] = num[57];
+		tempnum[50] = num[58];
+		tempnum[51] = num[59];
+		tempnum[52] = num[60];
+		tempnum[57] = num[49];
+		tempnum[58] = num[50];
+		tempnum[59] = num[51];
+		tempnum[60] = num[52];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+	
+		showim();
+	};
+
+	function swrows14() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[1] = num[13];
+		tempnum[2] = num[14];
+		tempnum[3] = num[15];
+		tempnum[4] = num[16];
+		tempnum[13] = num[1];
+		tempnum[14] = num[2];
+		tempnum[15] = num[3];
+		tempnum[16] = num[4];
+
+		tempnum[17] = num[29];
+		tempnum[18] = num[30];
+		tempnum[19] = num[31];
+		tempnum[20] = num[32];
+		tempnum[29] = num[17];
+		tempnum[30] = num[18];
+		tempnum[31] = num[19];
+		tempnum[32] = num[20];
+
+		tempnum[33] = num[45];
+		tempnum[34] = num[46];
+		tempnum[35] = num[47];
+		tempnum[36] = num[48];
+		tempnum[45] = num[33];
+		tempnum[46] = num[34];
+		tempnum[47] = num[35];
+		tempnum[48] = num[36];
+
+		tempnum[49] = num[61];
+		tempnum[50] = num[62];
+		tempnum[51] = num[63];
+		tempnum[52] = num[64];
+		tempnum[61] = num[49];
+		tempnum[62] = num[50];
+		tempnum[63] = num[51];
+		tempnum[64] = num[52];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+	
+		showim();
+	};
+
+
+	function swrows23() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[5] = num[9];
+		tempnum[6] = num[10];
+		tempnum[7] = num[11];
+		tempnum[8] = num[12];
+		tempnum[9] = num[5];
+		tempnum[10] = num[6];
+		tempnum[11] = num[7];
+		tempnum[12] = num[8];
+
+		tempnum[21] = num[25];
+		tempnum[22] = num[26];
+		tempnum[23] = num[27];
+		tempnum[24] = num[28];
+		tempnum[25] = num[21];
+		tempnum[26] = num[22];
+		tempnum[27] = num[23];
+		tempnum[28] = num[24];
+
+		tempnum[37] = num[41];
+		tempnum[38] = num[42];
+		tempnum[39] = num[43];
+		tempnum[40] = num[44];
+		tempnum[41] = num[37];
+		tempnum[42] = num[38];
+		tempnum[43] = num[39];
+		tempnum[44] = num[40];
+
+		tempnum[53] = num[57];
+		tempnum[54] = num[58];
+		tempnum[55] = num[59];
+		tempnum[56] = num[60];
+		tempnum[57] = num[53];
+		tempnum[58] = num[54];
+		tempnum[59] = num[55];
+		tempnum[60] = num[56];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+	
+		showim();
+	};
+
+	function swrows24() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[5] = num[13];
+		tempnum[6] = num[14];
+		tempnum[7] = num[15];
+		tempnum[8] = num[16];
+		tempnum[13] = num[5];
+		tempnum[14] = num[6];
+		tempnum[15] = num[7];
+		tempnum[16] = num[8];
+
+		tempnum[21] = num[29];
+		tempnum[22] = num[30];
+		tempnum[23] = num[31];
+		tempnum[24] = num[32];
+		tempnum[29] = num[21];
+		tempnum[30] = num[22];
+		tempnum[31] = num[23];
+		tempnum[32] = num[24];
+
+		tempnum[37] = num[45];
+		tempnum[38] = num[46];
+		tempnum[39] = num[47];
+		tempnum[40] = num[48];
+		tempnum[45] = num[37];
+		tempnum[46] = num[38];
+		tempnum[47] = num[39];
+		tempnum[48] = num[40];
+
+		tempnum[53] = num[61];
+		tempnum[54] = num[62];
+		tempnum[55] = num[63];
+		tempnum[56] = num[64];
+		tempnum[61] = num[53];
+		tempnum[62] = num[54];
+		tempnum[63] = num[55];
+		tempnum[64] = num[56];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+	
+		showim();
+	};
+
+	function swrows34() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[9] = num[13];
+		tempnum[10] = num[14];
+		tempnum[11] = num[15];
+		tempnum[12] = num[16];
+		tempnum[13] = num[9];
+		tempnum[14] = num[10];
+		tempnum[15] = num[11];
+		tempnum[16] = num[12];
+
+		tempnum[25] = num[29];
+		tempnum[26] = num[30];
+		tempnum[27] = num[31];
+		tempnum[28] = num[32];
+		tempnum[29] = num[25];
+		tempnum[30] = num[26];
+		tempnum[31] = num[27];
+		tempnum[32] = num[28];
+
+		tempnum[41] = num[45];
+		tempnum[42] = num[46];
+		tempnum[43] = num[47];
+		tempnum[44] = num[48];
+		tempnum[45] = num[41];
+		tempnum[46] = num[42];
+		tempnum[47] = num[43];
+		tempnum[48] = num[44];
+
+		tempnum[57] = num[61];
+		tempnum[58] = num[62];
+		tempnum[59] = num[63];
+		tempnum[60] = num[64];
+		tempnum[61] = num[57];
+		tempnum[62] = num[58];
+		tempnum[63] = num[59];
+		tempnum[64] = num[60];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+	
+		showim();
+	};
+
+
+
+
+//
+// *******************************************************
+//
+
+// PERMUTATIONS OF COLUMNS
+
+	function swcols12() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[1] = num[2];
+		tempnum[5] = num[6];
+		tempnum[9] = num[10];
+		tempnum[13] = num[14];
+		tempnum[2] = num[1];
+		tempnum[6] = num[5];
+		tempnum[10] = num[9];
+		tempnum[14] = num[13];
+
+		tempnum[17] = num[18];
+		tempnum[21] = num[22];
+		tempnum[25] = num[26];
+		tempnum[29] = num[30];
+		tempnum[18] = num[17];
+		tempnum[22] = num[21];
+		tempnum[26] = num[25];
+		tempnum[30] = num[29];
+
+		tempnum[33] = num[34];
+		tempnum[37] = num[38];
+		tempnum[41] = num[42];
+		tempnum[45] = num[46];
+		tempnum[34] = num[33];
+		tempnum[38] = num[37];
+		tempnum[42] = num[41];
+		tempnum[46] = num[45];
+
+		tempnum[49] = num[50];
+		tempnum[53] = num[54];
+		tempnum[57] = num[58];
+		tempnum[61] = num[62];
+		tempnum[50] = num[49];
+		tempnum[54] = num[53];
+		tempnum[58] = num[57];
+		tempnum[62] = num[61];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+
+		showim();
+	};
+
+	function swcols13() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[1] = num[3];
+		tempnum[5] = num[7];
+		tempnum[9] = num[11];
+		tempnum[13] = num[15];
+		tempnum[3] = num[1];
+		tempnum[7] = num[5];
+		tempnum[11] = num[9];
+		tempnum[15] = num[13];
+
+		tempnum[17] = num[19];
+		tempnum[21] = num[23];
+		tempnum[25] = num[27];
+		tempnum[29] = num[31];
+		tempnum[19] = num[17];
+		tempnum[23] = num[21];
+		tempnum[27] = num[25];
+		tempnum[31] = num[29];
+
+		tempnum[33] = num[35];
+		tempnum[37] = num[39];
+		tempnum[41] = num[43];
+		tempnum[45] = num[47];
+		tempnum[35] = num[33];
+		tempnum[39] = num[37];
+		tempnum[43] = num[41];
+		tempnum[47] = num[45];
+
+		tempnum[49] = num[51];
+		tempnum[53] = num[55];
+		tempnum[57] = num[59];
+		tempnum[61] = num[63];
+		tempnum[51] = num[49];
+		tempnum[55] = num[53];
+		tempnum[59] = num[57];
+		tempnum[63] = num[61];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+
+		showim();
+	};
+
+
+	function swcols14() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[1] = num[4];
+		tempnum[5] = num[8];
+		tempnum[9] = num[12];
+		tempnum[13] = num[16];
+		tempnum[4] = num[1];
+		tempnum[8] = num[5];
+		tempnum[12] = num[9];
+		tempnum[16] = num[13];
+
+		tempnum[17] = num[20];
+		tempnum[21] = num[24];
+		tempnum[25] = num[28];
+		tempnum[29] = num[32];
+		tempnum[20] = num[17];
+		tempnum[24] = num[21];
+		tempnum[28] = num[25];
+		tempnum[32] = num[29];
+
+		tempnum[33] = num[36];
+		tempnum[37] = num[40];
+		tempnum[41] = num[44];
+		tempnum[45] = num[48];
+		tempnum[36] = num[33];
+		tempnum[40] = num[37];
+		tempnum[44] = num[41];
+		tempnum[48] = num[45];
+
+		tempnum[49] = num[52];
+		tempnum[53] = num[56];
+		tempnum[57] = num[60];
+		tempnum[61] = num[64];
+		tempnum[52] = num[49];
+		tempnum[56] = num[53];
+		tempnum[60] = num[57];
+		tempnum[64] = num[61];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+
+		showim();
+	};
+
+
+	function swcols23() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[2] = num[3];
+		tempnum[6] = num[7];
+		tempnum[10] = num[11];
+		tempnum[14] = num[15];
+		tempnum[3] = num[2];
+		tempnum[7] = num[6];
+		tempnum[11] = num[10];
+		tempnum[15] = num[14];
+
+		tempnum[18] = num[19];
+		tempnum[22] = num[23];
+		tempnum[26] = num[27];
+		tempnum[30] = num[31];
+		tempnum[19] = num[18];
+		tempnum[23] = num[22];
+		tempnum[27] = num[26];
+		tempnum[31] = num[30];
+
+		tempnum[34] = num[35];
+		tempnum[38] = num[39];
+		tempnum[42] = num[43];
+		tempnum[46] = num[47];
+		tempnum[35] = num[34];
+		tempnum[39] = num[38];
+		tempnum[43] = num[42];
+		tempnum[47] = num[46];
+
+		tempnum[50] = num[51];
+		tempnum[54] = num[55];
+		tempnum[58] = num[59];
+		tempnum[62] = num[63];
+		tempnum[51] = num[50];
+		tempnum[55] = num[54];
+		tempnum[59] = num[58];
+		tempnum[63] = num[62];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+
+		showim();
+	};
+
+	function swcols24() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[2] = num[4];
+		tempnum[6] = num[8];
+		tempnum[10] = num[12];
+		tempnum[14] = num[16];
+		tempnum[4] = num[2];
+		tempnum[8] = num[6];
+		tempnum[12] = num[10];
+		tempnum[16] = num[14];
+
+		tempnum[18] = num[20];
+		tempnum[22] = num[24];
+		tempnum[26] = num[28];
+		tempnum[30] = num[32];
+		tempnum[20] = num[18];
+		tempnum[24] = num[22];
+		tempnum[28] = num[26];
+		tempnum[32] = num[30];
+
+		tempnum[34] = num[36];
+		tempnum[38] = num[40];
+		tempnum[42] = num[44];
+		tempnum[46] = num[48];
+		tempnum[36] = num[34];
+		tempnum[40] = num[38];
+		tempnum[44] = num[42];
+		tempnum[48] = num[46];
+
+		tempnum[50] = num[52];
+		tempnum[54] = num[56];
+		tempnum[58] = num[60];
+		tempnum[62] = num[64];
+		tempnum[52] = num[50];
+		tempnum[56] = num[54];
+		tempnum[60] = num[58];
+		tempnum[64] = num[62];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+
+		showim();
+	};
+
+	function swcols34() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[3] = num[4];
+		tempnum[7] = num[8];
+		tempnum[11] = num[12];
+		tempnum[15] = num[16];
+		tempnum[4] = num[3];
+		tempnum[8] = num[7];
+		tempnum[12] = num[11];
+		tempnum[16] = num[15];
+
+		tempnum[19] = num[20];
+		tempnum[23] = num[24];
+		tempnum[27] = num[28];
+		tempnum[31] = num[32];
+		tempnum[20] = num[19];
+		tempnum[24] = num[23];
+		tempnum[28] = num[27];
+		tempnum[32] = num[31];
+
+		tempnum[35] = num[36];
+		tempnum[39] = num[40];
+		tempnum[43] = num[44];
+		tempnum[47] = num[48];
+		tempnum[36] = num[35];
+		tempnum[40] = num[39];
+		tempnum[44] = num[43];
+		tempnum[48] = num[47];
+
+		tempnum[51] = num[52];
+		tempnum[55] = num[56];
+		tempnum[59] = num[60];
+		tempnum[63] = num[64];
+		tempnum[52] = num[51];
+		tempnum[56] = num[55];
+		tempnum[60] = num[59];
+		tempnum[64] = num[63];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+
+		showim();
+	};
+
+
+
+//
+// *******************************************************
+//
+// PERMUTATIONS OF QUADRANTS
+// Switch quadrants 1 and 2, where quadrants are numbered
+//   1 2
+//   3 4
+//
+	function swquads12() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[1] = num[3];
+		tempnum[2] = num[4];
+		tempnum[5] = num[7];
+		tempnum[6] = num[8];
+		tempnum[3] = num[1];
+		tempnum[4] = num[2];
+		tempnum[7] = num[5];
+		tempnum[8] = num[6];
+
+		tempnum[17] = num[19];
+		tempnum[18] = num[20];
+		tempnum[21] = num[23];
+		tempnum[22] = num[24];
+		tempnum[19] = num[17];
+		tempnum[20] = num[18];
+		tempnum[23] = num[21];
+		tempnum[24] = num[22];
+
+		tempnum[33] = num[35];
+		tempnum[34] = num[36];
+		tempnum[37] = num[39];
+		tempnum[38] = num[40];
+		tempnum[35] = num[33];
+		tempnum[36] = num[34];
+		tempnum[39] = num[37];
+		tempnum[40] = num[38];
+
+		tempnum[49] = num[51];
+		tempnum[50] = num[52];
+		tempnum[53] = num[55];
+		tempnum[54] = num[56];
+		tempnum[51] = num[49];
+		tempnum[52] = num[50];
+		tempnum[55] = num[53];
+		tempnum[56] = num[54];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+
+		showim();
+	};
+
+	function swquads13() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[1] = num[9];
+		tempnum[2] = num[10];
+		tempnum[5] = num[13];
+		tempnum[6] = num[14];
+		tempnum[9] = num[1];
+		tempnum[10] = num[2];
+		tempnum[13] = num[5];
+		tempnum[14] = num[6];
+
+		tempnum[17] = num[25];
+		tempnum[18] = num[26];
+		tempnum[21] = num[29];
+		tempnum[22] = num[30];
+		tempnum[25] = num[17];
+		tempnum[26] = num[18];
+		tempnum[29] = num[21];
+		tempnum[30] = num[22];
+
+		tempnum[33] = num[41];
+		tempnum[34] = num[42];
+		tempnum[37] = num[45];
+		tempnum[38] = num[46];
+		tempnum[41] = num[33];
+		tempnum[42] = num[34];
+		tempnum[45] = num[37];
+		tempnum[46] = num[38];
+
+		tempnum[49] = num[57];
+		tempnum[50] = num[58];
+		tempnum[53] = num[61];
+		tempnum[54] = num[62];
+		tempnum[57] = num[49];
+		tempnum[58] = num[50];
+		tempnum[61] = num[53];
+		tempnum[62] = num[54];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+
+		showim();
+	};
+
+	function swquads14() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[1] = num[11];
+		tempnum[2] = num[12];
+		tempnum[5] = num[15];
+		tempnum[6] = num[16];
+		tempnum[11] = num[1];
+		tempnum[12] = num[2];
+		tempnum[15] = num[5];
+		tempnum[16] = num[6];
+
+		tempnum[17] = num[27];
+		tempnum[18] = num[28];
+		tempnum[21] = num[31];
+		tempnum[22] = num[32];
+		tempnum[27] = num[17];
+		tempnum[28] = num[18];
+		tempnum[31] = num[21];
+		tempnum[32] = num[22];
+
+		tempnum[33] = num[43];
+		tempnum[34] = num[44];
+		tempnum[37] = num[47];
+		tempnum[38] = num[48];
+		tempnum[43] = num[33];
+		tempnum[44] = num[34];
+		tempnum[47] = num[37];
+		tempnum[48] = num[38];
+
+		tempnum[49] = num[59];
+		tempnum[50] = num[60];
+		tempnum[53] = num[63];
+		tempnum[54] = num[64];
+		tempnum[59] = num[49];
+		tempnum[60] = num[50];
+		tempnum[63] = num[53];
+		tempnum[64] = num[54];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+
+		showim();
+	};
+
+	function swquads23() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[3] = num[9];
+		tempnum[4] = num[10];
+		tempnum[7] = num[13];
+		tempnum[8] = num[14];
+		tempnum[9] = num[3];
+		tempnum[10] = num[4];
+		tempnum[13] = num[7];
+		tempnum[14] = num[8];
+
+		tempnum[19] = num[25];
+		tempnum[20] = num[26];
+		tempnum[23] = num[29];
+		tempnum[24] = num[30];
+		tempnum[25] = num[19];
+		tempnum[26] = num[20];
+		tempnum[29] = num[23];
+		tempnum[30] = num[24];
+
+		tempnum[35] = num[41];
+		tempnum[36] = num[42];
+		tempnum[39] = num[45];
+		tempnum[40] = num[46];
+		tempnum[41] = num[35];
+		tempnum[42] = num[36];
+		tempnum[45] = num[39];
+		tempnum[46] = num[40];
+
+		tempnum[51] = num[57];
+		tempnum[52] = num[58];
+		tempnum[55] = num[61];
+		tempnum[56] = num[62];
+		tempnum[57] = num[51];
+		tempnum[58] = num[52];
+		tempnum[61] = num[55];
+		tempnum[62] = num[56];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+
+		showim();
+	};
+
+	function swquads24() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[3] = num[11];
+		tempnum[4] = num[12];
+		tempnum[7] = num[15];
+		tempnum[8] = num[16];
+		tempnum[11] = num[3];
+		tempnum[12] = num[4];
+		tempnum[15] = num[7];
+		tempnum[16] = num[8];
+
+		tempnum[19] = num[27];
+		tempnum[20] = num[28];
+		tempnum[23] = num[31];
+		tempnum[24] = num[32];
+		tempnum[27] = num[19];
+		tempnum[28] = num[20];
+		tempnum[31] = num[23];
+		tempnum[32] = num[24];
+
+		tempnum[35] = num[43];
+		tempnum[36] = num[44];
+		tempnum[39] = num[47];
+		tempnum[40] = num[48];
+		tempnum[43] = num[35];
+		tempnum[44] = num[36];
+		tempnum[47] = num[39];
+		tempnum[48] = num[40];
+
+		tempnum[51] = num[59];
+		tempnum[52] = num[60];
+		tempnum[55] = num[63];
+		tempnum[56] = num[64];
+		tempnum[59] = num[51];
+		tempnum[60] = num[52];
+		tempnum[63] = num[55];
+		tempnum[64] = num[56];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+
+		showim();
+	};
+
+	function swquads34() {
+
+		for(i=0; i<65; i++) {
+		tempnum[i] = num[i];
+		};
+
+		tempnum[9] = num[11];
+		tempnum[10] = num[12];
+		tempnum[13] = num[15];
+		tempnum[14] = num[16];
+		tempnum[11] = num[9];
+		tempnum[12] = num[10];
+		tempnum[15] = num[13];
+		tempnum[16] = num[14];
+
+		tempnum[25] = num[27];
+		tempnum[26] = num[28];
+		tempnum[29] = num[31];
+		tempnum[30] = num[32];
+		tempnum[27] = num[25];
+		tempnum[28] = num[26];
+		tempnum[31] = num[29];
+		tempnum[32] = num[30];
+
+		tempnum[41] = num[43];
+		tempnum[42] = num[44];
+		tempnum[45] = num[47];
+		tempnum[46] = num[48];
+		tempnum[43] = num[41];
+		tempnum[44] = num[42];
+		tempnum[47] = num[45];
+		tempnum[48] = num[46];
+
+		tempnum[57] = num[59];
+		tempnum[58] = num[60];
+		tempnum[61] = num[63];
+		tempnum[62] = num[64];
+		tempnum[59] = num[57];
+		tempnum[60] = num[58];
+		tempnum[63] = num[61];
+		tempnum[64] = num[62];
+
+		for(i=0; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+
+		showim();
+	};
+
+     
+// *******************************************************
+// SELECTION OF PARTS to be switched
+// *******************************************************
+
+// If rows have been switched ...
+
+     function switchrows() {
+
+          if (rowspicked[1] == 1 && rowspicked[2] == 1) {
+               swrows12();
+             }
+          if (rowspicked[1] == 1 && rowspicked[3] == 1) {
+               swrows13();
+             }
+          if (rowspicked[1] == 1 && rowspicked[4] == 1) {
+               swrows14();
+             }
+          if (rowspicked[2] == 1 && rowspicked[3] == 1) {
+               swrows23();
+             }
+          if (rowspicked[2] == 1 && rowspicked[4] == 1) {
+               swrows24();
+             }
+          if (rowspicked[3] == 1 && rowspicked[4] == 1) {
+               swrows34();
+             }
+     }
+
+
+// If columns have been switched ...
+
+     function switchcols() {
+
+          if (colspicked[1] == 1 && colspicked[2] == 1) {
+               swcols12();
+             }
+          if (colspicked[1] == 1 && colspicked[3] == 1) {
+               swcols13();
+             }
+          if (colspicked[1] == 1 && colspicked[4] == 1) {
+               swcols14();
+             }
+          if (colspicked[2] == 1 && colspicked[3] == 1) {
+               swcols23();
+             }
+          if (colspicked[2] == 1 && colspicked[4] == 1) {
+               swcols24();
+             }
+          if (colspicked[3] == 1 && colspicked[4] == 1) {
+               swcols34();
+             }
+     }
+
+
+// If quadrants have been switched ...
+
+     function switchquads() {
+
+	if (quadspicked[1] == 1 && quadspicked[2] == 1) {
+		swquads12();
+		}
+	if (quadspicked[1] == 1 && quadspicked[3] == 1) {
+		swquads13();
+		}
+	if (quadspicked[1] == 1 && quadspicked[4] == 1) {
+		swquads14();
+		}
+	if (quadspicked[2] == 1 && quadspicked[3] == 1) {
+		swquads23();
+		}
+	if (quadspicked[2] == 1 && quadspicked[4] == 1) {
+		swquads24();
+		}
+	if (quadspicked[3] == 1 && quadspicked[4] == 1) {
+		swquads34();
+		}
+     }
+
+     function row1clicked() {
+	rowspicked[1] = 1;
+	switchrows();
+     }
+     function row2clicked() {
+	rowspicked[2] = 1;
+	switchrows();
+     }
+     function row3clicked() {
+          rowspicked[3] = 1;
+          switchrows();
+     }
+     function row4clicked() {
+          rowspicked[4] = 1;
+          switchrows();
+     }
+//
+     function col1clicked() {
+	colspicked[1] = 1;
+	switchcols();
+     }
+     function col2clicked() {
+	colspicked[2] = 1;
+	switchcols();
+     }
+     function col3clicked() {
+          colspicked[3] = 1;
+          switchcols();
+     }
+     function col4clicked() {
+          colspicked[4] = 1;
+          switchcols();
+     }
+//
+     function quad1clicked() {
+	quadspicked[1] = 1;
+	switchquads();
+     }
+     function quad2clicked() {
+	quadspicked[2] = 1;
+	switchquads();
+     }
+     function quad3clicked() {
+	quadspicked[3] = 1;
+	switchquads();
+     }
+     function quad4clicked() {
+	quadspicked[4] = 1;
+	switchquads();
+     }
+     
+ 
+// If User has clicked icon for clockwise rotation
+// of cube from top face...
+
+	function rotateTopCW() {
+		
+		tempnum[1] = num[13];
+		tempnum[2] = num[9];
+		tempnum[3] = num[5];
+		tempnum[4] = num[1];
+		tempnum[5] = num[14];
+		tempnum[6] = num[10];
+		tempnum[7] = num[6];
+		tempnum[8] = num[2];
+		tempnum[9] = num[15];
+		tempnum[10] = num[11];
+		tempnum[11] = num[7];
+		tempnum[12] = num[3];
+		tempnum[13] = num[16];
+		tempnum[14] = num[12];
+		tempnum[15] = num[8];
+		tempnum[16] = num[4];
+
+		tempnum[17] = num[29];
+		tempnum[18] = num[25];
+		tempnum[19] = num[21];
+		tempnum[20] = num[17];
+		tempnum[21] = num[30];
+		tempnum[22] = num[26];
+		tempnum[23] = num[22];
+		tempnum[24] = num[18];
+		tempnum[25] = num[31];
+		tempnum[26] = num[27];
+		tempnum[27] = num[23];
+		tempnum[28] = num[19];
+		tempnum[29] = num[32];
+		tempnum[30] = num[28];
+		tempnum[31] = num[24];
+		tempnum[32] = num[20];
+
+		tempnum[33] = num[45];
+		tempnum[34] = num[41];
+		tempnum[35] = num[37];
+		tempnum[36] = num[33];
+		tempnum[37] = num[46];
+		tempnum[38] = num[42];
+		tempnum[39] = num[38];
+		tempnum[40] = num[34];
+		tempnum[41] = num[47];
+		tempnum[42] = num[43];
+		tempnum[43] = num[39];
+		tempnum[44] = num[35];
+		tempnum[45] = num[48];
+		tempnum[46] = num[44];
+		tempnum[47] = num[40];
+		tempnum[48] = num[36];
+
+		tempnum[49] = num[61];
+		tempnum[50] = num[57];
+		tempnum[51] = num[53];
+		tempnum[52] = num[49];
+		tempnum[53] = num[62];
+		tempnum[54] = num[58];
+		tempnum[55] = num[54];
+		tempnum[56] = num[50];
+		tempnum[57] = num[63];
+		tempnum[58] = num[59];
+		tempnum[59] = num[55];
+		tempnum[60] = num[51];
+		tempnum[61] = num[64];
+		tempnum[62] = num[60];
+		tempnum[63] = num[56];
+		tempnum[64] = num[52];
+		
+		for(i=1; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+		
+		rotfacesTopCW();
+		
+	};
+	
+	function rotfacesTopCW() {
+	
+		for(i=1; i<65; i++) {
+	
+			if (typestp[i]==0){
+			typestemp[i]=1;
+			};
+			if (typestp[i]==1){
+			typestemp[i]=2;
+			};
+			if (typestp[i]==2){
+			typestemp[i]=3;
+			};
+			if (typestp[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typestp[i] = typestemp[i];
+			};
+		
+		for(i=1; i<65; i++) {
+	
+			if (typeslr[i]==0){
+			typestemp[i]=2;
+			};
+			if (typeslr[i]==1){
+			typestemp[i]=0;
+			};
+			if (typeslr[i]==2){
+			typestemp[i]=3;
+			};
+			if (typeslr[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typeslr[i] = typestemp[i];
+			};			
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesrr[i]==0){
+			typestemp[i]=2;
+			};
+			if (typesrr[i]==1){
+			typestemp[i]=0;
+			};
+			if (typesrr[i]==2){
+			typestemp[i]=3;
+			};
+			if (typesrr[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesrr[i] = typestemp[i];
+			};					
+			
+		for(i=1; i<65; i++) {
+	
+			if (typeslf[i]==0){
+			typestemp[i]=1;
+			};
+			if (typeslf[i]==1){
+			typestemp[i]=3;
+			};
+			if (typeslf[i]==2){
+			typestemp[i]=0;
+			};
+			if (typeslf[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typeslf[i] = typestemp[i];
+			};
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesrf[i]==0){
+			typestemp[i]=1;
+			};
+			if (typesrf[i]==1){
+			typestemp[i]=3;
+			};
+			if (typesrf[i]==2){
+			typestemp[i]=0;
+			};
+			if (typesrf[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesrf[i] = typestemp[i];
+			};
+			
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesbt[i]==0){
+			typestemp[i]=1;
+			};
+			if (typesbt[i]==1){
+			typestemp[i]=2;
+			};
+			if (typesbt[i]==2){
+			typestemp[i]=3;
+			};
+			if (typesbt[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesbt[i] = typestemp[i];
+			};
+				
+		showim();
+	};
+
+// End of top CW rotation
+
+// If User has clicked icon for counter-clockwise rotation
+// of cube from top face...
+
+	function rotateTopCC() {
+		
+		tempnum[1] = num[4];
+		tempnum[2] = num[8];
+		tempnum[3] = num[12];
+		tempnum[4] = num[16];
+		tempnum[5] = num[3];
+		tempnum[6] = num[7];
+		tempnum[7] = num[11];
+		tempnum[8] = num[15];
+		tempnum[9] = num[2];
+		tempnum[10] = num[6];
+		tempnum[11] = num[10];
+		tempnum[12] = num[14];
+		tempnum[13] = num[1];
+		tempnum[14] = num[5];
+		tempnum[15] = num[9];
+		tempnum[16] = num[13];
+
+		tempnum[17] = num[20];
+		tempnum[18] = num[24];
+		tempnum[19] = num[28];
+		tempnum[20] = num[32];
+		tempnum[21] = num[19];
+		tempnum[22] = num[23];
+		tempnum[23] = num[27];
+		tempnum[24] = num[31];
+		tempnum[25] = num[18];
+		tempnum[26] = num[22];
+		tempnum[27] = num[26];
+		tempnum[28] = num[30];
+		tempnum[29] = num[17];
+		tempnum[30] = num[21];
+		tempnum[31] = num[25];
+		tempnum[32] = num[29];
+
+		tempnum[33] = num[36];
+		tempnum[34] = num[40];
+		tempnum[35] = num[44];
+		tempnum[36] = num[48];
+		tempnum[37] = num[35];
+		tempnum[38] = num[39];
+		tempnum[39] = num[43];
+		tempnum[40] = num[47];
+		tempnum[41] = num[34];
+		tempnum[42] = num[38];
+		tempnum[43] = num[42];
+		tempnum[44] = num[46];
+		tempnum[45] = num[33];
+		tempnum[46] = num[37];
+		tempnum[47] = num[41];
+		tempnum[48] = num[45];
+
+		tempnum[49] = num[52];
+		tempnum[50] = num[56];
+		tempnum[51] = num[60];
+		tempnum[52] = num[64];
+		tempnum[53] = num[51];
+		tempnum[54] = num[55];
+		tempnum[55] = num[59];
+		tempnum[56] = num[63];
+		tempnum[57] = num[50];
+		tempnum[58] = num[54];
+		tempnum[59] = num[58];
+		tempnum[60] = num[62];
+		tempnum[61] = num[49];
+		tempnum[62] = num[53];
+		tempnum[63] = num[57];
+		tempnum[64] = num[61];
+		
+		for(i=1; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+		
+		rotfacesTopCC();
+		
+	};
+	
+	function rotfacesTopCC() {
+		
+		for(i=1; i<65; i++) {
+	
+			if (typestp[i]==0){
+			typestemp[i]=3;
+			};
+			if (typestp[i]==1){
+			typestemp[i]=0;
+			};
+			if (typestp[i]==2){
+			typestemp[i]=1;
+			};
+			if (typestp[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typestp[i] = typestemp[i];
+			};
+		
+		for(i=1; i<65; i++) {
+	
+			if (typeslr[i]==0){
+			typestemp[i]=1;
+			};
+			if (typeslr[i]==1){
+			typestemp[i]=3;
+			};
+			if (typeslr[i]==2){
+			typestemp[i]=0;
+			};
+			if (typeslr[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typeslr[i] = typestemp[i];
+			};			
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesrr[i]==0){
+			typestemp[i]=1;
+			};
+			if (typesrr[i]==1){
+			typestemp[i]=3;
+			};
+			if (typesrr[i]==2){
+			typestemp[i]=0;
+			};
+			if (typesrr[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesrr[i] = typestemp[i];
+			};					
+			
+		for(i=1; i<65; i++) {
+	
+			if (typeslf[i]==0){
+			typestemp[i]=2;
+			};
+			if (typeslf[i]==1){
+			typestemp[i]=0;
+			};
+			if (typeslf[i]==2){
+			typestemp[i]=3;
+			};
+			if (typeslf[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typeslf[i] = typestemp[i];
+			};
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesrf[i]==0){
+			typestemp[i]=2;
+			};
+			if (typesrf[i]==1){
+			typestemp[i]=0;
+			};
+			if (typesrf[i]==2){
+			typestemp[i]=3;
+			};
+			if (typesrf[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesrf[i] = typestemp[i];
+			};
+			
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesbt[i]==0){
+			typestemp[i]=3;
+			};
+			if (typesbt[i]==1){
+			typestemp[i]=0;
+			};
+			if (typesbt[i]==2){
+			typestemp[i]=1;
+			};
+			if (typesbt[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesbt[i] = typestemp[i];
+			};
+				
+		showim();
+	};
+
+// End of top CC rotation
+    
+
+// If User has clicked icon for clockwise rotation
+// of cube from left front face...
+
+	function rotateLFCW() {
+
+		tempnum[13] = num[61];
+		tempnum[14] = num[45];
+		tempnum[15] = num[29];
+		tempnum[16] = num[13];
+
+		tempnum[29] = num[62];
+		tempnum[30] = num[46];
+		tempnum[31] = num[30];
+		tempnum[32] = num[14];
+
+		tempnum[45] = num[63];
+		tempnum[46] = num[47];
+		tempnum[47] = num[31];
+		tempnum[48] = num[15];
+
+		tempnum[61] = num[64];
+		tempnum[62] = num[48];
+		tempnum[63] = num[32];
+		tempnum[64] = num[16];
+
+		tempnum[9] = num[57];
+		tempnum[10] = num[41];
+		tempnum[11] = num[25];
+		tempnum[12] = num[9];
+
+		tempnum[25] = num[58];
+		tempnum[26] = num[42];
+		tempnum[27] = num[26];
+		tempnum[28] = num[10];
+
+		tempnum[41] = num[59];
+		tempnum[42] = num[43];
+		tempnum[43] = num[27];
+		tempnum[44] = num[11];
+
+		tempnum[57] = num[60];
+		tempnum[58] = num[44];
+		tempnum[59] = num[28];
+		tempnum[60] = num[12];
+
+		tempnum[5] = num[53];
+		tempnum[6] = num[37];
+		tempnum[7] = num[21];
+		tempnum[8] = num[5];
+
+		tempnum[21] = num[54];
+		tempnum[22] = num[38];
+		tempnum[23] = num[22];
+		tempnum[24] = num[6];
+
+		tempnum[37] = num[55];
+		tempnum[38] = num[39];
+		tempnum[39] = num[23];
+		tempnum[40] = num[7];
+
+		tempnum[53] = num[56];
+		tempnum[54] = num[40];
+		tempnum[55] = num[24];
+		tempnum[56] = num[8];
+
+		tempnum[1] = num[49];
+		tempnum[2] = num[33];
+		tempnum[3] = num[17];
+		tempnum[4] = num[1];
+
+		tempnum[17] = num[50];
+		tempnum[18] = num[34];
+		tempnum[19] = num[18];
+		tempnum[20] = num[2];
+
+		tempnum[33] = num[51];
+		tempnum[34] = num[35];
+		tempnum[35] = num[19];
+		tempnum[36] = num[3];
+
+		tempnum[49] = num[52];
+		tempnum[50] = num[36];
+		tempnum[51] = num[20];
+		tempnum[52] = num[4];
+		
+		for(i=1; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+		
+		rotfacesLFCW();
+		
+	};
+	
+	function rotfacesLFCW() {
+		
+		for(i=1; i<65; i++) {
+	
+			if (typestp[i]==0){
+			typestemp[i]=2;
+			};
+			if (typestp[i]==1){
+			typestemp[i]=0;
+			};
+			if (typestp[i]==2){
+			typestemp[i]=3;
+			};
+			if (typestp[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typestp[i] = typestemp[i];
+			};
+		
+		for(i=1; i<65; i++) {
+	
+			if (typeslr[i]==0){
+			typestemp[i]=3;
+			};
+			if (typeslr[i]==1){
+			typestemp[i]=2;
+			};
+			if (typeslr[i]==2){
+			typestemp[i]=0;
+			};
+			if (typeslr[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typeslr[i] = typestemp[i];
+			};			
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesrr[i]==0){
+			typestemp[i]=1;
+			};
+			if (typesrr[i]==1){
+			typestemp[i]=2;
+			};
+			if (typesrr[i]==2){
+			typestemp[i]=3;
+			};
+			if (typesrr[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesrr[i] = typestemp[i];
+			};					
+			
+		for(i=1; i<65; i++) {
+	
+			if (typeslf[i]==0){
+			typestemp[i]=1;
+			};
+			if (typeslf[i]==1){
+			typestemp[i]=2;
+			};
+			if (typeslf[i]==2){
+			typestemp[i]=3;
+			};
+			if (typeslf[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typeslf[i] = typestemp[i];
+			};
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesrf[i]==0){
+			typestemp[i]=2;
+			};
+			if (typesrf[i]==1){
+			typestemp[i]=3;
+			};
+			if (typesrf[i]==2){
+			typestemp[i]=1;
+			};
+			if (typesrf[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesrf[i] = typestemp[i];
+			};
+			
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesbt[i]==0){
+			typestemp[i]=1;
+			};
+			if (typesbt[i]==1){
+			typestemp[i]=3;
+			};
+			if (typesbt[i]==2){
+			typestemp[i]=0;
+			};
+			if (typesbt[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesbt[i] = typestemp[i];
+			};
+				
+		showim();
+	};
+
+// End of left front CW rotation
+    
+// If User has clicked icon for counter-clockwise rotation
+// of cube from left front face...
+
+	function rotateLFCC() {
+
+		tempnum[13] = num[16];
+		tempnum[14] = num[32];
+		tempnum[15] = num[48];
+		tempnum[16] = num[64];
+
+		tempnum[29] = num[15];
+		tempnum[30] = num[31];
+		tempnum[31] = num[47];
+		tempnum[32] = num[63];
+
+		tempnum[45] = num[14];
+		tempnum[46] = num[30];
+		tempnum[47] = num[46];
+		tempnum[48] = num[62];
+
+		tempnum[61] = num[13];
+		tempnum[62] = num[29];
+		tempnum[63] = num[45];
+		tempnum[64] = num[61];
+
+		tempnum[9] = num[12];
+		tempnum[10] = num[28];
+		tempnum[11] = num[44];
+		tempnum[12] = num[60];
+
+		tempnum[25] = num[11];
+		tempnum[26] = num[27];
+		tempnum[27] = num[43];
+		tempnum[28] = num[59];
+
+		tempnum[41] = num[10];
+		tempnum[42] = num[26];
+		tempnum[43] = num[42];
+		tempnum[44] = num[58];
+
+		tempnum[57] = num[9];
+		tempnum[58] = num[25];
+		tempnum[59] = num[41];
+		tempnum[60] = num[57];
+
+		tempnum[5] = num[8];
+		tempnum[6] = num[24];
+		tempnum[7] = num[40];
+		tempnum[8] = num[56];
+
+		tempnum[21] = num[7];
+		tempnum[22] = num[23];
+		tempnum[23] = num[39];
+		tempnum[24] = num[55];
+
+		tempnum[37] = num[6];
+		tempnum[38] = num[22];
+		tempnum[39] = num[38];
+		tempnum[40] = num[54];
+
+		tempnum[53] = num[5];
+		tempnum[54] = num[21];
+		tempnum[55] = num[37];
+		tempnum[56] = num[53];
+
+		tempnum[1] = num[4];
+		tempnum[2] = num[20];
+		tempnum[3] = num[36];
+		tempnum[4] = num[52];
+
+		tempnum[17] = num[3];
+		tempnum[18] = num[19];
+		tempnum[19] = num[35];
+		tempnum[20] = num[51];
+
+		tempnum[33] = num[2];
+		tempnum[34] = num[18];
+		tempnum[35] = num[34];
+		tempnum[36] = num[50];
+
+		tempnum[49] = num[1];
+		tempnum[50] = num[17];
+		tempnum[51] = num[33];
+		tempnum[52] = num[49];
+	
+		for(i=1; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+		
+		rotfacesLFCC();
+		
+	};
+	
+	function rotfacesLFCC() {
+		
+		for(i=1; i<65; i++) {
+	
+			if (typestp[i]==0){
+			typestemp[i]=1;
+			};
+			if (typestp[i]==1){
+			typestemp[i]=3;
+			};
+			if (typestp[i]==2){
+			typestemp[i]=0;
+			};
+			if (typestp[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typestp[i] = typestemp[i];
+			};
+		
+		for(i=1; i<65; i++) {
+	
+			if (typeslr[i]==0){
+			typestemp[i]=2;
+			};
+			if (typeslr[i]==1){
+			typestemp[i]=3;
+			};
+			if (typeslr[i]==2){
+			typestemp[i]=1;
+			};
+			if (typeslr[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typeslr[i] = typestemp[i];
+			};			
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesrr[i]==0){
+			typestemp[i]=3;
+			};
+			if (typesrr[i]==1){
+			typestemp[i]=0;
+			};
+			if (typesrr[i]==2){
+			typestemp[i]=1;
+			};
+			if (typesrr[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesrr[i] = typestemp[i];
+			};					
+			
+		for(i=1; i<65; i++) {
+	
+			if (typeslf[i]==0){
+			typestemp[i]=3;
+			};
+			if (typeslf[i]==1){
+			typestemp[i]=0;
+			};
+			if (typeslf[i]==2){
+			typestemp[i]=1;
+			};
+			if (typeslf[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typeslf[i] = typestemp[i];
+			};
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesrf[i]==0){
+			typestemp[i]=3;
+			};
+			if (typesrf[i]==1){
+			typestemp[i]=2;
+			};
+			if (typesrf[i]==2){
+			typestemp[i]=0;
+			};
+			if (typesrf[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesrf[i] = typestemp[i];
+			};
+			
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesbt[i]==0){
+			typestemp[i]=2;
+			};
+			if (typesbt[i]==1){
+			typestemp[i]=0;
+			};
+			if (typesbt[i]==2){
+			typestemp[i]=3;
+			};
+			if (typesbt[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesbt[i] = typestemp[i];
+			};
+				
+		showim();
+	};
+
+// End of left front CC rotation
+    
+    
+
+    
+// If User has clicked icon for clockwise rotation
+// of cube from right front face...
+
+	function rotateRFCW() {
+		
+		tempnum[16] = num[64];
+		tempnum[12] = num[48];
+		tempnum[8] = num[32];
+		tempnum[4] = num[16];
+
+		tempnum[32] = num[60];
+		tempnum[28] = num[44];
+		tempnum[24] = num[28];
+		tempnum[20] = num[12];
+
+
+		tempnum[48] = num[56];
+		tempnum[44] = num[40];
+		tempnum[40] = num[24];
+		tempnum[36] = num[8];
+
+		tempnum[64] = num[52];
+		tempnum[60] = num[36];
+		tempnum[56] = num[20];
+		tempnum[52] = num[4];
+
+		tempnum[15] = num[63];
+		tempnum[11] = num[47];
+		tempnum[7] = num[31];
+		tempnum[3] = num[15];
+
+		tempnum[31] = num[59];
+		tempnum[27] = num[43];
+		tempnum[23] = num[27];
+		tempnum[19] = num[11];
+
+		tempnum[47] = num[55];
+		tempnum[43] = num[39];
+		tempnum[39] = num[23];
+		tempnum[35] = num[7];
+
+		tempnum[63] = num[51];
+		tempnum[59] = num[35];
+		tempnum[55] = num[19];
+		tempnum[51] = num[3];
+
+		tempnum[14] = num[62];
+		tempnum[10] = num[46];
+		tempnum[6] = num[30];
+		tempnum[2] = num[14];
+
+		tempnum[30] = num[58];
+		tempnum[26] = num[42];
+		tempnum[22] = num[26];
+		tempnum[18] = num[10];
+
+		tempnum[46] = num[54];
+		tempnum[42] = num[38];
+		tempnum[38] = num[22];
+		tempnum[34] = num[6];
+
+		tempnum[62] = num[50];
+		tempnum[58] = num[34];
+		tempnum[54] = num[18];
+		tempnum[50] = num[2];
+
+		tempnum[13] = num[61];
+		tempnum[9] = num[45];
+		tempnum[5] = num[29];
+		tempnum[1] = num[13];
+
+		tempnum[29] = num[57];
+		tempnum[25] = num[41];
+		tempnum[21] = num[25];
+		tempnum[17] = num[9];
+
+		tempnum[45] = num[53];
+		tempnum[41] = num[37];
+		tempnum[37] = num[21];
+		tempnum[33] = num[5];
+
+		tempnum[61] = num[49];
+		tempnum[57] = num[33];
+		tempnum[53] = num[17];
+		tempnum[49] = num[1];
+		
+		for(i=1; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+		
+		rotfacesRFCW();
+		
+	};
+	
+	function rotfacesRFCW() {
+		
+		for(i=1; i<65; i++) {
+	
+			if (typestp[i]==0){
+			typestemp[i]=3;
+			};
+			if (typestp[i]==1){
+			typestemp[i]=2;
+			};
+			if (typestp[i]==2){
+			typestemp[i]=0;
+			};
+			if (typestp[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typestp[i] = typestemp[i];
+			};
+		
+		for(i=1; i<65; i++) {
+	
+			if (typeslr[i]==0){
+			typestemp[i]=1;
+			};
+			if (typeslr[i]==1){
+			typestemp[i]=2;
+			};
+			if (typeslr[i]==2){
+			typestemp[i]=3;
+			};
+			if (typeslr[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typeslr[i] = typestemp[i];
+			};			
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesrr[i]==0){
+			typestemp[i]=2;
+			};
+			if (typesrr[i]==1){
+			typestemp[i]=3;
+			};
+			if (typesrr[i]==2){
+			typestemp[i]=1;
+			};
+			if (typesrr[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesrr[i] = typestemp[i];
+			};					
+			
+		for(i=1; i<65; i++) {
+	
+			if (typeslf[i]==0){
+			typestemp[i]=3;
+			};
+			if (typeslf[i]==1){
+			typestemp[i]=2;
+			};
+			if (typeslf[i]==2){
+			typestemp[i]=0;
+			};
+			if (typeslf[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typeslf[i] = typestemp[i];
+			};
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesrf[i]==0){
+			typestemp[i]=1;
+			};
+			if (typesrf[i]==1){
+			typestemp[i]=2;
+			};
+			if (typesrf[i]==2){
+			typestemp[i]=3;
+			};
+			if (typesrf[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesrf[i] = typestemp[i];
+			};
+			
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesbt[i]==0){
+			typestemp[i]=2;
+			};
+			if (typesbt[i]==1){
+			typestemp[i]=3;
+			};
+			if (typesbt[i]==2){
+			typestemp[i]=1;
+			};
+			if (typesbt[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesbt[i] = typestemp[i];
+			};
+				
+		showim();
+	};
+
+// End of right front CW rotation
+
+// If User has clicked icon for counter-clockwise rotation
+// of cube from right front face...
+
+	function rotateRFCC() {
+		
+		tempnum[16] = num[4];
+		tempnum[12] = num[20];
+		tempnum[8] = num[36];
+		tempnum[4] = num[52];
+
+		tempnum[32] = num[8];
+		tempnum[28] = num[24];
+		tempnum[24] = num[40];
+		tempnum[20] = num[56];
+
+
+		tempnum[48] = num[12];
+		tempnum[44] = num[28];
+		tempnum[40] = num[44];
+		tempnum[36] = num[60];
+
+		tempnum[64] = num[16];
+		tempnum[60] = num[32];
+		tempnum[56] = num[48];
+		tempnum[52] = num[64];
+
+		tempnum[15] = num[3];
+		tempnum[11] = num[19];
+		tempnum[7] = num[35];
+		tempnum[3] = num[51];
+
+		tempnum[31] = num[7];
+		tempnum[27] = num[23];
+		tempnum[23] = num[39];
+		tempnum[19] = num[55];
+
+		tempnum[47] = num[11];
+		tempnum[43] = num[27];
+		tempnum[39] = num[43];
+		tempnum[35] = num[59];
+
+		tempnum[63] = num[15];
+		tempnum[59] = num[31];
+		tempnum[55] = num[47];
+		tempnum[51] = num[63];
+
+		tempnum[14] = num[2];
+		tempnum[10] = num[18];
+		tempnum[6] = num[34];
+		tempnum[2] = num[50];
+
+		tempnum[30] = num[6];
+		tempnum[26] = num[22];
+		tempnum[22] = num[38];
+		tempnum[18] = num[54];
+
+		tempnum[46] = num[10];
+		tempnum[42] = num[26];
+		tempnum[38] = num[42];
+		tempnum[34] = num[58];
+
+		tempnum[62] = num[14];
+		tempnum[58] = num[30];
+		tempnum[54] = num[46];
+		tempnum[50] = num[62];
+
+		tempnum[13] = num[1];
+		tempnum[9] = num[17];
+		tempnum[5] = num[33];
+		tempnum[1] = num[49];
+
+		tempnum[29] = num[5];
+		tempnum[25] = num[21];
+		tempnum[21] = num[37];
+		tempnum[17] = num[53];
+
+		tempnum[45] = num[9];
+		tempnum[41] = num[25];
+		tempnum[37] = num[41];
+		tempnum[33] = num[57];
+
+		tempnum[61] = num[13];
+		tempnum[57] = num[29];
+		tempnum[53] = num[45];
+		tempnum[49] = num[61];
+		
+		for(i=1; i<65; i++) {
+		num[i] = tempnum[i];
+		};
+		
+		rotfacesRFCC();
+		
+	};
+	
+	function rotfacesRFCC() {
+		
+		for(i=1; i<65; i++) {
+	
+			if (typestp[i]==0){
+			typestemp[i]=2;
+			};
+			if (typestp[i]==1){
+			typestemp[i]=3;
+			};
+			if (typestp[i]==2){
+			typestemp[i]=1;
+			};
+			if (typestp[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typestp[i] = typestemp[i];
+			};
+		
+		for(i=1; i<65; i++) {
+	
+			if (typeslr[i]==0){
+			typestemp[i]=3;
+			};
+			if (typeslr[i]==1){
+			typestemp[i]=0;
+			};
+			if (typeslr[i]==2){
+			typestemp[i]=1;
+			};
+			if (typeslr[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typeslr[i] = typestemp[i];
+			};			
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesrr[i]==0){
+			typestemp[i]=3;
+			};
+			if (typesrr[i]==1){
+			typestemp[i]=2;
+			};
+			if (typesrr[i]==2){
+			typestemp[i]=0;
+			};
+			if (typesrr[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesrr[i] = typestemp[i];
+			};					
+			
+		for(i=1; i<65; i++) {
+	
+			if (typeslf[i]==0){
+			typestemp[i]=2;
+			};
+			if (typeslf[i]==1){
+			typestemp[i]=3;
+			};
+			if (typeslf[i]==2){
+			typestemp[i]=1;
+			};
+			if (typeslf[i]==3){
+			typestemp[i]=0;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typeslf[i] = typestemp[i];
+			};
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesrf[i]==0){
+			typestemp[i]=3;
+			};
+			if (typesrf[i]==1){
+			typestemp[i]=0;
+			};
+			if (typesrf[i]==2){
+			typestemp[i]=1;
+			};
+			if (typesrf[i]==3){
+			typestemp[i]=2;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesrf[i] = typestemp[i];
+			};
+			
+			
+		for(i=1; i<65; i++) {
+	
+			if (typesbt[i]==0){
+			typestemp[i]=3;
+			};
+			if (typesbt[i]==1){
+			typestemp[i]=2;
+			};
+			if (typesbt[i]==2){
+			typestemp[i]=0;
+			};
+			if (typesbt[i]==3){
+			typestemp[i]=1;
+			};
+		};
+			for(i=1; i<65; i++) {
+			typesbt[i] = typestemp[i];
+			};
+				
+		showim();
+	};
+
+// End of right front CC rotation
+
+//
+// End hiding script from old browsers -->
+
+   </script>
+
+<style>
+
+.top   {position:absolute;
+            top:20;
+            left:125;  
+            margin: 0}
+.bot   {position:absolute;
+            top:240;
+            left:125;  
+            margin: 0}
+.ctr   {position:absolute;
+            top:110;
+            left:95;  
+            margin: 0}
+.lr   {position:absolute;
+            top:70;
+            left:20;  
+            margin: 0}
+.rr   {position:absolute;
+            top:70;
+            left:225;  
+            margin: 0}
+.lf   {position:absolute;
+            top:190;
+            left:20;  
+            margin: 0}
+.rf   {position:absolute;
+            top:190;
+            left:225;  
+            margin: 0}
+.footer   {position:absolute;
+            top:340;
+            left:40;  
+            margin: 0}
+.permute   {position:absolute;
+            top:20;
+            left:320;  
+            margin: 0}
+.rotsel      {position:absolute;
+            top:300;
+            left:380;  
+            margin: 0}
+
+</style>
+
+</head>
+
+<body onload="startup();">
+
+
+
+<!-- CUBE FACE DISPLAY -->
+
+<!-- TOP-face table -->
+
+<table class="top" border="0" cellpadding="0" cellspacing="0">
+<caption align="bottom"><font size="1"><b><small>Top</small></b></font></caption>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+</table>
+
+<!-- LR (left-rear)-face table -->
+
+<table class="lr" border="0" cellpadding="0" cellspacing="0">
+<caption align="bottom"><font size="1"><b><small>Left Rear</small></b></font></caption>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+</table>
+
+<!-- RR (right-rear)-face table -->
+
+<table class="rr" border="0" cellpadding="0" cellspacing="0">
+<caption align="bottom"><font size="1"><b><small>Right Rear</small></b></font></caption>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+</table>
+
+<!-- LF (left-front)-face table -->
+
+<table class="lf" border="0" cellpadding="0" cellspacing="0">
+<caption align="bottom"><font size="1"><b><small>Left Front</small></b></font></caption>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+</table>
+
+<!-- RF (right-front)-face table -->
+
+<table class="rf" border="0" cellpadding="0" cellspacing="0">
+<caption align="bottom"><font size="1"><b><small>Right Front</small></b></font></caption>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+</table>
+
+
+
+
+
+
+<!-- BOT-face table -------- -->
+
+<table class="bot" border="0" cellpadding="0" cellspacing="0">
+<caption align="bottom"><font size="1" "=""><b><small>Bottom</small></b></font></caption>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+<tr>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+<td><img src="empty16x16.jpg" /></td>
+</tr>
+</table>
+
+
+
+
+
+<!-- PERMUTATIONS 4-TABLE SUBTABLE ----------------- -->
+<table class="permute" width="270" border="1" cellpadding="4" cellspacing="0" rules="none">
+<caption align="bottom"><font size="1"><b>Permute parts (top view).</b></font></caption>
+<tr>
+<!-- IMAGES TABLE -->
+<td align="center" valign="bottom">
+<table border="0" cellpadding="0" cellspacing="0" rules="none">
+<tr>
+<td><img border="0" src="grid88x88.jpg" height="88" width="88" /></td>
+</tr>
+</table>
+</td>
+<!-- ROWS TABLE -->
+<td align="left" valign="bottom">
+<table rules="all" border="1" cellpadding="1" cellspacing="0">
+<caption align="TOP"><font size="1"><b><small>Rows</small></b></font></caption>
+<tr><td bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="row1clicked(); return false">
+<img src="row16x67.gif" /></a>
+</td></tr>
+<tr><td bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="row2clicked(); return false"><img src="row16x67.gif" /></a>
+</td></tr>
+<tr><td bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="row3clicked(); return false"><img src="row16x67.gif" /></a>
+</td></tr>
+<tr><td bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="row4clicked(); return false"><img src="row16x67.gif" /></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr align="RIGHT" valign="TOP">
+<td>
+<!-- COLUMNS TABLE -->
+<table rules="all" border="1" cellpadding="3" cellspacing="0" valign="top" align="center">
+<caption align="BOTTOM"><font size="1"><small><b>Columns</b></small></font></caption>
+<tr>
+<td bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+ <a href="#" onclick="col1clicked(); return false">
+<img src="col67x16.gif" /></a>
+</td>
+<td bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="col2clicked(); return false">
+<img src="col67x16.gif" /></a>
+</td>
+<td bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="col3clicked(); return false">
+<img src="col67x16.gif" /></a>
+</td>
+<td bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="col4clicked(); return false">
+<img src="col67x16.gif" /></a>
+</td>
+</tr>
+</table>
+</td>
+<td align="left" valign="top">
+<!-- QUADRANTS TABLE -->
+<table rules="all" border="1" cellpadding="0" cellspacing="3">
+<caption align="BOTTOM"><font size="1"><b><small>Quadrants</small></b></font></caption>
+<tr valign="bottom">
+<td align="right" valign="bottom" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+ <a href="#" onclick="quad1clicked(); return false">
+<img src="quad30x30.gif" /></a>
+</td>
+<td align="left" valign="bottom" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="quad2clicked(); return false">
+<img src="quad30x30.gif" /></a>
+</td>
+</tr>
+<tr valign="top">
+<td align="right" valign="top" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="quad3clicked(); return false">
+<img src="quad30x30.gif" /></a>
+</td>
+<td align="left" valign="top" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';">
+<a href="#" onclick="quad4clicked(); return false">
+<img src="quad30x30.gif" /></a>
+</td></tr>
+
+</table>
+
+</td></tr>
+</table>
+<!-- END OF PERMUTATIONS 4-TABLE SUBTABLE -->
+
+<!--  ROTATION SELECTION table  -->
+
+
+<table class="rotsel" cellpadding="12" cellspacing="0" border="1" rules="all">
+<caption align="bottom"><font size="1"><b>Rotate cube.</b></font></caption>
+<tr>
+
+<td align="center" valign="middle" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" onclick="rotateTopCW(); return false">
+<img src="rotTopCW.jpg" border="0" /></td>
+
+<td align="center" valign="middle" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" onclick="rotateTopCC(); return false">
+<img src="rotTopCC.jpg" border="0" /></td>
+
+</tr>
+<tr>
+
+<td align="center" valign="middle" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" onclick="rotateLFCW(); return false">
+<img src="rotLFCW.jpg" border="0" /></td>
+
+<td align="center" valign="middle" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" onclick="rotateLFCC(); return false">
+<img src="rotLFCC.jpg" border="0" /></td>
+
+</tr>
+<tr>
+
+<td align="center" valign="middle" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" onclick="rotateRFCW(); return false">
+<img src="rotRFCW.jpg" border="0" /></td>
+
+<td align="center" valign="middle" bgcolor="#FFFFFF" onmouseover="this.bgColor='yellow';" onmouseout="this.bgColor='#FFFFFF';" onclick="rotateRFCC(); return false">
+<img src="rotRFCC.jpg" border="0" /></td>
+
+</tr>
+</table>
+
+
+
+<img class="ctr" width="121" height="121" src="cubearrows121x121.jpg" />
+
+
+
+<p align="center" class="footer" />
+
+<font size="3"><b>
+Design Cube<br />
+</b></font>
+<font size="2"><b>
+4x4x4
+</b></font>
+
+<font size="1">
+<br /><br />
+Copyright &copy 2006 by<br />
+Steven H. Cullinane.<br />
+All rights reserved.<br />
+Page created March 8, 2006.</font>
+
+<br />
+<br />
+<a href="../index.html">
+<b>Up (Menu)</b>
+</a>
+<br />
+
+<a href="../../downloading.html">
+<b><small>Help  Download</small></b>
+</a>
+
 </body>
 </html>
